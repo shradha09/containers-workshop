@@ -8,18 +8,13 @@ image:
 <div class="tiles">
 
 <div class="tile">
-  <h2 class="post-title">Built for Jekyll 2</h2>
-  <p class="post-excerpt">Takes advantage of native Sass support and data files to make customizing your site easier.</p>
+  <h2 class="post-title">Open Sourced</h2>
+  <p class="post-excerpt"> Content of these workshop would be open sourced, so anyone can refer them.</p>
 </div><!-- /.tile -->
 
 <div class="tile">
-  <h2 class="post-title">Content First</h2>
-  <p class="post-excerpt">Designed to put the focus on you and your writing. Headers, navigation, sidebars, and footers have been purposely deemphasized.</p>
-</div><!-- /.tile -->
-
-<div class="tile">
-  <h2 class="post-title">Customizable</h2>
-  <p class="post-excerpt">Packed with layouts and modules. Include Disqus comments, social sharing buttons, and table of contents on one or all pages.</p>
+  <h2 class="post-title">Completely Hands-on</h2>
+  <p class="post-excerpt"> All of the excercises would be hands-on. We would use Vagrant setup the environment then do the labs on top </p>
 </div><!-- /.tile -->
 
 <div class="tile">
