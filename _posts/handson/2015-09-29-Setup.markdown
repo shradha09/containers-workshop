@@ -1,0 +1,48 @@
+---
+layout: article
+title: "Setup"
+categories: articles
+modified: 2014-08-27T11:57:41-04:00
+tags: [setup]
+comments: true
+ads: false
+---
+
+{% include toc.html %}
+
+To have the self contained and easy to setup lab environment, I have created the Vagrant Box and setup labs around that. Each lab is consist of some theory, instructions and recording of the terminal, while running those instructions.  
+
+## Requirement 
+
+- Download and setup [VirtualBox **5.0**](https://www.virtualbox.org/wiki/Downloads)
+
+- Download and setup [Vagrant](https://www.vagrantup.com/downloads.html)
+
+- Get the Vagrant file
+
+```
+wget https://raw.githubusercontent.com/nkhare/data_and_network_containers/gh-pages/Vagrantfile
+```
+
+- Start the VMs
+
+```
+$ vagrant up
+```
+
+By detault Vagrant would start 2 VMs, as we need them in few labs. If you just want to start one
+VM, please set **NUM_LABVMS** environment variable to 1
+
+```
+export NUM_LABVMS=1
+```
+
+- Check the status of VMS *vagrant status*
+
+```
+$ vagrant status
+Current machine states:
+
+labvm-1                   running (virtualbox)
+labvm-2                   running (virtualbox)
+```
