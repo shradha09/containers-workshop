@@ -10,7 +10,7 @@ ads: false
 
 {% include toc.html %}
 
-I am covering some of the basics here. More details can be found in the free sample of my [Docker Cookbook] (https://play.google.com/books/reader?id=CzfdCQAAQBAJ&pg)
+I am covering some of the basics here. More details can be found in the free sample of my [Docker Cookbook](https://play.google.com/books/reader?id=CzfdCQAAQBAJ&pg)
 
 ## Basics
 
@@ -53,11 +53,12 @@ For resource limitations and accounting for container SELinux/AppArmor
 
 - Make sure you have setup ready, as mentioned in earlier section   
 
-```
+<pre>
 $ vagrant up
 $ vagrant ssh labvm-1
 $ sudo -s
-```  
+</pre>
+
 
 - Start the container
 
