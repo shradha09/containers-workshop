@@ -53,11 +53,11 @@ For resource limitations and accounting for container SELinux/AppArmor
 
 - Make sure you have setup ready, as mentioned in earlier section   
 
-```
+<pre>
 $ vagrant up
 $ vagrant ssh labvm-1
 $ sudo -s
-```  
+</pre> 
 
 - Start the container
 
