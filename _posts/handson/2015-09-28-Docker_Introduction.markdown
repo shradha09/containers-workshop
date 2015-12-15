@@ -57,8 +57,12 @@ For resource limitations and accounting for container SELinux/AppArmor
 $ vagrant up
 $ vagrant ssh labvm-1
 $ sudo -s
+<<<<<<< HEAD
 </pre>
 
+=======
+</pre> 
+>>>>>>> 2f550b18185ef0e4c7f0f75f94c916de5480c014
 
 - Start the container
 
