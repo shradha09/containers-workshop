@@ -1,8 +1,9 @@
 # Site navigation links
 
-- title: Why
-  url: /why/
-  excerpt: "Why I am doing these trainings"
+
+- title: Workshop
+  url: /workshop
+  excerpt: "Workshop Details"
   image: 400x250.gif
 
 - title: Hands-on Labs
