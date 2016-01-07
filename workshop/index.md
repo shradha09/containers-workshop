@@ -26,7 +26,9 @@ ads: false
 		* [Networking before Docker 1.9](/articles/networking/){:target="_blank"}
 		* [Multihost Networking](/articles/libnetwork/){:target="_blank"}
 		* [Overlay Networking](/articles/Overlay_Networking/){:target="_blank"}
-* [The Docker API](/articles/Docker_API/){:target="_blank"}
+* The Docker API
+	* [The Boring but Important Stuff](/articles/Docker_API_Theory/){:target="_blank"}
+	* [Lets get our hands dirty](/articles/Docker_API_Handson/){:target="_blank"}
 * [Docker Use-Cases](/articles/Docker_Use_Cases/){:target="_blank"}
 * [Docker Compose](/articles/Docker_Compose/){:target="_blank"}
 * Micro OSes for Docker
