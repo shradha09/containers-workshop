@@ -16,11 +16,12 @@ We will be covering basic operations so that even people who are new can work wi
 
 ##Setting up the lab
 Before we begin, we need to ensure that the docker daemon is running on http. So lets do that first.
-###Command
+
+###Command :
 
     $ docker daemon -H http://127.0.0.1:2376
  
-###Output
+###Output :
 
     WARN[0000] /!\ DON'T BIND ON ANY IP ADDRESS WITHOUT setting -tlsverify IF YOU DON'T KNOW WHAT YOU'RE DOING /!\
     INFO[0000] Listening for HTTP on tcp (127.0.0.1:2376)
