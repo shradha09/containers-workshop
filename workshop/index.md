@@ -18,6 +18,7 @@ ads: false
 	* [Installing Docker](/articles/Docker_Install_Basic/){:target="_blank"}
 	* [Docker Image Operations](/articles/Docker_Images/){:target="_blank"}
 	* [Docker Container Operations](/articles/Docker_Containers/){:target="_blank"}
+	* [The Docker Machine](/articles/Docker_Machine/){:target="_blank"}
 * Data and Network Management for Containers
 	* Volumes and Dockers
 		* [Volumes](/articles/Volumes/){:target="_blank"}
