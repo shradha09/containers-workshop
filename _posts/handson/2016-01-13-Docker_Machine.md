@@ -136,6 +136,16 @@ Lets start by creating pulling a docker image on docker-machine-1
 
     $ docker pull busybox
 
+Every time a docker machine sets up a host, it configures the docker daemon on the docker host to work on tls ([more on docker daemon and tls here](https://docs.docker.com/engine/articles/https/ "How TLS works with docker")) in the background. This generates tls certificates, copied to the system running docker machine. Those certificates are copied on the home directory of the userthat you can find in your. I have shown an example for a windows machine.
+
+###Command
+
+    $ ls C:\Users\USERNAME\.docker\machine\certs
+
+###Output
+
+    ca-key.pem  ca.pem  cert.pem  key.pem
+
 Now lets confirm if the pull was successful
 
 ###Command : 
