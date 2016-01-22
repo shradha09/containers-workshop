@@ -21,7 +21,11 @@ To have the self contained and easy to setup lab environment, I have created the
 - Download  the Vagrant file
 
 ```
-wget https://raw.githubusercontent.com/nkhare/data_and_network_containers/gh-pages/Vagrantfile
+$ wget https://raw.githubusercontent.com/nkhare/containers-workshop/gh-pages/vagrantfiles/VagrantfileBasic
+
+$ mv Vagrantfile VagrantfileBasic
+
+ 
 ```
 
 - Start the VMs
