@@ -8,7 +8,7 @@ comments: true
 ads: false
 ---
 
-````
+```
 $ git clone https://github.com/coreos/coreos-vagrant.git
 $ cd coreos-vagrant
 $ cp user-data.sample user-data
@@ -17,17 +17,20 @@ $ cp user-data.sample user-data
 - Create the new discovery token and update the config file
 
 - Update the config file
+
 ```
 $ cp config.rb.sample config.rb
 ```
 
 - Start the VMs
+
 ```
 $ vagrant up
 $ vagrant status
 ```
 
 - Login to one VM
+
 ```
 $ vagrant ssh core-01
 $ systemctl status etcd fleet
@@ -38,6 +41,7 @@ cf4afec9...	172.17.8.101	-
 ```
 
 - Create a service file with following content
+
 ```
 $ cat myapp.service
 [Unit]
@@ -55,6 +59,7 @@ ExecStop=/usr/bin/docker stop busybox1
 ```
 
 - Create the service
+
 ```
 $ fleetctl submit myapp.service
 $ fleetctl start myapp.service
