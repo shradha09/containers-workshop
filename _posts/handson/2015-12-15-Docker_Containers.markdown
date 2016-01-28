@@ -10,7 +10,7 @@ ads: false
 
 {% include toc.html %}
 
-# Before we start container Operations
+# Before we start container Operations..
 
 ##Listing/ searching an image
 
@@ -20,12 +20,21 @@ So lets try searching an image. For the purpose of this tutorial, we will use a 
 
 ###Command : 
 
-    $ docker search tianon/true
+    $ docker search "IMAGE_NAME"
+
+Example : $ docker search ubuntu
 
 ###Output : 
 
-    INDEX       NAME                    DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
-    docker.io   docker.io/tianon/true   125 bytes total - nothing but "true" (perf...   72                   [OK]
+
+INDEX       NAME                                        DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
+docker.io   docker.io/ubuntu                            Ubuntu is a Debian-based Linux operating s...   3079      [OK]       
+docker.io   docker.io/ubuntu-upstart                    Upstart is an event-based replacement for ...   61        [OK]       
+docker.io   docker.io/torusware/speedus-ubuntu          Always updated official Ubuntu docker imag...   25                   [OK]
+docker.io   docker.io/lynxtp/ubuntu                     https://github.com/lynxtp/docker-ubuntu         0                    [OK]
+docker.io   docker.io/rallias/ubuntu                    Ubuntu with the needful                         0                    [OK]
+docker.io   docker.io/teamrock/ubuntu                   TeamRock's Ubuntu image configured with AW...   0                    [OK]
+
 
 ## Pulling an image
 
