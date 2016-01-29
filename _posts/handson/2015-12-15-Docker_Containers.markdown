@@ -22,7 +22,7 @@ So lets try searching an image. For the purpose of this tutorial, we will use a 
 
     $ docker search "IMAGE_NAME"
 
-Example : $ docker search ubuntu
+Example : $ docker search ubuntu | head -n4
 
 ###Output : 
 
@@ -31,32 +31,54 @@ INDEX       NAME                                        DESCRIPTION             
 docker.io   docker.io/ubuntu                            Ubuntu is a Debian-based Linux operating s...   3079      [OK]       
 docker.io   docker.io/ubuntu-upstart                    Upstart is an event-based replacement for ...   61        [OK]       
 docker.io   docker.io/torusware/speedus-ubuntu          Always updated official Ubuntu docker imag...   25                   [OK]
-docker.io   docker.io/lynxtp/ubuntu                     https://github.com/lynxtp/docker-ubuntu         0                    [OK]
-docker.io   docker.io/rallias/ubuntu                    Ubuntu with the needful                         0                    [OK]
-docker.io   docker.io/teamrock/ubuntu                   TeamRock's Ubuntu image configured with AW...   0                    [OK]
 
+The above description points out whether the image is official or automated. STARS signfies how many people liked that image.
+
+ - To list the images that got more than 20 stars and are automated, run the following command :
+
+    $ docker search -s 20 --automated ubuntu
+
+ - For help with docker search, use following command:
+   $ docker search --help
 
 ## Pulling an image
 
-If we need an image, that is not currently available to us, we can simply pull the required image from a docker registry. Lets try to pull the image we just searched out.
+After looking up for the image in the registry,we can pull it to the system from docker registry by running the following command :
 
 ###Command : 
 
-    $ docker pull tianon/true
+    $ docker pull "IMAGE_NAME [:Tag]
+
+Example : docker pull ubuntu
+
+  The *pull* command downloads all layers from the Docker registry, which are required to create the image locally.
+
+## More about tags:
+
+- Image tags group images of the same type. For example, Fedora can have images with tags such as feodra21 , fedora22, fedora23 etc. Following is used to pull an image with specific tag: 
+
+  $ docker pull fedora:fedora22
+
+- By default,the image with latest tag gets pulled. To pull all images corresponding to all tags,use following command:
+  
+   $ docker pull --all-tags fedora
+
 
 ###Output
 
     Using default tag: latest
-    Trying to pull repository docker.io/tianon/true ... latest: Pulling from tianon/true
+    Trying to pull repository docker.io/tianon/true ... latest: Pulling from docker.io/library/fedora
     
     3bc7a2e07962: Pull complete
     bc84b1f88237: Pull complete
     Digest: sha256:0c678029118314264306b49c931d6dce678c8c88143252342a8614210bea4129
-    Status: Downloaded newer image for docker.io/tianon/true:latest
+    Status: Downloaded newer image for docker.io/fedora:latest
 
 ## Listing images
 
-Now before we use any image to create containers, we might want to check which containers are currently available on the system. We can do this too.
+Now before we use any image to create containers, we might want to check which containers are currently available on the system. These images might have been pulled from the registry, imported through the *docker* command, or created through docker files.
+
+Note: Make sure that the docker deamon is already running on the host.
 
 ###Command : 
 
@@ -65,10 +87,15 @@ Now before we use any image to create containers, we might want to check which c
 ###Output : 
 
     REPOSITORY              TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
-    docker.io/tianon/true   latest              bc84b1f88237        9 hours ago         125 B
-    docker.io/busybox       latest              0f864637f229        3 months ago        2.43 MB
-    docker.io/mysql         latest              6762f304c834        4 months ago        283.5 MB
-    docker.io/centos        latest              0f73ae75014f        4 months ago        172.3 MB
+    docker.io/ubuntu        latest              6cc0fc2a5ee3        9 hours ago         187.9 MB
+    docker.io/jekyll/jekyll latest              40c03a1c6fbb        10 days ago         150.9 MB
+    docker.io/nginx         latest              407195ab8b07        10 days ago         133.8 MB
+    docker.io/busybox       latest              0f864637f229        2 weeks ago         2.43 MB
+    docker.io/mysql         latest              6762f304c834        2 weeks ago         283.5 MB
+    docker.io/centos        centos7             c8a648134623        3 weeks ago         172.3 MB
+
+Note : The Docker client talks to the Docker server and gets the list of images at the server end.
+
 
 # Container Operations
 
@@ -76,6 +103,7 @@ Now that we know some basics about images that we needed to work with containers
 
 ## Starting a container
 
+Once we have images, we can use them to start the containers. 
 Lets attempt to start a  container. We shall use the busybox image here and try to run the `date` command.
 
 ###Command : 
