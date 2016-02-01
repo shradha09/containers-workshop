@@ -106,7 +106,7 @@ Now that we know some basics about images that we needed to work with containers
 Once we have images, we can use them to start the containers. 
 Lets attempt to start a  container.In the following commands we will  start a container with the ubuntu:latest image.
 
-###The syntax to start a container is as follows: 
+###Syntax to run Container :
 
  docker run [options] IMAGE[:TAG] [command] [ARG...]
 
@@ -126,7 +126,7 @@ We started a container from the ubuntu:latest image, attach psuedo-tty, name it 
 Also, if the image is not available locally, then it will get downloaded from the registry and then run. Docker will automatically run the *search* and *pull* command before running the *run* command.
 
 
-##Working behind the Scenes... 
+##Working of Docker behind the Scenes... 
 
 Under the hood, Docker:
 
@@ -139,7 +139,7 @@ Under the hood, Docker:
 
 Also, with the default Docker configuration , it creates a directory with the container's ID inside /var/lib/docker/containers, which has the container's specific information such as hostname, configuration details, logs and /etc/hosts.
 
-##There's more..
+### ~~ Additional Info ~~ 
 
 -To exit from the container use >ctrl+D or type >exit. It is similar to exiting from a shell but this will stop the container.
 
@@ -183,8 +183,6 @@ We can list both running and stopped containers.
 
 + Make sure that the Docker daemon is runnig on the host and you can connect through the Docker client.Some running and/or stopped containers are also required.
 
->How to do it..
-
 To list the containers, run the following command:
 
 ###Command 
@@ -199,20 +197,20 @@ c18653529e7e        centos              "/bin/bash"         8 seconds ago       
 fac59b475b1b        nginx               "/bin/bash"         About a minute ago  Up About a minute   80/tcp, 443/tcp     nginx
 6986b0367d5f        ubuntu              "/bin/bash"         35 minutes ago      Up 35 minutes                           nostalgic_jennings
 
-##How it works..
-
-The Docker daemon can look at the metadata associated with the containers and list them down.By default, the command returns:
+The Docker daemon can look at the metadata associated with the containers and lists them.Docker does this in following steps:
 
 -The container ID.
 -The image from which it got created.
 -The command that was run after starting the container.
 -The details about when it got created.
 -The current status.
--The ports that are exposed from the container.
+-The ports that are exposed from the container and mapped from the machine.
 -The name of the container.
 
 
-##There's more..
+
+
+### ~~ Additional Info ~~
 
 ! To list both running and stopped containers, use the -a option as follows:-
 
@@ -253,9 +251,8 @@ aebca9261ce8
 
 ##Looking at the logs of Containers: 
 
-
-
 We can look at the log files of existing containers. To do so, let us first start a container running in an infinite loop.
+ 
 
 ###Command :
 
@@ -274,11 +271,9 @@ We can look at the log files of existing containers. To do so, let us first star
   hello docker
   hello docker
  
->How it works.. 
+Docker does this by looking at the container's specificlog file from /var/lib/docker/containers/<Container ID> and show the result.
 
-Docker will look at the container's specificlog file from /var/lib/docker/containers/<Container ID> and show the result.
-
-###There's more.. 
+### ~~ Additional Info ~~ 
 
 With the -t option, we can get the timestamp with each log line and with -f we can get tail like behavior.
 
@@ -288,8 +283,6 @@ With the -t option, we can get the timestamp with each log line and with -f we c
 We can stop one or more container at once. Firstly we'll create a container and then will stop it.
 
 Note: Make sure that the Docker daemon is running on the host and you can connect through the Docker client.You will also need one or more running containers.
-
-###How to do it... 
 
 1.To stop the container, run the following command: 
   $ docker stop [-t|--time[=10]] CONTAINER [CONTAINER...]
@@ -302,7 +295,7 @@ Note: Make sure that the Docker daemon is running on the host and you can connec
 
 Note : This will save the state of the container and stop it. It can be started again, if needed.
 
-###There's more: 
+### ~~ Additional Info ~~
 
 1.To stop a container after waiting for some time, use --time/-t option.
 2.To stop all the running containers , run the following command:
@@ -315,7 +308,7 @@ We can delete a container permanently, but before that we have to stop the conta
  
 Note: Make sure the Docker daemon is running on the host and you can connect to the docker client. You will also need some containers in a stopped or running state to delete them.
 
-###How to do it.. 
+Steps to be followed: 
 1.To delete the container, run the following commands: 
   $ docker rm [OPTIONS]] CONTIANER [CONTAINER..]
 
@@ -338,7 +331,7 @@ c18653529e7e        centos              "/bin/bash"         About an hour ago   
 6986b0367d5f        ubuntu              "/bin/bash"         2 hours ago         Up 2 hours                              nostalgic_jenni
 $ docker rm $ID1
 
-###There's more.. 
+### ~~ Additional Info ~~ 
 
 - To forcefully delete a container without an intermediate stop,use the -f option.
 
@@ -350,19 +343,7 @@ $ docker rm $ID1
 - There are options to remove a specified link and volumes associated with the containers.
 
 
-
-
-
-
-
-
-
-
-###How it works..
-
-  
-
-
+Note: The Docker daemon will remove the read/write layer, which was created while starting the container.
 
 
 ## Setting restart policy
