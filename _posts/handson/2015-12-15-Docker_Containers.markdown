@@ -711,5 +711,4 @@ With the Docker version 1.2.0 the *--restart* flag is added with *docker run* to
 
 - on-failure : Restart the container if it exits with a non-zero exit code
 
-- always : 
-
+- always : Always restart the container no matter what exit 
