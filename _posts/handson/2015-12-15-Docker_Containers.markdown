@@ -723,11 +723,50 @@ Example: $ docker run  --restart=always -d -i -t ubuntu /bin/bash
 
 ## Getting Privileged Access
 
-Linux divides privileges
+Linux divides  the  privileges  traditionally associated  with  superuser into  distinct units, known as capabilities, which can be independently enabled and disabled.Capabilities are a  per-thread attribute. 
+ Docker starts a container with minimum capabilities, by providing privileged access we are actually giving more capabilities to the container to perform opertions that are normally done by root.
+
+### ~~ Syntax for privileged mode ~~ 
+
+  $ docker run --privileged [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG..]
+
+Example :  $ docker run --privileged=false -i -t ubuntu /bin/bash
+   The above above command will give overhead privileges to the container.Most common of them all are : 
+
+  --cap-add
+  --cap-drop
+
+ Docker run also has a feature where you can adjust the capabilities that your container requires. This means you can remove capabilities your container does not need. For example, if your container does not need setuid and setgid you can remove this access by executing:
+
+ Syntax: 
+    
+    $ docker run --cap-drop  [OPTIONS] IMAGE[:TAG] [COMMANDS] [ARG..]
+
+ Example: 
+ 
+    $ docker run --cap-drop setuid --cap-drop setgid -ti rhel7 /bin/sh
+
+
+You can even remove all capabilities or add them all:
+  
+Syntax: 
+    
+    $ docker run --cap-add [OPTIONS] IMAGE[:TAG] [COMMANDS] [ARG..]
+
+Example: 
    
+    $ docker run --cap-add all --cap-drop sys-admin -ti rhel7 /bin/sh
+
+This command would add all capabilities except sys-admin 
 
 
-
+To remove chown capability fromt the container ,use following command : 
+   
+   $ docker run --cap-drop=CHOWN [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG..]
 
 
  
+
+## Exposing a Port
+
+
