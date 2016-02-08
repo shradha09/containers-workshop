@@ -769,4 +769,40 @@ To remove chown capability fromt the container ,use following command :
 
 ## Exposing a Port
 
+Port exposure could be done by many ways, one of them is through *run* command. Other ways are through Docker file and --link command.
+
+Port expoed through run command : 
+
+Syntax : 
+
+       $ docker run --expose=PORT [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG..]
+
+Example : 
+      
+       $ docker --expose=22 -i -t ubuntu /bin/bash
+
+Above command will expose while starting the container. 
+
+ 
+
+
+## Accessing the host device inside the container 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
