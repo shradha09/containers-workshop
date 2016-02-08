@@ -1,4 +1,4 @@
-yout: article
+t: article
 title: "Containers"
 categories: articles
 modified: 2014-08-27T11:57:41-04:00
@@ -599,11 +599,11 @@ c18653529e7e
 6a92c790a9f4
 aebca9261ce8
 
-!To show the last created container, including the non-running container, run the following command :
+- To show the last created container, including the non-running container, run the following command :
 
-  $ docker ps -l
+   $ docker ps -l
 
-!For filtering the containers on the basis of there use --filter/-f option with 'ps'.
+- For filtering the containers on the basis of there use --filter/-f option with 'ps'.
 
 
 ##Looking at the logs of Containers: 
@@ -711,4 +711,23 @@ With the Docker version 1.2.0 the *--restart* flag is added with *docker run* to
 
 - on-failure : Restart the container if it exits with a non-zero exit code
 
-- always : Always restart the container no matter what exit 
+- always : Always restart the container no matter what exit
+
+Syntax: $ docker run --restart=POLICY [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG..]
+
+Example: $ docker run  --restart=always -d -i -t ubuntu /bin/bash
+          
+         $ docker run --restart=on-failure:2 -d -i -t ubuntu /bin/bash
+
+   
+
+## Getting Privileged Access
+
+
+   
+
+
+
+
+
+ 
