@@ -723,7 +723,7 @@ Example: $ docker run  --restart=always -d -i -t ubuntu /bin/bash
 
 ## Getting Privileged Access
 
-
+Linux divides privileges
    
 
 
