@@ -786,8 +786,19 @@ Above command will expose while starting the container.
  
 
 
-## Accessing the host device inside the container 
+## Accessing the host device inside the container
 
+With the release of Docker version 1.2.0, host device could be accessed inside the container, by using --device option with the run command.
+Before it has to be done with the --privileged option. 
+
+Syntax : 
+     
+       $ docker run --device=<Host device>:<Container Device Mapping>:<Permissions> [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG..]
+
+
+Example : 
+       
+        $ docker run --device=/dev/sdc:/dev/xvdc -i -t ubuntu /bin/bash 
 
 
 
