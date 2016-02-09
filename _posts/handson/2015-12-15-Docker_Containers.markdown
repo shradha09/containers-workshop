@@ -915,32 +915,3 @@ $ docker ps -a --filter label=environment=dev
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                  PORTS               NAMES
 b0c4c2b63188        ubuntu              "date"              7 days ago          Exited (0) 7 days ago                       ubt10
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
