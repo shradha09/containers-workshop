@@ -798,13 +798,15 @@ Syntax :
 
 Example : 
        
-        $ docker run --device=/dev/sdc:/dev/xvdc -i -t ubuntu /bin/bash 
+        $ docker run --device=/dev/bdc:/dev/abdc -i -t ubuntu /bin/bash 
+
+This command will access the given folder inside the container.
 
 
 
+## Injecting new process to a Running Container 
 
-
-
+ 
 
 
 
