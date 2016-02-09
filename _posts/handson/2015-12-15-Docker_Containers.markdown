@@ -868,6 +868,55 @@ Example :
 ## Labeling and Filtering Containers 
  
 
+Docker 1.6.0 has added a new feature called labeling, through which we can attach arbitrary key-value metadata. They could be treated as environment variable which are not available to running applications inside the container, but are available to programs ( Docker CLI ) that manages containers and images.
+ Labels attached to images also gets applied to the containers started via them.
+
+
+ $ docker images
+ 
+
+ REPOSITORY                TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+skhare/fedora             httpd               d33f23884c55        6 days ago          362.2 MB
+docker.io/docker          latest              e90df13f8efb        2 weeks ago         36.87 MB
+<none>                    <none>              0d189ff6a3e2        2 weeks ago         6.649 MB
+docker.io/ubuntu          latest              6cc0fc2a5ee3        2 weeks ago         187.9 MB
+docker.io/fedora          latest              3fc68076e184        5 weeks ago         206.3 MB
+docker.io/centos          latest              c8a648134623        6 weeks ago         196.6 MB
+
+
+ $ docker images --filter label=distro=ubuntu 
+
+REPOSITORY                TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+
+centos                   latest              c8a648134623        6 weeks ago         196.6 MB
+
+
+Syntax for starting container with label- --lable/-l option :
+  
+    $ docker run --label environment=dev ubuntu date
+
+
+Listing containers with labels specified would return only those containers which comes under that label, without label all the containers would be listed. 
+
+
+ $ docker ps -a
+ 
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
+24f514c7ff48        ubuntu              "/bin/bash"              25 hours ago        Exited (127) 25 hours ago                       kickass_lamarr
+57cda8093f0b        ubuntu              "/bin/bash"              25 hours ago        Exited (0) 25 hours ago                         admiring_kare
+3b7d8fcd0a1d        ubuntu              "/bin/bash"              30 hours ago        Up 30 hours                                     romantic_jepsen
+0b545af689ce        fedora              "/bin/bash"              6 days ago          Exited (137) 3 days ago                         cranky_meninsky
+
+
+
+
+$ docker ps -a --filter label=environment=dev
+
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                  PORTS               NAMES
+b0c4c2b63188        ubuntu              "date"              7 days ago          Exited (0) 7 days ago                       ubt10
+
+
+
 
 
 
