@@ -807,6 +807,82 @@ This command will access the given folder inside the container.
 ## Injecting new process to a Running Container 
 
  
+The docker *exec* command runs a new command in a running container.
+
+The command started using docker exec only runs while the container’s primary process (PID 1) is running, and it is not restarted if the container is restarted.
+
+If the container is paused, then the docker exec command will fail with an error.
+
+Syntax : 
+   
+     $ docker exec [-d|--detach[=false]] [--help] [-i|--interactive[=false] [-t|--tty[=false] [CONTAINER] [COMMAND] [ARG..]
+
+
+ Example : 1. Run a new command inside the container . 
+       
+            $ docker run -i -t -d ubuntu /bin/bash
+
+
+2. To attach a new command inside a running container,following syntax is used:
+
+            $ docker exec -i -t [CONTAINER_ID] /bin/bash
+
+
+
+## Inspecting
+
+Docker *inspect* command is used for returning low-level information about a conatiner like container's configuration details etc.
+
+
+Syntax : $ docker inspect [-f|--format="" CONTAINER|IMAGE [CONTAINER|IMAGE...]
+
+Example : 
+ 
+   $ Z='docker run -dit ubuntu /bin/bash'
+   $ docker inspect $Z
+
+{
+    "Id": "e90df13f8efb309eadf863933394c1b3d5ff015eb865629a72eed153be1621b6",
+    "RepoTags": [
+        "docker.io/docker:latest"
+    ],
+    "RepoDigests": [],
+    "Parent": "f0ae8b630f082270bfe314ea44e3f188208d294ca86a66a302c01827a309ff16",
+    "Comment": "",
+    "Created": "2016-01-26T00:19:57.664906478Z",
+    "Container": "f7e658063cdce5e24ccaf4b79b34befaab309d1d7711d6221350abc0ffa2fe10",
+    "ContainerConfig": {
+        "Hostname": "4ecf6d9f407a",
+        "Domainname": "",
+        "User": "",
+        "AttachStdin": false,
+        "AttachStdout": false,
+        "AttachStderr": false,
+  
+ . . . . . . . .        
+ . . . . . . . . 
+}]
+
+
+
+## Labeling and Filtering Containers 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
