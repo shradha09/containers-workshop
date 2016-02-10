@@ -20,37 +20,39 @@ Information regarding docker system could be gathered by using following command
 
  $ docker info
  
- Containers: 30
-Images: 47
-Server Version: 1.9.1-fc23
-Storage Driver: devicemapper
- Pool Name: docker-253:0-1053518-pool
- Pool Blocksize: 65.54 kB
- Base Device Size: 107.4 GB
- Backing Filesystem: 
- Data file: /dev/loop0
- Metadata file: /dev/loop1
- Data Space Used: 2.213 GB
- Data Space Total: 107.4 GB
- Data Space Available: 66.01 GB
- Metadata Space Used: 4.379 MB
- Metadata Space Total: 2.147 GB
- Metadata Space Available: 2.143 GB
- Udev Sync Supported: true
- Deferred Removal Enabled: false
- Deferred Deletion Enabled: false
- Deferred Deleted Device Count: 0
- Data loop file: /var/lib/docker/devicemapper/devicemapper/data
- Metadata loop file: /var/lib/docker/devicemapper/devicemapper/metadata
- Library Version: 1.02.109 (2015-09-22)
-Execution Driver: native-0.2
-Logging Driver: journald
-Kernel Version: 4.3.3-303.fc23.x86_64
-Operating System: Fedora 23 (Workstation Edition)
-CPUs: 2
-Total Memory: 1.821 GiB
-Name: localhost.localdomain
-ID: GEFR:KSZ5:SHLG:BIT6:FIFU:AOJG:7LXK:RQ22:HUXF:FTJS:Q4FY:U2LY
+| Containers: 30
+| Images: 47
+| Server Version: 1.9.1-fc23
+| Storage Driver: devicemapper
+| Pool Name: docker-253:0-1053518-pool
+| Pool Blocksize: 65.54 kB
+| Base Device Size: 107.4 GB
+| Backing Filesystem: 
+| Data file: /dev/loop0
+| Metadata file: /dev/loop1
+| Data Space Used: 2.213 GB
+| Data Space Total: 107.4 GB
+| Data Space Available: 66.01 GB
+| Metadata Space Used: 4.379 MB
+| Metadata Space Total: 2.147 GB
+| Metadata Space Available: 2.143 GB
+| Udev Sync Supported: true
+| Deferred Removal Enabled: false
+| Deferred Deletion Enabled: false
+| Deferred Deleted Device Count: 0
+| Data loop file: /var/lib/docker/devicemapper/devicemapper/data
+| Metadata loop file: /var/lib/docker/devicemapper/devicemapper/metadata
+| Library Version: 1.02.109 (2015-09-22)
+| Execution Driver: native-0.2
+| Logging Driver: journald
+| Kernel Version: 4.3.3-303.fc23.x86_64
+| Operating System: Fedora 23 (Workstation Edition)
+| CPUs: 2
+| Total Memory: 1.821 GiB
+| Name: localhost.localdomain
+| ID: GEFR:KSZ5:SHLG:BIT6:FIFU:AOJG:7LXK:RQ22:HUXF:FTJS:Q4FY:U2LY
+| Username: shradha09
+| Registry: https://index.docker.io/v1/
 
 
 A repository can hold different versions of an image.Any number of public repositeries could be created for the images.
@@ -83,12 +85,13 @@ As soon as a container is started, a read/write layer gets attached to it. This 
 
 a. For committing following command syntax is used :
     
-   $ docker commit -a|--author[=""] -m|--message[=""] CONTAINER [REPOSITORY[:TAG]]
+   $ docker commit -a ``|``--author[=""] -m``|``--message[=""]   CONTAINER   [REPOSITORY[:TAG]]
 
 b.Now, start a container and create/ modify some files on it by using *install httpd* package : 
 
 
   $ docker run -i -t ubuntu /bin/bash
+
   root@4312ee7658e7:/# dnf install -y httpd
 
 
@@ -100,7 +103,10 @@ c.On a new terminal, create a new image by giving following command:
 Output : 
 
   $ docker ps
+
+
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
 3b7d8fcd0a1d        ubuntu              "/bin/bash"         46 hours ago        Up 11 minutes                           romantic_jepsen
  
  
@@ -114,8 +120,8 @@ docker.io/ubuntu          latest              6cc0fc2a5ee3        3 weeks ago   
 A new image is being committed to the local repository with the name ABCD/ubuntu as a name and *httpd* as a tag.
 
 
-Explanation : When a container is started, a read/write filesystem layer will be created on top of existing image layers from where the container has started and when the package is installed some files are created or existing files are modified in that layer. All these changesmade are to be saved explicitly otherwise on deleting or stopping the container all the modifications are lost. 
-  To overcome this loss, commit command is used when a new layer is created with the changes that took place since the container is startedand get saved in the container's backend storage driver.
+Explanation :   When a container is started, a read/write filesystem layer will be created on top of existing image layers from where the container has started and when the package is installed some files are created or existing files are modified in that layer. All these changesmade are to be saved explicitly otherwise on deleting or stopping the container all the modifications are lost. 
+                To overcome this loss, commit command is used when a new layer is created with the changes that took place since the container is startedand get saved in the container's backend storage driver.
 
 
 ###Important
@@ -125,6 +131,7 @@ Explanation : When a container is started, a read/write filesystem layer will be
   Syntax :  $ docker diff [CONTAINER_ID]
 
   Example : $ docker diff 3b7d8fcd0a1d
+             
             C /run
             A /run/secrets
 
@@ -142,13 +149,98 @@ Explanation for prefixes before each generated result :
 
 ## Publishing an image to the Registry
 
- Assuming an image is already been created suitable for development environment. This image could be shared by using tar ball or uploaded in a centralised location from where any user can pull that image.
- Central location can be either Public or Private registry
- The uploading of image is done by using *docker push* command.
+ 
+Assuming an image is already been created suitable for development environment. This image could be shared by using tar ball or uploaded in a centralised location from where any user can pull that image.Central location can be either Publicor Private registry. The uploading of image is done by using *docker push* command.
 
 ### A local registry has to be set up for pushing the images/repositeries locally.
 
 Syntax : $ docker push NAME[:TAG]
+
+
+This command will use the username and registry shown in the *docker info* command to push the images.Here, the username will be "abcd" and registry will be "https://index.docker.io/v1
+
+
+For pushing the image we created, use following command:
+
+   $ docker push abcd/ubuntu:httpd
+
+
+|The push refers to a repository [docker.io/abcd/ubuntu] (len: 1)
+|0dd2462fdefe: Pushed 
+|6cc0fc2a5ee3: Pushed 
+|f80999a1f330: Pushed 
+|2ef91804894a: Pushed 
+|92ec6d044cb3: Pushed 
+|httpd: digest: sha256:794def2e25f46a69c8f9c2c35704566dc573be4857a0f24b4cf02820b|304d0a7 size: 8101
+
+ 
+Suppose, you want to push the image to the local registry, hosted on host named localhost_registry. For this, the image has to be tagged with registry's host name or IP address with port number on which the registry is running and then the image is pushed.
+
+
+  $ docker tag [-f``|``--force[=false]  IMAGE  [REGISTRYHOST/]  [USERNAME/]NAME[:TAG] 
+
+ 
+  $ docker push [REGISTORYHOST/]  [USERNAME/]NAME[:TAG]  
+
+
+Example : Suppose our registry is configured on some website say xyz.something.com, then for image tagging following command is used : 
+       
+ 
+   $ docker tag abcd/ubuntu:httpd xyz.something.com:5000/abcd/ubuntu:httpd
+
+
+### Push the image : 
+
+
+   $ docker push xyz.something.com:5000/abcd/ubuntu:httpd
+
+Listing of all the intermediate layers are done which are required to make the specific image.Searches for the layers present already and copies only those layers which are not present in the registry with the metadata required to build theimage.
+
+
+
+## Looking at the history of an Image
+
+
+*docker history* command is used to find all the intermediate layers by which the image is created.
+
+
+Syntax : 
+         $ docker history [OPTIONS] IMAGE
+
+
+Example : 
+         $ docker history abcd/ubuntu:httpd
+
+
+|  IMAGE 	|   CREATED	| CREATED BY	|    SIZE	|  COMMENT
+|		|		|		|		|
+ :-------------: :-------------: :-------------: :-------------:
+|0dd2462fdefe   | 4 hours ago	|  /bin/bash	|     0 B	|  Ubuntu with HTTPD package 
+|6cc0fc2a5ee3   | 3 weeks ago 	|/bin/sh -c #(nop)    0 B           
+                                 CMD ["/bin/bash"]	        
+
+|f80999a1f330	| 3 weeks ago	|/bin/sh -c sed -i   1.895 KB
+                                's/^#\s*\(deb.*universe\)$/	
+|		|		|		|		|	
+|92ec6d044cb3	| 3 weeks ago	|/bin/sh -c #(nop)   187.7 MB
+                                 ADD file:7ce20ce3daa6af21db	|
+
+
+
+
+
+ 
+   
+         
+
+
+
+
+
+
+
+
+
 
 
 

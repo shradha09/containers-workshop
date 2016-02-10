@@ -900,12 +900,30 @@ Listing containers with labels specified would return only those containers whic
 
 
  $ docker ps -a
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
-24f514c7ff48        ubuntu              "/bin/bash"              25 hours ago        Exited (127) 25 hours ago                       kickass_lamarr
-57cda8093f0b        ubuntu              "/bin/bash"              25 hours ago        Exited (0) 25 hours ago                         admiring_kare
-3b7d8fcd0a1d        ubuntu              "/bin/bash"              30 hours ago        Up 30 hours                                     romantic_jepsen
-0b545af689ce        fedora              "/bin/bash"              6 days ago          Exited (137) 3 days ago                         cranky_meninsky
+|  CONTAINER ID   |  IMAGE           COMMAND          CREATED           STATUS                      PORTS        NAMES
+|                 |
+|   24f514c7ff48  |  ubuntu        "/bin/bash"      25 hours ago      Exited (127) 25 hours ago                kickass_lamarr
+|   57cda8093f0b  |  ubuntu       "/bin/bash"       25 hours ago      Exited (0) 25 hours ago                  admiring_kare
+|   3b7d8fcd0a1d  |  ubuntu       "/bin/bash"       30 hours ago      Up 30 hours                              romantic_jepsen
+|   0b545af689ce  |                "/bin/bash       6 days ago        Exited (137) 3 days ago                  cranky_meninsky
 
 
 
