@@ -111,8 +111,10 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
  
  
   $ docker images
+
   REPOSITORY                TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
-ABCD/ubuntu                httpd               a47606b00f39        2 minutes ago          187.9 MB
+
+ABCD/ubuntu               httpd               a47606b00f39        2 minutes ago          187.9 MB
 yu/fedora                 httpd               d33f23884c55        6 days ago             362.2 MB
 docker.io/docker          latest              e90df13f8efb        2 weeks ago            36.87 MB
 docker.io/ubuntu          latest              6cc0fc2a5ee3        3 weeks ago            187.9 MB
@@ -225,7 +227,65 @@ Example :
 |92ec6d044cb3	| 3 weeks ago	|/bin/sh -c #(nop)   187.7 MB
                                  ADD file:7ce20ce3daa6af21db	|
 
+#### Metadata- Through Metadata of an image Docker will come to know about how the image is been created, using *history* command, by looking at the information provided in the metadata recursively, reaching origin.
 
+~~ By *inspect* command, commit messages for all the layers could be obtained.
+
+Example : $ docker inspect --format='{{.Comment}}' shradha09/ubuntu:httpd
+            
+          Ubuntu with HTTPD package
+
+
+
+## Deleting an Image 
+
+
+To remove the image from the host, *docker rmi* command is used, it will remove the images from host not from the registry.
+
+~~ Syntax for Removing Image : 
+   
+   $ docker rmi [OPTIONS]  IMAGE  [IMAGE...]
+
+
+~~ Example :  
+    
+   $ docker rmi abcd/ubuntu:httpd
+
+   Untagged : abcd/ubuntu:httpd
+   
+   Deleted  : 6579dfa51537ac7a94f3ab03a76d5c5f06bceb2f2eae3e4e42a621620b91e57f
+
+
+
+~~ Additional Info ~~
+
+All the containers and images could be removed, but prove to be destructive,keeping this in mind, here are few commands that could remove images and containers:
+
+1. To stop all containers :
+  
+   $ docker stop 'docker ps -q'
+
+2. To delete all containers : 
+ 
+   $ docker rm 'docker ps -a -q'
+
+3. To delete all images : 
+   
+   $ docker rmi 'docker images -q'
+
+
+
+
+## Exporting an Image  
+
+
+
+
+
+
+
+ 
+   
 
 
 
