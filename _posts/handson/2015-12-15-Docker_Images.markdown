@@ -67,7 +67,89 @@ Docker Hub account could be created either by visiting the website or from comma
   $ docker login
 
 
-## Creating an image on the container
+## Creating an image from Container
+
+There are two ways of creating and updating an image : 
+
+1.You can update a container created from an image and commit the results to an image.
+
+2.You can use a Dockerfile to specify instructions to create an image.
+
+
+~ Creating image by manually committing layers ~
+
+As soon as a container is started, a read/write layer gets attached to it. This layer will get destroyed if not saved.Following explanation will show how to save that layer and make a new image from running or stopped container by using *docker commit* command.
+
+
+a. For committing following command syntax is used :
+    
+   $ docker commit -a|--author[=""] -m|--message[=""] CONTAINER [REPOSITORY[:TAG]]
+
+b.Now, start a container and create/ modify some files on it by using *install httpd* package : 
+
+
+  $ docker run -i -t ubuntu /bin/bash
+  root@4312ee7658e7:/# dnf install -y httpd
+
+
+c.On a new terminal, create a new image by giving following command:
+
+   $ docker commit -a "ABC" -m "Ubuntu with HTTPD package" 3b7d8fcd0a1d ABCD/Ubuntu:httpd
+
+
+Output : 
+
+  $ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+3b7d8fcd0a1d        ubuntu              "/bin/bash"         46 hours ago        Up 11 minutes                           romantic_jepsen
+ 
+ 
+  $ docker images
+  REPOSITORY                TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+ABCD/ubuntu                httpd               a47606b00f39        2 minutes ago          187.9 MB
+yu/fedora                 httpd               d33f23884c55        6 days ago             362.2 MB
+docker.io/docker          latest              e90df13f8efb        2 weeks ago            36.87 MB
+docker.io/ubuntu          latest              6cc0fc2a5ee3        3 weeks ago            187.9 MB
+
+A new image is being committed to the local repository with the name ABCD/ubuntu as a name and *httpd* as a tag.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 
 
 
