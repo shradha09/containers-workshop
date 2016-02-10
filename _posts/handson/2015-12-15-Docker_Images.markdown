@@ -401,11 +401,6 @@ All the containers and images could be removed, but prove to be destructive,keep
 
 
 
-## Creating an image from container
-## Pushing the image to Registry
-## Looking at the history on an image
-## Deleting an image
-## Exporting an image
 ## Importing an image
 ## Building images using Dockerfiles
 ## Building an Apache image - Dockerfile example
