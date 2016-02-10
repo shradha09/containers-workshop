@@ -402,6 +402,66 @@ All the containers and images could be removed, but prove to be destructive,keep
 
 
 ## Importing an image
+
+In order to get a local copy of a image, we either need to pull it from the registry or import it from the already exported image, by using *docker import* command, we import an exported image.
+An accessible exported Docker image is needed for that.
+
+
+Syntax : 1. To import an image :
+         
+           $ docker import URL ``|`` [REPOSITORY[:TAG]]
+
+Example :  $ cat ubuntu-latest.tar ``|`` docker import - ubuntu:latest
+
+
+Alternatively :  $ docker import http://xyz.com/xyz.tar xyz/image
+
+
+These commands will first create an empty filesystem and then import the contents.
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Building images using Dockerfiles
 ## Building an Apache image - Dockerfile example
 ## Building an memcached image - Dockerfile example
