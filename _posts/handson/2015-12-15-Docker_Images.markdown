@@ -114,8 +114,51 @@ docker.io/ubuntu          latest              6cc0fc2a5ee3        3 weeks ago   
 A new image is being committed to the local repository with the name ABCD/ubuntu as a name and *httpd* as a tag.
 
 
+Explanation : When a container is started, a read/write filesystem layer will be created on top of existing image layers from where the container has started and when the package is installed some files are created or existing files are modified in that layer. All these changesmade are to be saved explicitly otherwise on deleting or stopping the container all the modifications are lost. 
+  To overcome this loss, commit command is used when a new layer is created with the changes that took place since the container is startedand get saved in the container's backend storage driver.
 
 
+###Important
+
+1.To look which files are changed or modified since the container has started use the following command : 
+
+  Syntax :  $ docker diff [CONTAINER_ID]
+
+  Example : $ docker diff 3b7d8fcd0a1d
+            C /run
+            A /run/secrets
+
+Explanation for prefixes before each generated result : 
+  
+ 1. A: This is for when a file/directory has been Added.
+ 2. C: This is for when a file/directory has been Modified.
+ 3. D: This is for when a file/directory has been Deleted.
+ 
+2.By default a container gets paused during commit, one can change this behavior by passing --pause=false to commit. 
+
+3.For more options use: $ docker commit --help
+
+
+
+## Publishing an image to the Registry
+
+ Assuming an image is already been created suitable for development environment. This image could be shared by using tar ball or uploaded in a centralised location from where any user can pull that image.
+ Central location can be either Public or Private registry
+ The uploading of image is done by using *docker push* command.
+
+### A local registry has to be set up for pushing the images/repositeries locally.
+
+Syntax : $ docker push NAME[:TAG]
+
+
+
+
+
+
+
+
+ 
+ 
 
 
 
