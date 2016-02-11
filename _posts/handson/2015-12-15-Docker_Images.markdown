@@ -278,126 +278,34 @@ All the containers and images could be removed, but prove to be destructive,keep
 
 ## Exporting an Image  
 
+If due to some restrictive policies which do not allow to use images from publicdomain. In such cases, the images could be shared using tarballs, which later can be imported on another system by using *docker save* command.
 
+Note: Pull or import one or more Docker images on the docker host. 
 
+~~ Syntax to save the image in tar file : 
 
 
+  $ docker save [-o``|``--output=""] IMAGE  [:TAG]
 
 
- 
-   
+~~ Example, creating a tar file for Ubuntu, run following command :
 
 
+  $ docker save --output=ubuntu.tar ubuntu
 
- 
-   
-         
+Note: If the tag name is specified with the image we want to export, such as          unbuntu:latest, then only the layers related to that tag will get exported.
 
+~~ Additional Info ~~
 
+If --output or -o is not used, then the output will be streamed to STDOUT : 
 
 
+Example : $ docker save ubuntu:latest > ubuntu-latest.tar
 
 
+Similarly, the contents of the container's filesystem can be exported using the following command : 
 
-
-
-
-
-
-
-
-
-
-
- 
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ $ docker export CONTAINER > conatinerABC.tar
 
 
 
