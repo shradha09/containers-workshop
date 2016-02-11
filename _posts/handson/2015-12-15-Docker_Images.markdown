@@ -329,48 +329,103 @@ These commands will first create an empty filesystem and then import the content
                 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Building images using Dockerfiles
+
+Using the *docker commit* command is a pretty simple way of extending an image but, it will be slow and complicated and therefore inefficient also sharing of image for development process among the team will become difficult. 
+   A new command that could overcome the above problem is  *docker build*, for building new images from scratch.
+
+ To do this you create a *Dockerfile* that contains a set of instructions that tell Docker how to build an image, Docker builder will read instructions from Dockerfile which is a text file and executes them in sequence.
+
+### Steps :
+
+1. Create a Directory 
+  
+   $ mkdir image_example
+   
+   $ cd image_example
+
+2. Create file named Dockerfile with following contents inside the directory: 
+
+   $ cat Dockerfile
+   
+   # Pick up the base image
+    FROM ubuntu
+   # Add author name
+   MAINTAINER ABCD
+   # Add the command to run at the start of container CMD date
+    
+
+### Run the following command inside the directory, to build the image : 
+
+           $ docker build .
+
+OUTPUT : | Sending build context to Docker daemon 2.048 kB
+         | Step 1 : FROM ubuntu
+         |    ---> 6cc0fc2a5ee3
+         | Step 2 : MAINTAINER ABCD
+         |    ---> Running in 41a3ad61485d
+         |    ---> 15e643a46289
+         | Removing intermediate container 41a3ad61485d
+         | Step 3 : CMD date
+         |    ---> Running in 15600c5596e2
+         |    ---> 64910446ed6c
+         | Removing intermediate container 15600c5596e2
+         | Successfully built 64910446ed6c
+
+
+Note : This build is run by the Docker deamon,not by the CLI. The build process first of all will send the entire context(recursively) to the deamon. 
+
+
+#### We can also specify any repository or tag name while building the image with -t option as follows : 
+
+   $ docker build -t ubuntu/abc
+
+OUTPUT :| Sending build context to Docker daemon 2.048 kB
+        | Step 1 : FROM ubuntu
+	|     ---> 6cc0fc2a5ee3
+	| Step 2 : MAINTAINER ABCD
+	|     ---> Using cache
+ 	|     ---> 15e643a46289
+	| Step 3 : CMD date
+	|      ---> Using cache
+	|      ---> 64910446ed6c
+   	| Successfully built 64910446ed6c
+ 
+The above command will give different output, here we are using cache after each instruction. Docker tries to save the intermediate images and use them in subsequent builds to accelerate the build process.
+   If we don't want to cache the intermediate images, then add *--no-cache* option with docker build.
+
+
+ 
+ 
+
+
+
+
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Building an Apache image - Dockerfile example
 ## Building an memcached image - Dockerfile example
 ## Building Wordpress image - Dockerfile example
