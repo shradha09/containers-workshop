@@ -97,7 +97,7 @@ b.Now, start a container and create/ modify some files on it by using *install h
 
 c.On a new terminal, create a new image by giving following command:
 
-   $ docker commit -a "ABC" -m "Ubuntu with HTTPD package" 3b7d8fcd0a1d ABCD/Ubuntu:httpd
+   $ docker commit -a "Shradha" -m "Ubuntu with HTTPD package" 3b7d8fcd0a1d shradha09/Ubuntu:httpd
 
 
 Output : 
@@ -114,12 +114,12 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 
   REPOSITORY                TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
 
-ABCD/ubuntu               httpd               a47606b00f39        2 minutes ago          187.9 MB
+shradha09/ubuntu               httpd               a47606b00f39        2 minutes ago          187.9 MB
 yu/fedora                 httpd               d33f23884c55        6 days ago             362.2 MB
 docker.io/docker          latest              e90df13f8efb        2 weeks ago            36.87 MB
 docker.io/ubuntu          latest              6cc0fc2a5ee3        3 weeks ago            187.9 MB
 
-A new image is being committed to the local repository with the name ABCD/ubuntu as a name and *httpd* as a tag.
+A new image is being committed to the local repository with the name shradha09/ubuntu as a name and *httpd* as a tag.
 
 
 Explanation :   When a container is started, a read/write filesystem layer will be created on top of existing image layers from where the container has started and when the package is installed some files are created or existing files are modified in that layer. All these changesmade are to be saved explicitly otherwise on deleting or stopping the container all the modifications are lost. 
@@ -351,7 +351,7 @@ Using the *docker commit* command is a pretty simple way of extending an image b
    # Pick up the base image
     FROM ubuntu
    # Add author name
-   MAINTAINER ABCD
+   MAINTAINER shradha09
    # Add the command to run at the start of container CMD date
     
 
@@ -362,7 +362,7 @@ Using the *docker commit* command is a pretty simple way of extending an image b
 OUTPUT : | Sending build context to Docker daemon 2.048 kB
          | Step 1 : FROM ubuntu
          |    ---> 6cc0fc2a5ee3
-         | Step 2 : MAINTAINER ABCD
+         | Step 2 : MAINTAINER shradha09
          |    ---> Running in 41a3ad61485d
          |    ---> 15e643a46289
          | Removing intermediate container 41a3ad61485d
@@ -383,7 +383,7 @@ Note : This build is run by the Docker deamon,not by the CLI. The build process 
 OUTPUT :| Sending build context to Docker daemon 2.048 kB
         | Step 1 : FROM ubuntu
 	|     ---> 6cc0fc2a5ee3
-	| Step 2 : MAINTAINER ABCD
+	| Step 2 : MAINTAINER shradha09
 	|     ---> Using cache
  	|     ---> 15e643a46289
 	| Step 3 : CMD date
