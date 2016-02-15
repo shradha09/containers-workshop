@@ -762,9 +762,106 @@ Automated Builds are supported for both public and private repositories on both 
 
 -To view settings for GitHub or BitBucket account linkage, from your Docker Hub account choose :
 
-    ####  Profile > Settings > Linked Accounts & Services.
+    #####  Profile > Settings > Linked Accounts & Services.
  
--
+#### Link to a hosted Repository 
+
+1.Log onto http://hub.docker.com/ 
+
+2.Navigate to 
+ 
+     Profile > Settings > Linked Accounts & Services.
+
+3. Click the service to be linked ( Either GitHub or BitBucket )
+
+  The system prompts to choose between Public & Private and Limited Access. The Public and Private connection type is required if we want to use the Automated Builds.
+
+         Press *Select* under Public and Private connection type.
+
+4.After you grant access to your code repository, the system returns you to Docker Hub and the link is complete.
+
+
+#### Creating an Automated Build
+
+
+Automated build repositories rely entirely on the integration with your code repository. You cannot push to these image repositories using the docker push command. You can only change the image by committing to your code repository. If you want to do both, docker push and an automated build, you would create a regular repository for the docker push and an automated build repository.
+
+##### 1. Select Create > Create Automated Build from Docker Hub.
+      The system prompts you with a list of User/Organizations and code repositories.
+
+##### 2.Select from the User/Organizations.
+
+##### 3.Optionally, type to filter the repository list.
+
+##### 4.Pick the project to build.
+
+      The system displays the Create Automated Build dialog.
+
+
+    The dialog assumes some defaults which you can customize. By default, Docker builds images for each branch in your repository. It assumes the Dockerfile lives at the root of the source. When it builds an image,Docker tags it with the branch name.
+
+##### 5.Automated build could also be customized by using the link provided, which says: *Click here to customize* behaviour.
+
+        Note: To specify which code branches or tags to build from. You can add new configurations by clicking the + (plus sign) on right hand side .
+           
+      
+##### 6.The system displays the home page for AUTOMATED BUILD.
+
+
+When a GitHub repository is added for automated build, GitHub enables the Docker service for that repository.
+
+ For more configurations, view : Settings > Applications 
+
+Whenever we make any changes to the GitHub repository,such as commits,an automated build gets trigerred using the Dockerfile that resides in the GitHub repository.
+
+
+~~ Details for Automated Build : 
+
+Select Automated Build Container or Go to Details of the container, following details are found on the new opened web page : 
+
+-Repo Info: Contains description about the repository, two types of descriptions could be read, short and full description.
+
+-Tags: Repository tags are similar to docker image tags, generally  we use 'latest' as tag, other used tags      are httpd, version number etc.
+
+-Dockerfile: A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image. Using docker build users can create an automated build that executes several command-line instructions in succession.
+
+-Build Details: It consists of Status, Tag, Created, Last Updated , such information about the containers. 
+
+-Build Settings: 
+
+
+-Collaborators:
+
+
+-Webhooks: One can use a webhook to cause an action in another application in response to an event in your            automated build repository. Currently, the webhook fires when an image is built in or a new image tag is added to the automated build repository.
+           Webhook specifies a target URL and a JSON payload to deliver. The webhook generates an HTTP POST that delivers a JSON payload.
+
+
+
+
+-Settings
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
