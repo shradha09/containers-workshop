@@ -285,7 +285,7 @@ Note: Pull or import one or more Docker images on the docker host.
 ~~ Syntax to save the image in tar file : 
 
 
-  $ docker save [-o``|``--output=""] IMAGE  [:TAG]
+  $ docker save [-o |--output=""] IMAGE  [:TAG]
 
 
 ~~ Example, creating a tar file for Ubuntu, run following command :
@@ -744,10 +744,27 @@ Note : The registry can be configured on any existing servers, steps to do this 
 To understand how the registry images are created and how different configuration options are given,*Dockerfile* of docker-registry can be visited .
 
 
-## Automated Builds - With GitHub and BitBucket
+## Automated Builds - With GitHub OR BitBucket
+ 
+ Images can also be build automatically from a *build context* stored in a repository. 
+ A *build context* is a Dockerfile or any file at any specified location. 
+ For an automated build,the build  context is a repository containing a Dockerfile.Automated Builds have several advantages:
 
+a.)Images built in this way are built exactly as specified.
+    
+b.)The Dockerfile is available to anyone with access to your Docker Hub repository.
+   
+c.) You repository is kept up-to-date with code changes automatically.
 
+Automated Builds are supported for both public and private repositories on both GitHub and Bitbucket.
 
+~ Use of automated builds requires that you have an account on Docker Hub and on the hosted repository provider (GitHub or Bitbucket).
+
+-To view settings for GitHub or BitBucket account linkage, from your Docker Hub account choose :
+
+    ####  Profile > Settings > Linked Accounts & Services.
+ 
+-
 
 
 
