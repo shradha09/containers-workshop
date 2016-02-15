@@ -611,17 +611,40 @@ This is useful if you are building an image which will be used as a base to buil
                   ONBUILD [INSTRUCTION]
 
                      
+## Building a Jenkins image - Dockerfile example
 
+Dockerfile contents for Jenkin : 
+                                                                                |FROM fedora
+|MAINTAINER http://fedoraproject.org/wiki/Cloud
 
+|RUN dnf -y update && dnf clean all
+|RUN dnf -y install jenkins java initscripts supervisor && dnf clean all
 
+|EXPOSE 8080
 
+|RUN rm -rf /var/run/jenkins.pid
 
+|VOLUME ["/root/.jenkins"]
 
+|ADD ./supervisord.conf /etc/supervisord.conf
 
-  
-
+|CMD [ "supervisord", "-n" ]
  
 
+Other supporting files in Repository : 
+
+-README.md: This is the README file.
+
+-LICENSE: This is GNU Public License.
+
+-supervisord.conf: This file have  Configuration files.
+
+ 
+For building new Image ,use following *build* command :
+
+  $ docker build -t fedora/jenkins
+
+[ OUTPUT ] : 
 
 
 
@@ -666,18 +689,76 @@ This is useful if you are building an image which will be used as a base to buil
 
 
 
+The build process takes the base image of Jenkins, installs given RUN from the Dockerfile.
 
 
 
+## Setting up Private Index/Registry
+
+The public Docker Registry is available at Docker Hub, through which the users can push/pull images.We can also host a private registry either on a local environment or on the cloud, following are the ways by which this can be done : 
+
+1. Use the Private Docker registry from Docker Hub.
+
+2. Build an image from Dockerfile and run a registry container. 
+
+3.Configure the distribution-specfic package such as ------ , which provides thedocker-registry package which can be installed and configured.
+
+ The easiest way to set it up is through the registry container itself.
 
 
+#### Steps to be followed : 
+
+a. To run the registry on the container :
+
+    $ docker run -p 5000 samalba/docker-registry
+  
+b. To test the newly created registry, perform following steps :
+
+   1. Start a container by using the command :
 
 
-## Building an Apache image - Dockerfile example
-## Building an memcached image - Dockerfile example
-## Building Wordpress image - Dockerfile example
-## Setting up private Index/Registry
+          $ W='docker run -d -i jenkins /bin/bash'
+
+
+   2. Make some changes if needed and commit those changes to the local repository : 
+
+        $ docker commit $W jenkins
+
+
+   3. To push the image use following command : 
+           
+
+       $ docker push [REGISTRY_HOST_NAME]:[PORT_NUMBER]/[USERNAME]/[IMAGE_NAME]
+
+
+   4. For Pulling image from local registry, use following command : 
+
+        
+       $ docker pull [REGISTRY_HOST_NAME]:[PORT_NUMBER]/[USERNAME]/[IMAGE_NAME]
+ 
+
+Note : The registry can be configured on any existing servers, steps to do this       are available in following github link :
+ 
+   https://github.com/docker/docker-registry
+
+To understand how the registry images are created and how different configuration options are given,*Dockerfile* of docker-registry can be visited .
+
+
 ## Automated Builds - With GitHub and BitBucket
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Creating the base image - using supermin
 ## Creating the base image - using Debootstrap
 ## Visualizing dependencies between layers
