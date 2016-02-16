@@ -113,9 +113,9 @@ Output :
   $ docker ps
 
 
->CONTAINER ID	      IMAGE		 COMMAND		     CREATED               STATUS              PORTS               NAMES
+>CONTAINER_ID	   |  IMAGE  |     COMMAND    |	   CREATED      |      STATUS       |   PORTS   |   NAMES   |
 
->3b7d8fcd0a1d        ubuntu              "/bin/bash"         46 hours ago          Up 11 minutes                                   jepsen
+>3b7d8fcd0a1d      |  ubuntu |    "/bin/bash" |    46 hours ago |    Up 11 minutes  |           |   jepsen  |
  
  
   $ docker images
