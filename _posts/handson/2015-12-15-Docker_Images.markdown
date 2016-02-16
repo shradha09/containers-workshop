@@ -214,18 +214,19 @@ Example :
          $ docker history abcd/ubuntu:httpd
 
 
-|  IMAGE 	|   CREATED	| CREATED BY	|    SIZE	|  COMMENT
-|		|		|		|		|
- :-------------: :-------------: :-------------: :-------------:
-|0dd2462fdefe   | 4 hours ago	|  /bin/bash	|     0 B	|  Ubuntu with HTTPD package 
-|6cc0fc2a5ee3   | 3 weeks ago 	|/bin/sh -c #(nop)    0 B           
+  IMAGE 	   CREATED	  CREATED BY	             SIZE	  COMMENT
+		
+
+ 0dd2462fdefe     4 hours ago	   /bin/bash	              0 B	  Ubuntu with HTTPD package 
+ 
+ 6cc0fc2a5ee3     3 weeks ago 	 /bin/sh -c #(nop)            0 B           
                                  CMD ["/bin/bash"]	        
 
-|f80999a1f330	| 3 weeks ago	|/bin/sh -c sed -i   1.895 KB
+ f80999a1f330	  3 weeks ago	 /bin/sh -c sed -i            1.895 KB
                                 's/^#\s*\(deb.*universe\)$/	
-|		|		|		|		|	
-|92ec6d044cb3	| 3 weeks ago	|/bin/sh -c #(nop)   187.7 MB
-                                 ADD file:7ce20ce3daa6af21db	|
+			
+ 92ec6d044cb3	  3 weeks ago	/bin/sh -c #(nop)             187.7 MB
+                                 ADD file:7ce20ce3daa6af21db	
 
 #### Metadata- Through Metadata of an image Docker will come to know about how the image is been created, using *history* command, by looking at the information provided in the metadata recursively, reaching origin.
 
@@ -821,60 +822,114 @@ Select Automated Build Container or Go to Details of the container, following de
 
 -Repo Info: Contains description about the repository, two types of descriptions could be read, short and full description.
 
+
 -Tags: Repository tags are similar to docker image tags, generally  we use 'latest' as tag, other used tags      are httpd, version number etc.
+
 
 -Dockerfile: A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image. Using docker build users can create an automated build that executes several command-line instructions in succession.
 
+
 -Build Details: It consists of Status, Tag, Created, Last Updated , such information about the containers. 
 
--Build Settings: 
+
+-Build Settings: The Build Settings page allows you to manage your existing automated build configurations and add new ones. By default, when new code is merged into your source repository, it triggers a build of your DockerHub image.
 
 
--Collaborators:
+-Collaborators: Users contributing in the repositories.
+ 
 
-
--Webhooks: One can use a webhook to cause an action in another application in response to an event in your            automated build repository. Currently, the webhook fires when an image is built in or a new image tag is added to the automated build repository.
+-Webhooks: One can use a webhook to cause an action in another application in response to an event in your automated build repository. Currently, the webhook fires when an image is built in or a new image tag is added to the automated build repository.
            Webhook specifies a target URL and a JSON payload to deliver. The webhook generates an HTTP POST that delivers a JSON payload.
 
 
-
-
--Settings
-
-
-
+-Settings: Consists of two sections, changing a Public repository, Private and an option for deleting the existing repository.
+  
+  CAUTION: Deleting a repository will ####destroy all images stored in it,this action is not reverible.
 
 
 
+## Creating the base image- using Supermin
+
+
+To build a base image, we need to have a distribution-specific base system installed into a directory, which can later be imported as an image to Docker.
+  With *chroot* utility, we can fake a directory as the root filesystem and then put all the necessary files in it, before importing it as Docker image.
+
+Supermin and Debootstrap are the tools that can help make the faking of root filesystem easier.
+
+Supermin- Tool for creating and building supermin appliances.
+
+~~ Command Syntax for Prepare ~~
+
+  $ supermin --prepare -o OUTPUTDIR PACKAGE [PACKAGE ...]
+
+  $ supermin --build -o OUTPUTDIR -f chroot|ext2 INPUT [INPUT ...]
+
+
+Supermin is a tool for building supermin appliances.These are tinyappliances (similar to virtual machines), usually around 100KB in
+size, which get fully instantiated on-the-fly in a fraction of a
+second when you need to boot one of them.
+   This program was previously known as Febootstrap.
+
+Supermin does not need to be run as root, and generally should notbe run as root.It does not affect the host system or the packages installed on the host system.
+
+~~ Two modes of Supermin ~~
+
+ _PREAPARE MODE_
+
+  *--prepare* creates the tiny supermin appliance in the given output directory. Give the list of packages that are to be installed, and supermin will automatically find all the dependencies. The listof packages has to be installed on the host machine . 
+
+Example : $ supermin --prepare bash coreutils -o supermin.d
+
+The above command creates a supermin appliance containing the packages "bash" and "coreutils". Specifically,it creates files in directory "supermin.d". This directory is known as Supermin Appliance.
+
+*prepare* mode puts all the requested packages with their dependencies inside a directory without copying the host OS specific files
+
+~~ Command Syntax ~~
+
+   $ supermin --prepare -o OUTPUTDIR PACKAGE [PACKAGE ...]
+
+  Example : $ supermin --prepare bash coreutils -o ubuntu
 
 
 
+ _BUILD MODE_
+
+ 
+  *--build* was previously a separate program called "supermin-helper" 
+ 
+~~ Command Syntax ~~
+
+  $ supermin --build -o OUTPUTDIR -f chroot|ext2 INPUT [INPUT ...]
+
+ Example: $ supermin --build --format chroot ubuntu -o ubuntu_image
 
 
+ If we do *ls* on the output directory i.e ubuntu_image, we will find directory tree similar to any linux root filesystem :
+
+ $ ls ubuntu_image
+
+  bin	boot	dev	etc	home	lib	lib64	media	mnt	opt	proc	root	run	
+  abin	srv	sys	tmp	usr	var	
+
+~~ We can export the directory as docker image using following command:
+
+  $ tar -C ubuntu_image/ -c . | docker import - skhare/ubuntu
+
+f6f5f2dd61de2f1cca7475824df9af2ffc3d337ad0660d212c82c94441789426
+
+~~ Using command *docker images* a new image with skhare/ubuntu as name will be seen.
+ 
+
+In *build* mode, the supermin appliance created from the prepare mode gets converted into a bootable appliance with all the necessary files 
+ Build will copy the required files/binaries from the host machineto the appliance directory,so the packages must be installed on the host machines that is to be used in the appliance.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Creating the base image - using supermin
 ## Creating the base image - using Debootstrap
+
+
+
+
+
 ## Visualizing dependencies between layers
 
 
