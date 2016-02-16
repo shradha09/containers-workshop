@@ -228,7 +228,7 @@ Example :
  92ec6d044cb3	  3 weeks ago	/bin/sh -c #(nop)             187.7 MB
                                  ADD file:7ce20ce3daa6af21db	
 
-#### Metadata- Through Metadata of an image Docker will come to know about how the image is been created, using *history* command, by looking at the information provided in the metadata recursively, reaching origin.
+  #####Metadata- Through Metadata of an image Docker will come to know about how the image is been created, using *history* command, by looking at the information provided in the metadata recursively, reaching origin.
 
 ~~ By *inspect* command, commit messages for all the layers could be obtained.
 
@@ -717,7 +717,7 @@ Automated Builds are supported for both public and private repositories on both 
 
 -To view settings for GitHub or BitBucket account linkage, from your Docker Hub account choose :
 
-    #####  Profile > Settings > Linked Accounts & Services.
+    #####Profile > Settings > Linked Accounts & Services.
  
 #### Link to a hosted Repository 
 
@@ -920,10 +920,3 @@ Example : Create a base image of fedora 23, using following steps :
 
 
  5. Look at the *docker images* output, a new image with skhare/fedora as name can be seen.
-
-
-## Visualizing dependencies between layers
-
-
-
-
