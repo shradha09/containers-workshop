@@ -645,53 +645,7 @@ For building new Image ,use following *build* command :
 
   $ docker build -t fedora/jenkins
 
-[ OUTPUT ] : 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 The build process takes the base image of Jenkins, installs given RUN from the Dockerfile.
-
 
 
 ## Setting up Private Index/Registry
@@ -926,8 +880,46 @@ In *build* mode, the supermin appliance created from the prepare mode gets conve
 
 ## Creating the base image - using Debootstrap
 
+Debootstrap is a tool which will install a Debian base system into a subdirectory of another, already installed system. It can also be installed and run from another operating system, so, for instance, you can use debootstrap to install Debian onto an unused partition. 
 
 
+Install Debootstrap on Debian-based system using following command : 
+
+  $ apt-get install debootstrap
+
+Following commands can be used to create the base-image :
+
+  $ debootstrap [OPTION...] SUITE TARGET [MIRROR [SCRIPT]]
+
+- SUITE: It refers to the release code name.
+
+- MIRROR: Refers to the respective repository
+
+Example : Create a base image of fedora 23, using following steps :
+ 
+ 1. Create a directory, on which the OS is to be installed. Debootstrap creates the chroot environment to install a package : 
+
+     $ mkdir deboot_chroot
+
+
+ 2. Use, *debootstrap*, install fedora 23 inside the directory that we created :
+ 
+     $ debootstrap deboot ./deboot_chroot
+     http://in.archive.fedora-23/fedora/
+
+
+ 3. We will see the directory tree to any linux root filesystem, inside the directory where OS is installed, same as we saw in Supermin.
+
+     $ ls ./deboot_chroot
+
+     bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr    var			    
+
+ 4.  Export the directory as a Docker image with following command : 
+    
+     $ tar -C deboot_chroot/-c . | docker import - skhare/fedora
+
+
+ 5. Look at the *docker images* output, a new image with skhare/fedora as name can be seen.
 
 
 ## Visualizing dependencies between layers
