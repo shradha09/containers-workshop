@@ -74,68 +74,26 @@ Output :
 
   $ docker ps
 
-<table style="width:100%">
-   <tr>
-    <th>CONTAINER ID</th>
-    <th>IMAGE</th>
-    <th>COMMAND</th>
-    <th>CREATED</th>
-    <th>STATUS</th>
-    <th>PORTS</th>
-    <th>NAMES</th>
-   </tr>
-     <td>3b7d8fcd0a1d</td>
-     <td>ubuntu</td>
-     <td>"/bin/bash"</td>
-     <td>46 hours ago</td>
-     <td>Up 11 minutes</td>
-     <td></td>
-     <td>romantic_jepsen</td>
-   </tr>
-</table>
+```
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+fad6c5680d63        registry:2          "/bin/registry /etc/d"   7 days ago          Up 3 hours          0.0.0.0:5000->5000/tcp   registry
+3b7d8fcd0a1d        6cc0fc2a5ee3        "/bin/bash"              9 days ago          Up 3 hours                                   romantic_jepsen
+
+```
+
+
    
   $ docker images
 
-<table style="width:100%">
-   <tr>
-    <th>REPOSITORY</th>
-    <th>TAG</th>
-    <th>IMAGE ID</th>
-    <th>CREATED</th>
-    <th>VIRTUAL SIZE</th>
-   </tr>
-    <tr>
-     <td>shradha09/ubuntu</td>
-     <td>httpd</td>
-     <td>a47606b00f39</td>
-     <td>2 minutes ago</td>
-     <td>187.9 MB</td>
-   </tr>
-
-  <tr>
-    <td> yu/fedora </td>
-    <td>  httpd</td>
-    <td>d33f23884c55</td>
-    <td>6 days ago </td>
-    <td>  362.2 MB </td>
-  </tr>
-
- <tr>
-    <td>docker.io/docker</td>
-    <td>latest</td>                    
-    <td>e90df13f8efb</td>
-    <td>2 weeks ago </td>
-    <td>36.87 MB </td>
-  </tr>
-
-<tr>
-  <td>docker.io/ubuntu</td>
-  <td>latest</td>
-  <td>6cc0fc2a5ee3</td>
-  <td>3 weeks ago</td>
-  <td>187.9 MB</td>
-
-</table>
+```
+REPOSITORY                            TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+registry-host:5000/shradha09/ubuntu   latest              bf8d3b39480b        2 days ago          187.9 MB
+ubuntu                                latest              bf8d3b39480b        2 days ago          187.9 MB
+ubuntu/test                           latest              64910446ed6c        6 days ago          187.9 MB
+docker.io/fedora                      latest              3fc68076e184        6 weeks ago         206.3 MB
+docker.io/centos                      centos7             c8a648134623        7 weeks ago         196.6 MB
+docker.io/centos                      latest              c8a648134623        7 weeks ago         196.6 MB
+```
 
 
 
@@ -234,58 +192,14 @@ Example :
           `$ docker history abcd/ubuntu:httpd`
 
 
+```
+IMAGE            CREATED         CREATED BY                                      SIZE                                COMMENT
+0dd2462fdefe    4 hours ago     /bin/bash                                        0 B                                 Ubuntu with HTTPD package
+6cc0fc2a5ee3    3 weeks ago     /bin/sh -c #(nop) CMD ["/bin/bash"]              0 B
+f80999a1f330    3 weeks ago     /bin/sh -c sed -i 's/^#\s*\(deb.*universe\)$/   1.895 KB
+92ec6d044cb3    3 weeks ago     /bin/sh -c #(nop) ADD file:7ce20ce3daa6af21db   187.7 MB
 
-<table style="width:100%">
-   <tr>
-    <th>IMAGE</th>
-    <th>CREATED</th>
-    <th>CREATED BY</th>
-    <th>SIZE</th>
-    <th>COMMENT</th>
-   </tr>
-    <tr>
-     <td>0dd2462fdefe</td>
-     <td>4 hours ago</td>
-     <td>/bin/bash</td>
-     <td>0 B</td>
-     <td>Ubuntu with HTTPD package</td>
-   </tr>
-
-  <tr>
-    <td>6cc0fc2a5ee3</td>
-    <td>3 weeks ago</td>
-    <td>/bin/sh -c #(nop) CMD ["/bin/bash"]</td>
-    <td>0 B</td>
-    <td>   </td>
-</tr>              92ec6d044cb3     3 weeks ago   /bin/sh -c #(nop)             187.7 MB
-                                                  ADD file:7ce20ce3daa6af21db
-
- <tr>
-    <td>f80999a1f330</td>
-    <td>3 weeks ago</td>
-    <td>/bin/sh -c sed -i
-      's/^#\s*\(deb.*universe\)$/
-    </td>
-    <td>1.895 KB </td>
-    <td> </td>
-  </tr>
-
-<tr>
-   <td>92ec6d044cb3</td>
-   <td>3 weeks ago</td>
-   <td>
-      /bin/sh -c #(nop)
-      ADD file:7ce20ce3daa6af21db
-  </td>
-   <td>187.7 MB</td>
-   <td></td>
-
-</tr>
-
-</table>
-
-
-
+```
   _Metadata_ - Through Metadata of an image Docker will come to know about how the image is been created, using *history* command, by looking at the information provided in the metadata recursively, reaching origin.
 
 ~~ By *inspect* command, commit messages for all the layers can be obtained.
