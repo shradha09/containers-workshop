@@ -867,13 +867,13 @@ Example : Create a base image of fedora 23, using following steps :
  
  1. Create a directory, on which the OS is to be installed. Debootstrap creates the chroot environment to install a package : 
 
-     $ mkdir deboot_chroot
+     `$ mkdir deboot_chroot`
 
 
  2. Use, *debootstrap*, install fedora 23 inside the directory that we created :
  
-     $ debootstrap deboot ./deboot_chroot
-     http://in.archive.fedora-23/fedora/
+     `$ debootstrap deboot ./deboot_chroot
+     http://in.archive.fedora-23/fedora/`
 
 
  3. We will see the directory tree to any linux root filesystem, inside the directory where OS is installed, same as we saw in Supermin.
