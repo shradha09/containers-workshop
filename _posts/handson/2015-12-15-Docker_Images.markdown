@@ -74,26 +74,20 @@ Output :
 
   $ docker ps
 
-<table style="width:100%">
-   <tr>
-    <th>CONTAINER ID</th>
-    <th>IMAGE</th>
-    <th>COMMAND</th>
-    <th>CREATED</th>
-    <th>STATUS</th>
-    <th>PORTS</th>
-    <th>NAMES</th>
-   </tr>
-     <td>3b7d8fcd0a1d</td>
-     <td>ubuntu</td>
-     <td>"/bin/bash"</td>
-     <td>46 hours ago</td>
-     <td>Up 11 minutes</td>
-     <td></td>
-     <td>romantic_jepsen</td>
-   </tr>
-</table>
-   
+```
+CONTAINER ID        IMAGE                    COMMAND             CREATED             STATUS              PORTS               NAMES
+98b4ddd7aca3        docker.io/ubuntu         "bash"              12 hours ago        Up 12 hours                             prickly_leakey
+6ba97e68f68f        docker.io/ubuntu         "bash"              12 hours ago        Up 12 hours                             jolly_yonath
+678d06dba438        docker.io/ubuntu         "bash"              13 hours ago        Up 13 hours         80/tcp              suspicious_hoover
+52a36f37f312        docker.io/ubuntu         "bash"              13 hours ago        Up 13 hours         80/tcp              lonely_colden
+43e6f4a1d8a9        docker.io/ubuntu:14.04   "bash"              14 hours ago        Up 14 hours                             mad_colden
+c5224c5551e7        docker.io/ubuntu:14.04   "bash"              14 hours ago        Up 14 hours                             dreamy_swartz
+50502eb047bd        docker.io/ubuntu:14.04   "bash"              14 hours ago        Up 14 hours                             hopeful_bartik
+97bd6068cbb5        docker.io/ubuntu:14.04   "bash"              14 hours ago        Up 14 hours                             sharp_ptolemy
+e8f8c883b461        docker.io/ubuntu:14.04   "bash"              14 hours ago        Up 14 hours                             nostalgic_swartz
+2d17bd2c9bfd        gitbooktoedx             "bash"              25 hours ago        Up 25 hours                             naughty_kirch
+```
+
   $ docker images
 
 <table style="width:100%">
@@ -307,13 +301,14 @@ To remove the image from the host, *docker rmi* command is used, it will remove 
 
 
 ~~ Example :  
-    
+
+```
    $ docker rmi abcd/ubuntu:httpd
 
    Untagged : abcd/ubuntu:httpd
    
    Deleted  : 6579dfa51537ac7a94f3ab03a76d5c5f06bceb2f2eae3e4e42a621620b91e57f
-
+```
 
 
 ~~ Additional Info ~~
