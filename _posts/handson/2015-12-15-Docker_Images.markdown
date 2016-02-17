@@ -427,15 +427,6 @@ We could also include a *.dockerignore* command in the current working directory
 To look for intermediate layers of an image, specify -a option with docker images : 
 
   $ docker images -a 
- 
-         
-|  REPOSITORY     |   TAG      | IMAGE ID    |   CREATE D     | VIRTUAL SIZE
- :------------:    :---------:  :---------:   :-------------:  :-----------:
-|docker.io/ubuntu |   latest   |6cc0fc2a5ee3 |  3 weeks ago   |   187.9 MB
-|<none>           |   <none>   |2ef91804894a |  3 weeks ago   |   187.9 MB
-|<none>           |   <none>   |92ec6d044cb3 |  3 weeks ago   |   187.7 MB
-
-
 
 <table style="width:100%">
    <tr>
@@ -454,11 +445,21 @@ To look for intermediate layers of an image, specify -a option with docker image
      
   <tr>
     <td> &ltnone&gt </td>
-    <td> "<none>" </td> 
+    <td> &ltnone&gt </td> 
+    <td>92ec6d044cb3</td>
+    <td>3 weeks ago </td>
+    <td>   187.7 MB </td>  
+  </tr>
+
+ <tr>
+    <td> &ltnone&gt </td>
+    <td> &ltnone&gt </td>
     <td>2ef91804894a</td>
     <td>3 weeks ago </td>
-    <td>187.9 MB </td>  
+    <td>187.9 MB </td>
   </tr>
+
+
 </table>
 
 
