@@ -145,13 +145,13 @@ For pushing the image we created, use following command:
    $ docker push abcd/ubuntu:httpd
 
 
- <p> The push refers to a repository [docker.io/abcd/ubuntu] (len: 1)</p>
- <p> 0dd2462fdefe: Pushed </p>
- <p> 6cc0fc2a5ee3: Pushed </p>
- <p> f80999a1f330: Pushed </p>
- <p> 2ef91804894a: Pushed </p>
- <p> 92ec6d044cb3: Pushed </p>
- <p> httpd: digest: sha256:794def2e25f46a69c8f9c2c35704566dc573be4857a0f24b4cf02820b|304d0a7 size: 8101 </p>
+  The push refers to a repository [docker.io/abcd/ubuntu] (len: 1)
+  0dd2462fdefe: Pushed 
+  6cc0fc2a5ee3: Pushed 
+  f80999a1f330: Pushed 
+  2ef91804894a: Pushed 
+  92ec6d044cb3: Pushed 
+  httpd: digest: sha256:794def2e25f46a69c8f9c2c35704566dc573be4857a0f24b4cf02820b|304d0a7 size: 8101 
 
  
          Suppose, you want to push the image to the local registry, hosted on host named localhost_registry. For this, the image has to be tagged with registry's host name or IP address with port number on which the registry is running and then the image is pushed.
@@ -321,48 +321,49 @@ Using the *docker commit* command is a pretty simple way of extending an image b
 
    $ cat Dockerfile
    
-    <p>Pick up the base image</p>
-    <p> FROM ubuntu</p>
-    <p> Add author name</p>
-    <p>MAINTAINER shradha09</p>
-    <p>Add the command to run at the start of container CMD date</p>
+    Pick up the base image
+     FROM ubuntu
+     Add author name
+    MAINTAINER shradha09
+    Add the command to run at the start of container CMD date
     
 
 ### Run the following command inside the directory, to build the image : 
 
            `$ docker build .`
 
-OUTPUT : <p> Sending build context to Docker daemon 2.048 kB</p>
-         <p> Step 1 : FROM ubuntu</p>
-         <p>    ---> 6cc0fc2a5ee3</p>
-         <p> Step 2 : MAINTAINER shradha09</p>
-         <p>    ---> Running in 41a3ad61485d</p>
-         <p>    ---> 15e643a46289</p>
-         <p> Removing intermediate container 41a3ad61485d</p>
-         <p> Step 3 : CMD date</p>
-         <p>    ---> Running in 15600c5596e2</p>
-         <p>    ---> 64910446ed6c </p>
-         <p> Removing intermediate container 15600c5596e2 </p>
-         <p> Successfully built 64910446ed6c</p>
+OUTPUT : Sending build context to Docker daemon 2.048 kB
+         Step 1 : FROM ubuntu
+            ---> 6cc0fc2a5ee3
+         Step 2 : MAINTAINER shradha09
+            ---> Running in 41a3ad61485d
+           ---> 15e643a46289
+         Removing intermediate container 41a3ad61485d
+         Step 3 : CMD date
+            ---> Running in 15600c5596e2
+            ---> 64910446ed6c 
+         Removing intermediate container 15600c5596e2 
+         Successfully built 64910446ed6c
 
 
 Note : This build run by the Docker daemon,not by the CLI. The build process will send the entire context(recursively) to the deamon. 
+
 
 
 #### We can also specify any repository or tag name while building the image with -t option as follows : 
 
    $ docker build -t ubuntu/abc
 
-OUTPUT :<p> Sending build context to Docker daemon 2.048 kB </p>
-        <p> Step 1 : FROM ubuntu</p>
-	<p>   ---> 6cc0fc2a5ee3 </p>
-	<p> Step 2 : MAINTAINER shradha09</p>
-	<p>     ---> Using cache </p>
- 	<p>     ---> 15e643a46289 </p>
-	<p> Step 3 : CMD date </p>
-	<p>      ---> Using cache</p>
-	<p>     ---> 64910446ed6c </p> 
-   	<p>  Successfully built 64910446ed6c </p> 
+OUTPUT : Sending build context to Docker daemon 2.048 kB 
+        Step 1 : FROM ubuntu
+	   ---> 6cc0fc2a5ee3 
+	 Step 2 : MAINTAINER shradha09
+	     ---> Using cache 
+ 	     ---> 15e643a46289 
+	 Step 3 : CMD date 
+         ---> Using cache
+	     ---> 64910446ed6c 
+   	  Successfully built 64910446ed6c 
  
 Above command will give different output, here we are using cache after each instruction. Docker tries to save the intermediate images and use them in subsequent builds to accelerate the build process.
    If we don't want to cache the intermediate images, then add *--no-cache* option with docker build.
@@ -403,7 +404,7 @@ The format of Dockerfile is as follows :
    _INSTRUCTION ARGUMENTS_
 
 Instructions are always given in Uppercase but they are not case sensitive.They are evaluated in order. 
-<p>A *#* in the beginning is treated as the comment. </p>
+A *#* in the beginning is treated as the comment. </p>
 
 Types of Instructions  : 
 
@@ -423,11 +424,11 @@ Multiple FORM instructions are possible in single Dockerfile to create several d
 * If you want to use the private or third-party images, then following command has to be used:
 
 Syntax :  [registry_hostname[:port]/][user_name/](repository_name:version_tag)
-<p> </p>
+
 
 Example : registry_hostname:5000/shradha09/centos7:httpd
 
-<p></p>
+
 
 b.) MAINTAINER- It sets the author name for the generated image.
 
@@ -449,11 +450,11 @@ As in Docker we create layers over top of other layers to make the resulting ima
   By default, Docker tries to cache the layers committed by different RUN instructions, so that it can be use in subsequent builds.This behaviour could be turned off by using --no-cache flag while the image is build.
   Once the parameters are defined with the ENTRYPOINT instruction,they cannot be overwritten at runtime.However, ENTRYPOINT can be used as CMD, if parameters are needed to be changed.
 
-<p></p>
+
 
 d.) LABEL- Docker 1.6 added a new feature to the attached arbitrary key-value pair to Docker images and containers.To give a label to            an image, LABEL instruction is used in the Dockerfile as LABEL distro=ubuntu.
 
-<p></p>
+
 
 e.) CMD- The CMD instruction provides a default executable while starting a container. If the CMD instruction does not have an executable, then it will provide arguments to ENTRYPOINT.
           Given how much easier it is to override the CMD, the recommendation is use CMD in your Dockerfile when you want the user of your image to have the flexibility to run whichever executable they choose when starting the container. 
@@ -466,7 +467,7 @@ e.) CMD- The CMD instruction provides a default executable while starting a cont
 
 Note: Only one CMD instruction is allowed in a Dockerfile. If more than one is specified, then only the last one will be read.
 
-<p></p>
+
 
 
 f.) ENTRYPOINT- Both ENTRYPOINT and CMD gives a way to identify which executable should be run when a container is started from an image.Also, if you want your image to be runnable (without additional docker run command line arguments) you must specify an ENTRYPOINT or CMD.
@@ -589,15 +590,15 @@ This is useful if you are building an image which will be used as a base to buil
 
 Dockerfile contents for Jenkin : 
 
-<p>FROM fedora</p>
-<p>MAINTAINER http://fedoraproject.org/wiki/Cloud</p>
-<p>RUN dnf -y update && dnf clean all</p>
-<p>RUN dnf -y install jenkins java initscripts supervisor && dnf clean all</p>
-<p>EXPOSE 8080</p>
-<p>RUN rm -rf /var/run/jenkins.pid</p>
-<p>VOLUME ["/root/.jenkins"]</p>
-<p>ADD ./supervisord.conf /etc/supervisord.conf</p>
-<p>CMD [ "supervisord", "-n" ]</p>
+FROM fedora
+MAINTAINER http://fedoraproject.org/wiki/Cloud
+RUN dnf -y update && dnf clean all
+RUN dnf -y install jenkins java initscripts supervisor && dnf clean all
+EXPOSE 8080
+RUN rm -rf /var/run/jenkins.pid
+VOLUME ["/root/.jenkins"]
+ADD ./supervisord.conf /etc/supervisord.conf
+CMD [ "supervisord", "-n" ]
  
 
 _Other supporting files in Repository_ : 
@@ -685,7 +686,7 @@ Automated Builds are supported for both public and private repositories on both 
 
 -To view settings for GitHub or BitBucket account linkage, from your Docker Hub account choose :
 
-    #####Profile > Settings > Linked Accounts & Services.
+    _Profile > Settings > Linked Accounts & Services_
  
 #### Link to a hosted Repository 
 
