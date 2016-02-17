@@ -227,11 +227,11 @@ Listing of all the intermediate layers are done which are required to make the s
 
 
 Syntax : 
-         $ docker history [OPTIONS] IMAGE
+         `$ docker history [OPTIONS] IMAGE`
 
 
 Example : 
-         $ docker history abcd/ubuntu:httpd
+          `$ docker history abcd/ubuntu:httpd`
 
 
   IMAGE 	   CREATED	  CREATED BY	             SIZE	  COMMENT
@@ -248,7 +248,59 @@ Example :
  92ec6d044cb3	  3 weeks ago	/bin/sh -c #(nop)             187.7 MB
                                  ADD file:7ce20ce3daa6af21db	
 
-  #####Metadata- Through Metadata of an image Docker will come to know about how the image is been created, using *history* command, by looking at the information provided in the metadata recursively, reaching origin.
+
+<table style="width:100%">
+   <tr>
+    <th>IMAGE</th>
+    <th>CREATED</th>
+    <th>CREATED BY</th>
+    <th>SIZE</th>
+    <th>COMMENT</th>
+   </tr>
+    <tr>
+     <td>0dd2462fdefe</td>
+     <td>4 hours ago</td>
+     <td>/bin/bash</td>
+     <td>0 B</td>
+     <td>Ubuntu with HTTPD package</td>
+   </tr>
+
+  <tr>
+    <td>6cc0fc2a5ee3</td>
+    <td>3 weeks ago</td>
+    <td>/bin/sh -c #(nop) CMD ["/bin/bash"]</td>
+    <td>0 B</td>
+    <td>   </td>
+</tr>              92ec6d044cb3     3 weeks ago   /bin/sh -c #(nop)             187.7 MB
+                                                  ADD file:7ce20ce3daa6af21db
+
+ <tr>
+    <td>f80999a1f330</td>
+    <td>3 weeks ago</td>
+    <td>/bin/sh -c sed -i
+      's/^#\s*\(deb.*universe\)$/
+    </td>
+    <td>1.895 KB </td>
+    <td> </td>
+  </tr>
+
+<tr>
+   <td>92ec6d044cb3</td>
+   <td>3 weeks ago</td>
+   <td>
+      /bin/sh -c #(nop)
+      ADD file:7ce20ce3daa6af21db
+  </td>
+   <td>187.7 MB</td>
+   <td></td>
+
+</tr>
+
+</table>
+
+
+
+  _Metadata_ - Through Metadata of an image Docker will come to know about how the image is been created, using *history* command, by looking at the information provided in the metadata recursively, reaching origin.
 
 ~~ By *inspect* command, commit messages for all the layers can be obtained.
 
