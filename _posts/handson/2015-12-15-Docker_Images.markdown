@@ -20,6 +20,9 @@ ads: false
       Information regarding docker system could be gathered by using following command: 
 
      $ docker info
+
+
+<a href="https://raw.githubusercontent.com/shradha09/containers-workshop/5f3e534c153e3aa91e16be69ea2d227156e04c8b/images/docker_info.png">Docker Information</a>
  
 | Containers: 30
 | Images: 47
