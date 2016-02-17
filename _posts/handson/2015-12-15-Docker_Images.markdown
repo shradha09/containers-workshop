@@ -217,12 +217,12 @@ To remove the image from the host, *docker rmi* command is used, it will remove 
 
 ~~ Syntax for Removing Image : 
    
-   $ docker rmi [OPTIONS]  IMAGE  [IMAGE...]
+  ` $ docker rmi [OPTIONS]  IMAGE  [IMAGE...]`
 
 
 ~~ Example :  
     
-   $ docker rmi abcd/ubuntu:httpd
+   `$ docker rmi abcd/ubuntu:httpd`
 
    Untagged : abcd/ubuntu:httpd
    
@@ -236,15 +236,15 @@ All the containers and images can be removed, but prove to be destructive,keepin
 
 1. To stop all containers :
   
-   $ docker stop 'docker ps -q'
+   `$ docker stop 'docker ps -q'`
 
 2. To delete all containers : 
  
-   $ docker rm 'docker ps -a -q'
+   `$ docker rm 'docker ps -a -q'`
 
 3. To delete all images : 
    
-   $ docker rmi 'docker images -q'
+   `$ docker rmi 'docker images -q'`
 
 
 
@@ -258,13 +258,13 @@ Note: Pull or import one or more Docker images on the docker host.
 ~~ Syntax to save the image in tar file : 
 
 
-  $ docker save [-o |--output=""] IMAGE  [:TAG]
+  `$ docker save [-o |--output=""] IMAGE  [:TAG]`
 
 
 ~~ Example, creating a tar file for Ubuntu, run following command :
 
 
-  $ docker save --output=ubuntu.tar ubuntu
+  `$ docker save --output=ubuntu.tar ubuntu`
 
 Note: If the tag name is specified with the image we want to export, such as          unbuntu:latest, then only the layers related to that tag will get exported.
 
@@ -273,12 +273,12 @@ Note: If the tag name is specified with the image we want to export, such as    
 If --output or -o is not used, then the output will be streamed to STDOUT : 
 
 
-Example : $ docker save ubuntu:latest > ubuntu-latest.tar
+Example : `$ docker save ubuntu:latest > ubuntu-latest.tar`
 
 
 Similarly, the contents of the container's filesystem can be exported using the following command : 
 
- $ docker export CONTAINER > conatinerABC.tar
+  `$ docker export CONTAINER > conatinerABC.tar`
 
 
 
@@ -290,12 +290,12 @@ An accessible exported Docker image is needed for that.
 
 Syntax : 1. To import an image :
          
-           $ docker import URL ``|`` [REPOSITORY[:TAG]]
+          ` $ docker import URL ``|`` [REPOSITORY[:TAG]]`
 
-Example :  $ cat ubuntu-latest.tar ``|`` docker import - ubuntu:latest
+Example :  `$ cat ubuntu-latest.tar ``|`` docker import - ubuntu:latest`
 
 
-Alternatively :  $ docker import http://xyz.com/xyz.tar xyz/image
+Alternatively :  `$ docker import http://xyz.com/xyz.tar xyz/image`
 
 
 These commands will first create an empty filesystem and then import the contents.
@@ -321,16 +321,16 @@ Using the *docker commit* command is a pretty simple way of extending an image b
 
    $ cat Dockerfile
    
-    Pick up the base image
-    FROM ubuntu
-    Add author name
-    MAINTAINER shradha09
-    Add the command to run at the start of container CMD date
+    <p>Pick up the base image</p>
+    <p> FROM ubuntu</p>
+    <p> Add author name</p>
+    <p>MAINTAINER shradha09</p>
+    <p>Add the command to run at the start of container CMD date</p>
     
 
 ### Run the following command inside the directory, to build the image : 
 
-           $ docker build .
+           `$ docker build .`
 
 OUTPUT : <p> Sending build context to Docker daemon 2.048 kB</p>
          <p> Step 1 : FROM ubuntu</p>
