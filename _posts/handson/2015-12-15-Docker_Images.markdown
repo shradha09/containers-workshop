@@ -22,6 +22,8 @@ ads: false
 <img src="https://raw.githubusercontent.com/shradha09/containers-workshop/5f3e534c153e3aa91e16be69ea2d227156e04c8b/images/docker_info.png" >
 
 
+
+
       A repository can hold different versions of an image.Any number of public repositeries could be created for the images.By default, one private repository is provided to the users.One can buy more private repositories.
 
  Docker Hub account can be created either by visiting the website or from command line.
@@ -32,10 +34,7 @@ ads: false
 
 2.For creating an account through command line : 
 
-  $ docker login
-
-
-
+       $ docker login
 
 
 ##Creating an image from Container
@@ -56,33 +55,99 @@ As soon as a container is started, a read/write layer gets attached to it. This 
 
 a. For committing following command syntax is used :
     
-   $ docker commit -a ``|``--author[=""] -m``|``--message[=""]   CONTAINER   [REPOSITORY[:TAG]]
+        $ docker commit -a ``|``--author[=""] -m``|``--message[=""]   CONTAINER   [REPOSITORY[:TAG]]
 
 b.Now, start a container and create/ modify some files on it by using *install httpd* package : 
 
 
-  $ docker run -i -t ubuntu /bin/bash
+         $ docker run -i -t ubuntu /bin/bash
 
-     root@4312ee7658e7:/# dnf install -y httpd
+         root@4312ee7658e7:/# dnf install -y httpd
 
 
 c.On a new terminal, create a new image by giving following command:
 
-   $ docker commit -a "Shradha" -m "Ubuntu with HTTPD package" 3b7d8fcd0a1d shradha09/Ubuntu:httpd
+         $ docker commit -a "Shradha" -m "Ubuntu with HTTPD package" 3b7d8fcd0a1d shradha09/Ubuntu:httpd
 
 
 Output : 
 
   $ docker ps
 
+<table style="width:100%">
+   <tr>
+    <th>CONTAINER ID</th>
+    <th>IMAGE</th>
+    <th>COMMAND</th>
+    <th>CREATED</th>
+    <th>STATUS</th>
+    <th>PORTS</th>
+    <th>NAMES</th>
+   </tr>
+     <td>3b7d8fcd0a1d</td>
+     <td>ubuntu</td>
+     <td>"/bin/bash"</td>
+     <td>46 hours ago</td>
+     <td>Up 11 minutes</td>
+     <td></td>
+     <td>romantic_jepsen</td>
+   </tr>
+</table>
+   
 
-> |CONTAINER_ID	     |  IMAGE  |     COMMAND    |    CREATED      |      STATUS       |   PORTS   |   NAMES   |
-    -----               ----          ----            ----                ----            ----        ----
-> |3b7d8fcd0a1d      |  ubuntu |    "/bin/bash" |    46 hours ago |    Up 11 minutes  |           |   jepsen  |
+
+
+
+
 
 
 
   $ docker images
+
+<table style="width:100%">
+   <tr>
+    <th>REPOSITORY</th>
+    <th>TAG</th>
+    <th>IMAGE ID</th>
+    <th>CREATED</th>
+    <th>VIRTUAL SIZE</th>
+   </tr>
+    <tr>
+     <td>shradha09/ubuntu</td>
+     <td>httpd</td>
+     <td>a47606b00f39</td>
+     <td>2 minutes ago</td>
+     <td>187.9 MB</td>
+   </tr>
+
+  <tr>
+    <td> yu/fedora </td>
+    <td>  httpd</td>
+    <td>d33f23884c55</td>
+    <td>6 days ago </td>
+    <td>  362.2 MB </td>
+  </tr>
+
+ <tr>
+    <td>docker.io/docker</td>
+    <td>latest</td>                    
+    <td>e90df13f8efb</td>
+    <td>2 weeks ago </td>
+    <td>36.87 MB </td>
+  </tr>
+
+<tr>
+  <td>docker.io/ubuntu</td>
+  <td>latest</td>
+  <td>6cc0fc2a5ee3</td>
+  <td>3 weeks ago</td>
+  <td>187.9 MB</td>
+
+</table>
+
+
+
+
 
  
 
