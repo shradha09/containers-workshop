@@ -187,13 +187,13 @@ For pushing the image we created, use following command:
    $ docker push abcd/ubuntu:httpd
 
 
-  The push refers to a repository [docker.io/abcd/ubuntu] (len: 1)
-  0dd2462fdefe: Pushed 
-  6cc0fc2a5ee3: Pushed 
-  f80999a1f330: Pushed 
-  2ef91804894a: Pushed 
-  92ec6d044cb3: Pushed 
-  httpd: digest: sha256:794def2e25f46a69c8f9c2c35704566dc573be4857a0f24b4cf02820b|304d0a7 size: 8101
+ <p> The push refers to a repository [docker.io/abcd/ubuntu] (len: 1)</p>
+ <p> 0dd2462fdefe: Pushed </p>
+ <p> 6cc0fc2a5ee3: Pushed </p>
+ <p> f80999a1f330: Pushed </p>
+ <p> 2ef91804894a: Pushed </p>
+ <p> 92ec6d044cb3: Pushed </p>
+ <p> httpd: digest: sha256:794def2e25f46a69c8f9c2c35704566dc573be4857a0f24b4cf02820b|304d0a7 size: 8101 </p>
 
  
 Suppose, you want to push the image to the local registry, hosted on host named localhost_registry. For this, the image has to be tagged with registry's host name or IP address with port number on which the registry is running and then the image is pushed.
