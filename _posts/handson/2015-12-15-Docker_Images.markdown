@@ -388,39 +388,13 @@ To look for intermediate layers of an image, specify -a option with docker image
 
   $ docker images -a 
 
-<table style="width:100%">
-   <tr>
-    <th>REPOSITORY</th>
-    <th>TAG</th>		
-    <th>IMAGE ID</th> 
-    <th>CREATED</th> 
-    <th>VIRTUAL SIZE</th>
-   </tr>
-     <td>docker.io/ubuntu</td>
-     <td>latest</td>
-     <td>6cc0fc2a5ee3</td>
-     <td>3 weeks ago</td>
-     <td>187.9 MB</td>    
-   </tr>
-     
-  <tr>
-    <td> &ltnone&gt </td>
-    <td> &ltnone&gt </td> 
-    <td>92ec6d044cb3</td>
-    <td>3 weeks ago </td>
-    <td>   187.7 MB </td>  
-  </tr>
+```
+REPOSITORY	TAG	IMAGE ID	CREATED	VIRTUAL SIZE
+docker.io/ubuntu	latest	6cc0fc2a5ee3	3 weeks ago	187.9 MB
+<none>	<none>	92ec6d044cb3	3 weeks ago	187.7 MB
+<none>	<none>	2ef91804894a	3 weeks ago	187.9 MB
 
- <tr>
-    <td> &ltnone&gt </td>
-    <td> &ltnone&gt </td>
-    <td>2ef91804894a</td>
-    <td>3 weeks ago </td>
-    <td>187.9 MB </td>
-  </tr>
-</table>
-
-
+```
 ### Dockerfile Documentation 
 
 
@@ -429,7 +403,7 @@ The format of Dockerfile is as follows :
    _INSTRUCTION ARGUMENTS_
 
 Instructions are always given in Uppercase but they are not case sensitive.They are evaluated in order. 
-<p>A **#** in the beginning is treated as the comment. </p>
+<p>A *#* in the beginning is treated as the comment. </p>
 
 Types of Instructions  : 
 
@@ -596,8 +570,8 @@ The output of the final pwd command in this Dockerfile would be /a/b/c.
 
 The WORKDIR instruction can resolve environment variables previously set using ENV. You can only use environment variables explicitly set in the Dockerfile. For example:
 
-ENV DIRPATH /path
-WORKDIR $DIRPATH/$DIRNAME
+`ENV DIRPATH /path`
+`WORKDIR $DIRPATH/$DIRNAME`
 
 The output of the final pwd command in this Dockerfile would be /path/$DIRNAME
 
@@ -614,24 +588,19 @@ This is useful if you are building an image which will be used as a base to buil
 ## Building a Jenkins image - Dockerfile example
 
 Dockerfile contents for Jenkin : 
-                                                                                |FROM fedora
-|MAINTAINER http://fedoraproject.org/wiki/Cloud
 
-|RUN dnf -y update && dnf clean all
-|RUN dnf -y install jenkins java initscripts supervisor && dnf clean all
-
-|EXPOSE 8080
-
-|RUN rm -rf /var/run/jenkins.pid
-
-|VOLUME ["/root/.jenkins"]
-
-|ADD ./supervisord.conf /etc/supervisord.conf
-
-|CMD [ "supervisord", "-n" ]
+<p>FROM fedora</p>
+<p>MAINTAINER http://fedoraproject.org/wiki/Cloud</p>
+<p>RUN dnf -y update && dnf clean all</p>
+<p>RUN dnf -y install jenkins java initscripts supervisor && dnf clean all</p>
+<p>EXPOSE 8080</p>
+<p>RUN rm -rf /var/run/jenkins.pid</p>
+<p>VOLUME ["/root/.jenkins"]</p>
+<p>ADD ./supervisord.conf /etc/supervisord.conf</p>
+<p>CMD [ "supervisord", "-n" ]</p>
  
 
-Other supporting files in Repository : 
+_Other supporting files in Repository_ : 
 
 -README.md: This is the README file.
 
@@ -642,7 +611,7 @@ Other supporting files in Repository :
  
 For building new Image ,use following *build* command :
 
-  $ docker build -t fedora/jenkins
+     `$ docker build -t fedora/jenkins`
 
 The build process takes the base image of Jenkins, installs given RUN from the Dockerfile.
 
@@ -664,36 +633,36 @@ The public Docker Registry is available at Docker Hub, through which the users c
 
 a. To run the registry on the container :
 
-    $ docker run -p 5000 samalba/docker-registry
+    `$ docker run -p 5000 samalba/docker-registry`
   
 b. To test the newly created registry, perform following steps :
 
    1. Start a container by using the command :
 
 
-          $ W='docker run -d -i jenkins /bin/bash'
+           `$ W='docker run -d -i jenkins /bin/bash'`
 
 
    2. Make some changes if needed and commit those changes to the local repository : 
 
-        $ docker commit $W jenkins
+          `$ docker commit $W jenkins`
 
 
    3. To push the image use following command : 
            
 
-       $ docker push [REGISTRY_HOST_NAME]:[PORT_NUMBER]/[USERNAME]/[IMAGE_NAME]
+       `$ docker push [REGISTRY_HOST_NAME]:[PORT_NUMBER]/[USERNAME]/[IMAGE_NAME]`
 
 
    4. For Pulling image from local registry, use following command : 
 
         
-       $ docker pull [REGISTRY_HOST_NAME]:[PORT_NUMBER]/[USERNAME]/[IMAGE_NAME]
+       `$ docker pull [REGISTRY_HOST_NAME]:[PORT_NUMBER]/[USERNAME]/[IMAGE_NAME]`
  
 
 Note : The registry can be configured on any existing servers, steps to do this       are available in following github link :
  
-   https://github.com/docker/docker-registry
+    https://github.com/docker/docker-registry
 
 To understand how the registry images are created and how different configuration options are given,*Dockerfile* of docker-registry can be visited .
 
@@ -769,7 +738,7 @@ When a GitHub repository is added for automated build, GitHub enables the Docker
 Whenever we make any changes to the GitHub repository,such as commits,an automated build gets trigerred using the Dockerfile that resides in the GitHub repository.
 
 
-~~ Details for Automated Build : 
+ _Details for Automated Build_ : 
 
 Select Automated Build Container or Go to Details of the container, following details are found on the new opened web page : 
 
@@ -811,11 +780,11 @@ Supermin and Debootstrap are the tools that can help make the faking of root fil
 
 Supermin- Tool for creating and building supermin appliances.
 
-~~ Command Syntax for Prepare ~~
+   _Command Syntax for Prepare_
 
-  $ supermin --prepare -o OUTPUTDIR PACKAGE [PACKAGE ...]
+  `$ supermin --prepare -o OUTPUTDIR PACKAGE [PACKAGE ...]`
 
-  $ supermin --build -o OUTPUTDIR -f chroot|ext2 INPUT [INPUT ...]
+  `$ supermin --build -o OUTPUTDIR -f chroot|ext2 INPUT [INPUT ...]`
 
 
 Supermin is a tool for building supermin appliances.These are tinyappliances (similar to virtual machines), usually around 100KB in
@@ -825,24 +794,23 @@ second when you need to boot one of them.
 
 Supermin does not need to be run as root, and generally should notbe run as root.It does not affect the host system or the packages installed on the host system.
 
-~~ Two modes of Supermin ~~
+   ####Two modes of Supermin
 
  _PREAPARE MODE_
 
   *--prepare* creates the tiny supermin appliance in the given output directory. Give the list of packages that are to be installed, and supermin will automatically find all the dependencies. The listof packages has to be installed on the host machine . 
 
-Example : $ supermin --prepare bash coreutils -o supermin.d
+Example : `$ supermin --prepare bash coreutils -o supermin.d`
 
 The above command creates a supermin appliance containing the packages "bash" and "coreutils". Specifically,it creates files in directory "supermin.d". This directory is known as Supermin Appliance.
 
 *prepare* mode puts all the requested packages with their dependencies inside a directory without copying the host OS specific files
 
-~~ Command Syntax ~~
+  _Command Syntax_
 
-   $ supermin --prepare -o OUTPUTDIR PACKAGE [PACKAGE ...]
+   ` $ supermin --prepare -o OUTPUTDIR PACKAGE [PACKAGE ...]`
 
-  Example : $ supermin --prepare bash coreutils -o ubuntu
-
+  Example : `$ supermin --prepare bash coreutils -o ubuntu`
 
 
  _BUILD MODE_
@@ -850,27 +818,27 @@ The above command creates a supermin appliance containing the packages "bash" an
  
   *--build* was previously a separate program called "supermin-helper" 
  
-~~ Command Syntax ~~
+  _Command Syntax_
 
-  $ supermin --build -o OUTPUTDIR -f chroot|ext2 INPUT [INPUT ...]
+    `$ supermin --build -o OUTPUTDIR -f chroot|ext2 INPUT [INPUT ...]`
 
- Example: $ supermin --build --format chroot ubuntu -o ubuntu_image
+ Example: `$ supermin --build --format chroot ubuntu -o ubuntu_image`
 
 
  If we do *ls* on the output directory i.e ubuntu_image, we will find directory tree similar to any linux root filesystem :
 
- $ ls ubuntu_image
-
+  `$ ls ubuntu_image`
+```
   bin	boot	dev	etc	home	lib	lib64	media	mnt	opt	proc	root	run	
   abin	srv	sys	tmp	usr	var	
+```
+  _We can export the directory as docker image using following command_:
 
-~~ We can export the directory as docker image using following command:
-
-  $ tar -C ubuntu_image/ -c . | docker import - skhare/ubuntu
-
+    `$ tar -C ubuntu_image/ -c . | docker import - skhare/ubuntu`
+```
 f6f5f2dd61de2f1cca7475824df9af2ffc3d337ad0660d212c82c94441789426
-
-~~ Using command *docker images* a new image with skhare/ubuntu as name will be seen.
+```
+  _Using command *docker images* a new image with skhare/ubuntu as name will be seen_
  
 
 In *build* mode, the supermin appliance created from the prepare mode gets converted into a bootable appliance with all the necessary files 
@@ -884,11 +852,11 @@ Debootstrap is a tool which will install a Debian base system into a subdirector
 
 Install Debootstrap on Debian-based system using following command : 
 
-  $ apt-get install debootstrap
+  `$ apt-get install debootstrap`
 
 Following commands can be used to create the base-image :
 
-  $ debootstrap [OPTION...] SUITE TARGET [MIRROR [SCRIPT]]
+  `$ debootstrap [OPTION...] SUITE TARGET [MIRROR [SCRIPT]]`
 
 - SUITE: It refers to the release code name.
 
@@ -909,13 +877,13 @@ Example : Create a base image of fedora 23, using following steps :
 
  3. We will see the directory tree to any linux root filesystem, inside the directory where OS is installed, same as we saw in Supermin.
 
-     $ ls ./deboot_chroot
+    ` $ ls ./deboot_chroot`
 
-     bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr    var			    
-
+```     bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr    var			    
+```
  4.  Export the directory as a Docker image with following command : 
     
-     $ tar -C deboot_chroot/-c . | docker import - skhare/fedora
+     `$ tar -C deboot_chroot/-c . | docker import - skhare/fedora`
 
 
  5. Look at the *docker images* output, a new image with skhare/fedora as name can be seen.
