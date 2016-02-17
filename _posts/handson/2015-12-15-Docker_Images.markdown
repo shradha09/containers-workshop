@@ -196,25 +196,25 @@ For pushing the image we created, use following command:
  <p> httpd: digest: sha256:794def2e25f46a69c8f9c2c35704566dc573be4857a0f24b4cf02820b|304d0a7 size: 8101 </p>
 
  
-Suppose, you want to push the image to the local registry, hosted on host named localhost_registry. For this, the image has to be tagged with registry's host name or IP address with port number on which the registry is running and then the image is pushed.
+         Suppose, you want to push the image to the local registry, hosted on host named localhost_registry. For this, the image has to be tagged with registry's host name or IP address with port number on which the registry is running and then the image is pushed.
 
 
-  $ docker tag [-f``|``--force[=false]  IMAGE  [REGISTRYHOST/]  [USERNAME/]NAME[:TAG] 
+      `$ docker tag [-f``|``--force[=false]  IMAGE  [REGISTRYHOST/]  [USERNAME/]NAME[:TAG] `
 
  
-  $ docker push [REGISTORYHOST/]  [USERNAME/]NAME[:TAG]  
+      `$ docker push [REGISTORYHOST/]  [USERNAME/]NAME[:TAG]`
 
 
 Example : Suppose our registry is configured on some website say xyz.something.com, then for image tagging following command is used : 
        
  
-   $ docker tag abcd/ubuntu:httpd xyz.something.com:5000/abcd/ubuntu:httpd
+      `$ docker tag abcd/ubuntu:httpd xyz.something.com:5000/abcd/ubuntu:httpd`
 
 
 ### Push the image : 
 
 
-   $ docker push xyz.something.com:5000/abcd/ubuntu:httpd
+      `$ docker push xyz.something.com:5000/abcd/ubuntu:httpd`
 
 Listing of all the intermediate layers are done which are required to make the specific image.Searches for the layers present already and copies only those layers which are not present in the registry with the metadata required to build theimage.
 
@@ -223,7 +223,7 @@ Listing of all the intermediate layers are done which are required to make the s
 ## Looking at the history of an Image
 
 
-*docker history* command is used to find all the intermediate layers by which the image is created.
+   *docker history* command is used to find all the intermediate layers by which the image is created.
 
 
 Syntax : 
