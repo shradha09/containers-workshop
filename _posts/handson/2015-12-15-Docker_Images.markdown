@@ -94,14 +94,6 @@ Output :
    </tr>
 </table>
    
-
-
-
-
-
-
-
-
   $ docker images
 
 <table style="width:100%">
@@ -147,22 +139,10 @@ Output :
 
 
 
-
-
- 
-
-
- REPOSITORY                TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
-
-shradha09/ubuntu          httpd               a47606b00f39        2 minutes ago          187.9 MB
-yu/fedora                 httpd               d33f23884c55        6 days ago             362.2 MB
-docker.io/docker          latest              e90df13f8efb        2 weeks ago            36.87 MB
-docker.io/ubuntu          latest              6cc0fc2a5ee3        3 weeks ago            187.9 MB
-
 A new image is being committed to the local repository with the name shradha09/ubuntu as a name and *httpd* as a tag.
 
 
-Explanation :   When a container is started, a read/write filesystem layer will be created on top of existing image layers from where the container has started and when the package is installed some files are created or existing files are modified in that layer. All these changesmade are to be saved explicitly otherwise on deleting or stopping the container all the modifications are lost. 
+   Explanation :   When a container is started, a read/write filesystem layer will be created on top of existing image layers from where the container has started and when the package is installed some files are created or existing files are modified in that layer. All these changesmade are to be saved explicitly otherwise on deleting or stopping the container all the modifications are lost. 
                 To overcome this loss, commit command is used when a new layer is created with the changes that took place since the container is startedand get saved in the container's backend storage driver.
 
 
@@ -207,13 +187,13 @@ For pushing the image we created, use following command:
    $ docker push abcd/ubuntu:httpd
 
 
-|The push refers to a repository [docker.io/abcd/ubuntu] (len: 1)
-|0dd2462fdefe: Pushed 
-|6cc0fc2a5ee3: Pushed 
-|f80999a1f330: Pushed 
-|2ef91804894a: Pushed 
-|92ec6d044cb3: Pushed 
-|httpd: digest: sha256:794def2e25f46a69c8f9c2c35704566dc573be4857a0f24b4cf02820b|304d0a7 size: 8101
+  The push refers to a repository [docker.io/abcd/ubuntu] (len: 1)
+  0dd2462fdefe: Pushed 
+  6cc0fc2a5ee3: Pushed 
+  f80999a1f330: Pushed 
+  2ef91804894a: Pushed 
+  92ec6d044cb3: Pushed 
+  httpd: digest: sha256:794def2e25f46a69c8f9c2c35704566dc573be4857a0f24b4cf02820b|304d0a7 size: 8101
 
  
 Suppose, you want to push the image to the local registry, hosted on host named localhost_registry. For this, the image has to be tagged with registry's host name or IP address with port number on which the registry is running and then the image is pushed.
