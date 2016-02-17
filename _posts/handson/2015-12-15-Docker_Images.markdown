@@ -19,7 +19,6 @@ ads: false
 
      $ docker info
 
-<img src="https://raw.githubusercontent.com/shradha09/containers-workshop/5f3e534c153e3aa91e16be69ea2d227156e04c8b/images/docker_info.png" >
 
 
 
