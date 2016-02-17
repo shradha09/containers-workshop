@@ -15,58 +15,17 @@ ads: false
 ##Creating an account with Docker Hub
 
 
-      Docker Hub is like GitHub for images. It is a public registry on which both public and private images could be hosted, shared and collaborated with others. It has integration with GitHub, Bitbukcket and could trigger automated build.
-
-      Information regarding docker system could be gathered by using following command: 
+      Docker Hub is like GitHub for images. It is a public registry on which both public and private images could be hosted, shared and collaborated with others. It has integration with GitHub, Bitbukcket and could trigger automated build.Information about docker system can be gathered by using following command: 
 
      $ docker info
 
 <img src="https://raw.githubusercontent.com/shradha09/containers-workshop/5f3e534c153e3aa91e16be69ea2d227156e04c8b/images/docker_info.png" >
 
 
-<a href="https://raw.githubusercontent.com/shradha09/containers-workshop/5f3e534c153e3aa91e16be69ea2d227156e04c8b/images/docker_info.png"></a>
- 
-
-
-| Containers: 30
-| Images: 47
-| Server Version: 1.9.1-fc23
-| Storage Driver: devicemapper
-| Pool Name: docker-253:0-1053518-pool
-| Pool Blocksize: 65.54 kB
-| Base Device Size: 107.4 GB
-| Backing Filesystem: 
-| Data file: /dev/loop0
-| Metadata file: /dev/loop1
-| Data Space Used: 2.213 GB
-| Data Space Total: 107.4 GB
-| Data Space Available: 66.01 GB
-| Metadata Space Used: 4.379 MB
-| Metadata Space Total: 2.147 GB
-| Metadata Space Available: 2.143 GB
-| Udev Sync Supported: true
-| Deferred Removal Enabled: false
-| Deferred Deletion Enabled: false
-| Deferred Deleted Device Count: 0
-| Data loop file: /var/lib/docker/devicemapper/devicemapper/data
-| Metadata loop file: /var/lib/docker/devicemapper/devicemapper/metadata
-| Library Version: 1.02.109 (2015-09-22)
-| Execution Driver: native-0.2
-| Logging Driver: journald
-| Kernel Version: 4.3.3-303.fc23.x86_64
-| Operating System: Fedora 23 (Workstation Edition)
-| CPUs: 2
-| Total Memory: 1.821 GiB
-| Name: localhost.localdomain
-| ID: GEFR:KSZ5:SHLG:BIT6:FIFU:AOJG:7LXK:RQ22:HUXF:FTJS:Q4FY:U2LY
-| Username: shradha09
-| Registry: https://index.docker.io/v1/
-
-
       A repository can hold different versions of an image.Any number of public repositeries could be created for the images.By default, one private repository is provided to the users.One can buy more private repositories.
 
+ Docker Hub account can be created either by visiting the website or from command line.
 
- Docker Hub account could be created either by visiting the website or from command line.
 
 1.Visit following website : https://hub.docker.com
 
@@ -171,7 +130,7 @@ Explanation for prefixes before each generated result :
 ## Publishing an image to the Registry
 
  
-Assuming an image is already been created suitable for development environment. This image could be shared by using tar ball or uploaded in a centralised location from where any user can pull that image.Central location can be either Publicor Private registry. The uploading of image is done by using *docker push* command.
+Assuming an image is already been created suitable for development environment. This image can be shared by using tar ball or uploaded in a centralised location from where any user can pull that image.Central location can be either Publicor Private registry. The uploading of image is done by using *docker push* command.
 
 ### A local registry has to be set up for pushing the images/repositeries locally.
 
@@ -249,7 +208,7 @@ Example :
 
   #####Metadata- Through Metadata of an image Docker will come to know about how the image is been created, using *history* command, by looking at the information provided in the metadata recursively, reaching origin.
 
-~~ By *inspect* command, commit messages for all the layers could be obtained.
+~~ By *inspect* command, commit messages for all the layers can be obtained.
 
 Example : $ docker inspect --format='{{.Comment}}' shradha09/ubuntu:httpd
             
@@ -279,7 +238,7 @@ To remove the image from the host, *docker rmi* command is used, it will remove 
 
 ~~ Additional Info ~~
 
-All the containers and images could be removed, but prove to be destructive,keeping this in mind, here are few commands that could remove images and containers:
+All the containers and images can be removed, but prove to be destructive,keeping this in mind, here are few commands that could remove images and containers:
 
 1. To stop all containers :
   
