@@ -234,20 +234,6 @@ Example :
           `$ docker history abcd/ubuntu:httpd`
 
 
-  IMAGE 	   CREATED	  CREATED BY	             SIZE	  COMMENT
-		
-
- 0dd2462fdefe     4 hours ago	   /bin/bash	              0 B	  Ubuntu with HTTPD package 
- 
- 6cc0fc2a5ee3     3 weeks ago 	 /bin/sh -c #(nop)            0 B           
-                                 CMD ["/bin/bash"]	        
-
- f80999a1f330	  3 weeks ago	 /bin/sh -c sed -i            1.895 KB
-                                's/^#\s*\(deb.*universe\)$/	
-			
- 92ec6d044cb3	  3 weeks ago	/bin/sh -c #(nop)             187.7 MB
-                                 ADD file:7ce20ce3daa6af21db	
-
 
 <table style="width:100%">
    <tr>
@@ -421,54 +407,54 @@ Using the *docker commit* command is a pretty simple way of extending an image b
 
    $ cat Dockerfile
    
-   # Pick up the base image
+    Pick up the base image
     FROM ubuntu
-   # Add author name
-   MAINTAINER shradha09
-   # Add the command to run at the start of container CMD date
+    Add author name
+    MAINTAINER shradha09
+    Add the command to run at the start of container CMD date
     
 
 ### Run the following command inside the directory, to build the image : 
 
            $ docker build .
 
-OUTPUT : | Sending build context to Docker daemon 2.048 kB
-         | Step 1 : FROM ubuntu
-         |    ---> 6cc0fc2a5ee3
-         | Step 2 : MAINTAINER shradha09
-         |    ---> Running in 41a3ad61485d
-         |    ---> 15e643a46289
-         | Removing intermediate container 41a3ad61485d
-         | Step 3 : CMD date
-         |    ---> Running in 15600c5596e2
-         |    ---> 64910446ed6c
-         | Removing intermediate container 15600c5596e2
-         | Successfully built 64910446ed6c
+OUTPUT : <p> Sending build context to Docker daemon 2.048 kB</p>
+         <p> Step 1 : FROM ubuntu</p>
+         <p>    ---> 6cc0fc2a5ee3</p>
+         <p> Step 2 : MAINTAINER shradha09</p>
+         <p>    ---> Running in 41a3ad61485d</p>
+         <p>    ---> 15e643a46289</p>
+         <p> Removing intermediate container 41a3ad61485d</p>
+         <p> Step 3 : CMD date</p>
+         <p>    ---> Running in 15600c5596e2</p>
+         <p>    ---> 64910446ed6c </p>
+         <p> Removing intermediate container 15600c5596e2 </p>
+         <p> Successfully built 64910446ed6c</p>
 
 
-Note : This build is run by the Docker deamon,not by the CLI. The build process first of all will send the entire context(recursively) to the deamon. 
+Note : This build run by the Docker daemon,not by the CLI. The build process will send the entire context(recursively) to the deamon. 
 
 
 #### We can also specify any repository or tag name while building the image with -t option as follows : 
 
    $ docker build -t ubuntu/abc
 
-OUTPUT :| Sending build context to Docker daemon 2.048 kB
-        | Step 1 : FROM ubuntu
-	|     ---> 6cc0fc2a5ee3
-	| Step 2 : MAINTAINER shradha09
-	|     ---> Using cache
- 	|     ---> 15e643a46289
-	| Step 3 : CMD date
-	|      ---> Using cache
-	|      ---> 64910446ed6c
-   	| Successfully built 64910446ed6c
+OUTPUT :<p> Sending build context to Docker daemon 2.048 kB </p>
+        <p> Step 1 : FROM ubuntu</p>
+	<p>   ---> 6cc0fc2a5ee3 </p>
+	<p> Step 2 : MAINTAINER shradha09</p>
+	<p>     ---> Using cache </p>
+ 	<p>     ---> 15e643a46289 </p>
+	<p> Step 3 : CMD date </p>
+	<p>      ---> Using cache</p>
+	<p>     ---> 64910446ed6c </p> 
+   	<p>  Successfully built 64910446ed6c </p> 
  
-The above command will give different output, here we are using cache after each instruction. Docker tries to save the intermediate images and use them in subsequent builds to accelerate the build process.
+Above command will give different output, here we are using cache after each instruction. Docker tries to save the intermediate images and use them in subsequent builds to accelerate the build process.
    If we don't want to cache the intermediate images, then add *--no-cache* option with docker build.
 
 
- ~~ Working of Docker build ~~
+    _Working of Docker build_
 
 
 Docker build, build images from a Dockerfile and a “context”. A build’s context is the files located in the specified PATH or URL. The build process can refer to any of the files in the context. 
@@ -482,7 +468,7 @@ We could also include a *.dockerignore* command in the current working directory
    After executing each instruction, Docker commits every intermediate images and run the container with the next instruction and commits, it keeps on removing the intermediate container in the previous step to make space for the new container after reading the instructions.
 
 
-~~ Additional ~~
+    _Additional Info_
 
 To look for intermediate layers of an image, specify -a option with docker images : 
 
@@ -518,14 +504,7 @@ To look for intermediate layers of an image, specify -a option with docker image
     <td>3 weeks ago </td>
     <td>187.9 MB </td>
   </tr>
-
-
 </table>
-
-
-
-
-
 
 
 ### Dockerfile Documentation 
@@ -533,10 +512,10 @@ To look for intermediate layers of an image, specify -a option with docker image
 
 The format of Dockerfile is as follows :
  
-~~ INSTRUCTION ARGUMENTS ~~
+   _INSTRUCTION ARGUMENTS_
 
 Instructions are always given in Uppercase but they are not case sensitive.They are evaluated in order. 
-A *#* in the beginning is treated as the comment. 
+<p>A **#** in the beginning is treated as the comment. </p>
 
 Types of Instructions  : 
 
@@ -551,14 +530,16 @@ Image with tag could also be placed :
 
 Multiple FORM instructions are possible in single Dockerfile to create several different images. 
 
-* If only the image name is given in the Dockerfile such as Ubuntu or centos, the images will be downloaded from Default Docker Registry i.e from Docker Hub. *
+* If only the image name is given in the Dockerfile such as Ubuntu or centos, the images will be downloaded from Default Docker Registry i.e from Docker Hub.
 
-If you want to use the private or third-party images, then following command has to be used:
+* If you want to use the private or third-party images, then following command has to be used:
 
-Syntax :  #### [registry_hostname[:port]/][user_name/](repository_name:version_tag)
+Syntax :  [registry_hostname[:port]/][user_name/](repository_name:version_tag)
+<p> </p>
 
 Example : registry_hostname:5000/shradha09/centos7:httpd
 
+<p></p>
 
 b.) MAINTAINER- It sets the author name for the generated image.
 
@@ -580,10 +561,11 @@ As in Docker we create layers over top of other layers to make the resulting ima
   By default, Docker tries to cache the layers committed by different RUN instructions, so that it can be use in subsequent builds.This behaviour could be turned off by using --no-cache flag while the image is build.
   Once the parameters are defined with the ENTRYPOINT instruction,they cannot be overwritten at runtime.However, ENTRYPOINT can be used as CMD, if parameters are needed to be changed.
 
+<p></p>
 
 d.) LABEL- Docker 1.6 added a new feature to the attached arbitrary key-value pair to Docker images and containers.To give a label to            an image, LABEL instruction is used in the Dockerfile as LABEL distro=ubuntu.
 
-
+<p></p>
 
 e.) CMD- The CMD instruction provides a default executable while starting a container. If the CMD instruction does not have an executable, then it will provide arguments to ENTRYPOINT.
           Given how much easier it is to override the CMD, the recommendation is use CMD in your Dockerfile when you want the user of your image to have the flexibility to run whichever executable they choose when starting the container. 
@@ -596,7 +578,7 @@ e.) CMD- The CMD instruction provides a default executable while starting a cont
 
 Note: Only one CMD instruction is allowed in a Dockerfile. If more than one is specified, then only the last one will be read.
 
-
+<p></p>
 
 
 f.) ENTRYPOINT- Both ENTRYPOINT and CMD gives a way to identify which executable should be run when a container is started from an image.Also, if you want your image to be runnable (without additional docker run command line arguments) you must specify an ENTRYPOINT or CMD.
