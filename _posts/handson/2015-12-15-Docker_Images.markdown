@@ -56,7 +56,7 @@ ads: false
 | Registry: https://index.docker.io/v1/
 
 
-        A repository can hold different versions of an image.Any number of public repositeries could be created for the images.By default, one private repository is provided to the users.One can buy more private repositories.
+      A repository can hold different versions of an image.Any number of public repositeries could be created for the images.By default, one private repository is provided to the users.One can buy more private repositories.
 
 
  Docker Hub account could be created either by visiting the website or from command line.
@@ -437,7 +437,26 @@ To look for intermediate layers of an image, specify -a option with docker image
 
 
 
-### Dockerfile Documnetation 
+<table style="width:100%">
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td> 
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td> 
+    <td>94</td>
+  </tr>
+</table>
+
+
+
+
+
+
+
+### Dockerfile Documentation 
 
 
 The format of Dockerfile is as follows :
