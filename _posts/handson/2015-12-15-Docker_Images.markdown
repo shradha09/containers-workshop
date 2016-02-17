@@ -21,9 +21,13 @@ ads: false
 
      $ docker info
 
+<img src="https://raw.githubusercontent.com/shradha09/containers-workshop/5f3e534c153e3aa91e16be69ea2d227156e04c8b/images/docker_info.png" >
 
-<a href="https://raw.githubusercontent.com/shradha09/containers-workshop/5f3e534c153e3aa91e16be69ea2d227156e04c8b/images/docker_info.png">Docker Information</a>
+
+<a href="https://raw.githubusercontent.com/shradha09/containers-workshop/5f3e534c153e3aa91e16be69ea2d227156e04c8b/images/docker_info.png"></a>
  
+
+
 | Containers: 30
 | Images: 47
 | Server Version: 1.9.1-fc23
