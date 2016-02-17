@@ -453,8 +453,8 @@ To look for intermediate layers of an image, specify -a option with docker image
    </tr>
      
   <tr>
-    <td> <none> </td>
-    <td><none></td> 
+    <td> "<none>" </td>
+    <td> "<none>" </td> 
     <td>2ef91804894a</td>
     <td>3 weeks ago </td>
     <td>187.9 MB </td>  
