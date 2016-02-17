@@ -52,7 +52,7 @@ There are two ways of creating and updating an image :
 2.You can use a Dockerfile to specify instructions to create an image.
 
 
- ~ Creating image by manually committing layers ~
+  #### ~ Creating image by manually committing layers ~
 
 As soon as a container is started, a read/write layer gets attached to it. This layer will get destroyed if not saved.Following explanation will show how to save that layer and make a new image from running or stopped container by using *docker commit* command.
 
