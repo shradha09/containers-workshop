@@ -438,15 +438,26 @@ To look for intermediate layers of an image, specify -a option with docker image
 
 
 <table style="width:100%">
+   <tr>
+    <th>REPOSITORY</th>
+    <th>TAG</th>		
+    <th>IMAGE ID</th> 
+    <th>CREATED</th> 
+    <th>VIRTUAL SIZE</th>
+   </tr>
+     <td>docker.io/ubuntu</td>
+     <td>latest</td>
+     <td>6cc0fc2a5ee3</td>
+     <td>3 weeks ago</td>
+     <td>187.9 MB</td>    
+   </tr>
+     
   <tr>
-    <td>Jill</td>
-    <td>Smith</td> 
-    <td>50</td>
-  </tr>
-  <tr>
-    <td>Eve</td>
-    <td>Jackson</td> 
-    <td>94</td>
+    <td> <none> </td>
+    <td><none></td> 
+    <td>2ef91804894a</td>
+    <td>3 weeks ago </td>
+    <td>187.9 MB </td>  
   </tr>
 </table>
 
