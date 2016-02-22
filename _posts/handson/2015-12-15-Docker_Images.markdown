@@ -926,12 +926,15 @@ The above command creates a supermin appliance containing the packages "bash" an
   bin	boot	dev	etc	home	lib	lib64	media	mnt	opt	proc	root	run	
   abin	srv	sys	tmp	usr	var	
 ```
-  _We can export the directory as docker image using following command_:
+  
+
+  We can export the directory as docker image using following command:
 
     `$ tar -C ubuntu_image/ -c . | docker import - skhare/ubuntu`
-```
-f6f5f2dd61de2f1cca7475824df9af2ffc3d337ad0660d212c82c94441789426
-```
+
+`f6f5f2dd61de2f1cca7475824df9af2ffc3d337ad0660d212c82c94441789426`
+
+
    Using command *docker images* a new image with skhare/ubuntu as name will be seen
  
 
@@ -940,6 +943,7 @@ In *build* mode, the supermin appliance created from the prepare mode gets conve
 
 
 ## Creating the base image - using Debootstrap
+
 
 Debootstrap is a tool which will install a Debian base system into a subdirectory of another, already installed system. It can also be installed and run from another operating system, so, for instance, you can use debootstrap to install Debian onto an unused partition. 
 
@@ -952,9 +956,9 @@ Following commands can be used to create the base-image :
 
   `$ debootstrap [OPTION...] SUITE TARGET [MIRROR [SCRIPT]]`
 
-- _SUITE_: It refers to the release code name.
+- SUITE: It refers to the release code name.
 
-- _MIRROR_: Refers to the respective repository
+- MIRROR: Refers to the respective repository
 
 Example : Create a base image of fedora 23, using following steps :
  
