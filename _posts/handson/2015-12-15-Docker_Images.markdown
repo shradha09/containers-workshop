@@ -724,22 +724,56 @@ Automated Builds are supported for both public and private repositories on both 
 
 Automated build repositories rely entirely on the integration with your code repository. You cannot push to these image repositories using the docker push command. You can only change the image by committing to your code repository. If you want to do both, docker push and an automated build, you would create a regular repository for the docker push and an automated build repository.
 
-##### 1. Select Create > Create Automated Build from Docker Hub.
+#####  Select Create > Create Automated Build from Docker Hub.
       
 The system prompts you with a list of User/Organizations and code repositories.
-
-##### 2.Select from the User/Organizations.
-
-##### 3.Optionally, type to filter the repository list.
-
-##### 4.Pick the project to build.
 
 
 ![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/Docker_Hub_Linking_with_GitHub.png)
 
-![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/HOME_PAGE.png)
+Link GitHub or Bitbucket account for creating automated build.(Github in this example ) 
+
+After linkage:
+
+![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/bde87096ffdd137825c886e33459963545dcbd2b/images/profiles_settings_links.png)
+
+Creating Automated Build : 
+
 
 ![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/creating_automated_build.png)
+
+
+
+Choose Public & Private Access or Limited Access ( Public-Private Recommended)
+
+
+![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/select_Public_%26_Private-access.png)
+
+
+
+##### Optionally, type to filter the repository list
+
+
+Choose the repository :
+
+![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/choosing_repo.png)
+
+
+##### Pick the project to build.
+
+
+The Automated Build is created. 
+
+
+Go to Dashboard, select Automated build just created, its home page opens up.
+
+
+![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/HOME_PAGE.png)
+
+
+Go to build settings on Home Page :
+
+
 
 ![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/build_settings.png)
 
@@ -747,44 +781,23 @@ The system prompts you with a list of User/Organizations and code repositories.
 
 ![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/build_settings2.png)
 
-![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/choosing_repo.png)
+Go to Collaborators on home page   :
 
-![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/create_linkage_Github_or_bitbucket.png)
-
-![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/select_Public_%26_Private-access.png)
-
-![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/setting_at_GitHub_Webhooks_%26_Services.png)
-
-![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/bde87096ffdd137825c886e33459963545dcbd2b/images/profiles_settings_links.png)
 
 ![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/Contributors.png)
 
-![alt text]()
-
-![alt text]()
 
 
+Settings at Github : 
 
 
+![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/setting_at_GitHub_Webhooks_%26_Services.png)
 
 
+When we select a GitHub repository for automated build, GiHub enables the Docker service for the selected repository.
+Whenever some changes are made to the Github repository, such as commits, an automated build gets triggered using the Dockerfile inside the repository.
 
-
-
-
-
-
-
-
-
-
-
-
-
-      
-
-
-
+From Seetings > Webhooks & Services section on GitHub you can unregister the Docker Service, this will result in stopping Automated Builds.
 
 
   The system displays the Create Automated Build dialog.
@@ -864,9 +877,9 @@ second when you need to boot one of them.
 
 Supermin does not need to be run as root, and generally should notbe run as root.It does not affect the host system or the packages installed on the host system.
 
-   ####Two modes of Supermin
+ Two modes of Supermin:
 
- _PREAPARE MODE_
+ _PREPARE MODE_
 
   *--prepare* creates the tiny supermin appliance in the given output directory. Give the list of packages that are to be installed, and supermin will automatically find all the dependencies. The listof packages has to be installed on the host machine . 
 
