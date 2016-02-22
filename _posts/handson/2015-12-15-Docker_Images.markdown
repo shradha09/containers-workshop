@@ -525,14 +525,15 @@ ADD has two forms:
     ADD ["<src>",... "<dest>"] (this form is required for paths containing whitespace)
 
 ```
+
 The ADD instruction copies new files, directories or remote file URLs from _<src>_ and adds them to the filesystem of the container at the path _<dest>_.
 
-Multiple <src> resource may be specified but if they are files or directories then they must be relative to the source directory that is being built (the context of the build).
+Multiple *<src>* resource may be specified but if they are files or directories then they must be relative to the source directory that is being built (the context of the build).
        
 
-  <src> : This must be the file or directory inside the build directory from which we are building an image, which is also called the comtext of the build.A source can be a remote URL as well.
+  *<src>* : This must be the file or directory inside the build directory from which we are building an image, which is also called the comtext of the build.A source can be a remote URL as well.
 
-  <dest> : This must be the absolute path inside the container in which the files/directory from the source will be copied.
+  *<dest>* : This must be the absolute path inside the container in which the files/directory from the source will be copied.
 
 
 j.)COPY- COPY has two forms:
