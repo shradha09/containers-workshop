@@ -47,7 +47,7 @@ There are two ways of creating and updating an image :
 2.You can use a Dockerfile to specify instructions to create an image.
 
 
-    ~~Creating image by manually committing layers~~ 
+    _Creating image by manually committing layers_
 
 As soon as a container is started, a read/write layer gets attached to it. This layer will get destroyed if not saved.Following explanation will show how to save that layer and make a new image from running or stopped container by using *docker commit* command.
 
@@ -81,8 +81,8 @@ fad6c5680d63        registry:2          "/bin/registry /etc/d"   7 days ago     
 ```
 
 
-   
-  $ docker images
+    ` $ docker images `
+
 
 ```
 REPOSITORY                            TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
@@ -107,9 +107,9 @@ A new image is being committed to the local repository with the name shradha09/u
 
 1.To look which files are changed or modified since the container has started use the following command : 
 
-  Syntax :  $ docker diff [CONTAINER_ID]
+  Syntax :  `$ docker diff [CONTAINER_ID]`
 
-  Example : $ docker diff 3b7d8fcd0a1d
+  Example : `$ docker diff 3b7d8fcd0a1d`
              
             C /run
             A /run/secrets
@@ -141,9 +141,9 @@ This command will use the username and registry shown in the *docker info* comma
 
 For pushing the image we created, use following command:
 
-   $ docker push abcd/ubuntu:httpd
+   `$ docker push abcd/ubuntu:httpd`
 
-
+```
   The push refers to a repository [docker.io/abcd/ubuntu] (len: 1)
   0dd2462fdefe: Pushed 
   6cc0fc2a5ee3: Pushed 
@@ -151,9 +151,10 @@ For pushing the image we created, use following command:
   2ef91804894a: Pushed 
   92ec6d044cb3: Pushed 
   httpd: digest: sha256:794def2e25f46a69c8f9c2c35704566dc573be4857a0f24b4cf02820b|304d0a7 size: 8101 
-
+```
  
-         Suppose, you want to push the image to the local registry, hosted on host named localhost_registry. For this, the image has to be tagged with registry's host name or IP address with port number on which the registry is running and then the image is pushed.
+   
+      Suppose, you want to push the image to the local registry, hosted on host named localhost_registry. For this, the image has to be tagged with registry's host name or IP address with port number on which the registry is running and then the image is pushed.
 
 
       `$ docker tag [-f``|``--force[=false]  IMAGE  [REGISTRYHOST/]  [USERNAME/]NAME[:TAG] `
@@ -201,9 +202,9 @@ f80999a1f330    3 weeks ago     /bin/sh -c sed -i 's/^#\s*\(deb.*universe\)$/   
 ```
   _Metadata_ - Through Metadata of an image Docker will come to know about how the image is been created, using *history* command, by looking at the information provided in the metadata recursively, reaching origin.
 
-~~ By *inspect* command, commit messages for all the layers can be obtained.
+   "By *inspect* command, commit messages for all the layers can be obtained."
 
-Example : $ docker inspect --format='{{.Comment}}' shradha09/ubuntu:httpd
+Example :` $ docker inspect --format='{{.Comment}}' shradha09/ubuntu:httpd`
             
           Ubuntu with HTTPD package
 
@@ -214,12 +215,12 @@ Example : $ docker inspect --format='{{.Comment}}' shradha09/ubuntu:httpd
 
 To remove the image from the host, *docker rmi* command is used, it will remove the images from host not from the registry.
 
-~~ Syntax for Removing Image : 
+  _Syntax for Removing Image_ :
    
   ` $ docker rmi [OPTIONS]  IMAGE  [IMAGE...]`
 
-
-~~ Example :  
+ 
+  _Example_ :  
     
    `$ docker rmi abcd/ubuntu:httpd`
 
@@ -229,7 +230,7 @@ To remove the image from the host, *docker rmi* command is used, it will remove 
 
 
 
-~~ Additional Info ~~
+  _Additional Info_
 
 All the containers and images can be removed, but prove to be destructive,keeping this in mind, here are few commands that could remove images and containers:
 
@@ -247,27 +248,26 @@ All the containers and images can be removed, but prove to be destructive,keepin
 
 
 
-
 ## Exporting an Image  
 
 If due to some restrictive policies which do not allow to use images from publicdomain. In such cases, the images could be shared using tarballs, which later can be imported on another system by using *docker save* command.
 
 Note: Pull or import one or more Docker images on the docker host. 
 
-~~ Syntax to save the image in tar file : 
+  _Syntax to save the image in tar file_ : 
 
 
   `$ docker save [-o |--output=""] IMAGE  [:TAG]`
 
 
-~~ Example, creating a tar file for Ubuntu, run following command :
+  _Example, creating a tar file for Ubuntu, run following command_ :
 
 
   `$ docker save --output=ubuntu.tar ubuntu`
 
 Note: If the tag name is specified with the image we want to export, such as          unbuntu:latest, then only the layers related to that tag will get exported.
 
-~~ Additional Info ~~
+   _Additional Info_
 
 If --output or -o is not used, then the output will be streamed to STDOUT : 
 
@@ -303,22 +303,25 @@ These commands will first create an empty filesystem and then import the content
 
 ## Building images using Dockerfiles
 
+
 Using the *docker commit* command is a pretty simple way of extending an image but, it will be slow and complicated and therefore inefficient also sharing of image for development process among the team will become difficult. 
    A new command that could overcome the above problem is  *docker build*, for building new images from scratch.
 
  To do this you create a *Dockerfile* that contains a set of instructions that tell Docker how to build an image, Docker builder will read instructions from Dockerfile which is a text file and executes them in sequence.
 
+
+
 ### Steps :
 
 1. Create a Directory 
   
-   $ mkdir image_example
+  `$ mkdir image_example`
    
-   $ cd image_example
+   `$ cd image_example`
 
 2. Create file named Dockerfile with following contents inside the directory: 
 
-   $ cat Dockerfile
+   `$ cat Dockerfile`
    
     Pick up the base image
      FROM ubuntu
@@ -330,7 +333,7 @@ Using the *docker commit* command is a pretty simple way of extending an image b
 ### Run the following command inside the directory, to build the image : 
 
            `$ docker build .`
-
+```
 OUTPUT : Sending build context to Docker daemon 2.048 kB
          Step 1 : FROM ubuntu
             ---> 6cc0fc2a5ee3
@@ -343,7 +346,7 @@ OUTPUT : Sending build context to Docker daemon 2.048 kB
             ---> 64910446ed6c 
          Removing intermediate container 15600c5596e2 
          Successfully built 64910446ed6c
-
+```
 
 Note : This build run by the Docker daemon,not by the CLI. The build process will send the entire context(recursively) to the deamon. 
 
@@ -351,8 +354,9 @@ Note : This build run by the Docker daemon,not by the CLI. The build process wil
 
 #### We can also specify any repository or tag name while building the image with -t option as follows : 
 
-   $ docker build -t ubuntu/abc
+   `$ docker build -t ubuntu/abc`
 
+```
 OUTPUT : Sending build context to Docker daemon 2.048 kB 
         Step 1 : FROM ubuntu
 	   ---> 6cc0fc2a5ee3 
@@ -363,12 +367,14 @@ OUTPUT : Sending build context to Docker daemon 2.048 kB
          ---> Using cache
 	     ---> 64910446ed6c 
    	  Successfully built 64910446ed6c 
- 
+``` 
+
+
 Above command will give different output, here we are using cache after each instruction. Docker tries to save the intermediate images and use them in subsequent builds to accelerate the build process.
    If we don't want to cache the intermediate images, then add *--no-cache* option with docker build.
 
 
-    _Working of Docker build_
+    _Working of Docker build_ :
 
 
 Docker build, build images from a Dockerfile and a “context”. A build’s context is the files located in the specified PATH or URL. The build process can refer to any of the files in the context. 
@@ -386,7 +392,7 @@ We could also include a *.dockerignore* command in the current working directory
 
 To look for intermediate layers of an image, specify -a option with docker images : 
 
-  $ docker images -a 
+  `$ docker images -a`
 
 ```
 REPOSITORY	TAG	IMAGE ID	CREATED	VIRTUAL SIZE
@@ -403,7 +409,7 @@ The format of Dockerfile is as follows :
    _INSTRUCTION ARGUMENTS_
 
 Instructions are always given in Uppercase but they are not case sensitive.They are evaluated in order. 
-A *#* in the beginning is treated as the comment. </p>
+A *#* in the beginning is treated as the comment. 
 
 Types of Instructions  : 
 
