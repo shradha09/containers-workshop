@@ -968,8 +968,9 @@ Example : Create a base image of fedora 23, using following steps :
 
     ` $ ls ./deboot_chroot`
 
-```     bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr    var			    
-```
+`bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr var`
+
+
  4.  Export the directory as a Docker image with following command : 
     
      `$ tar -C deboot_chroot/-c . | docker import - skhare/fedora`
