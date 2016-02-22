@@ -739,21 +739,21 @@ The system prompts you with a list of User/Organizations and code repositories.
 
 ![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/HOME_PAGE.png)
 
-![alt text]()
+![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/creating_automated_build.png)
 
-![alt text]()
+![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/build_settings.png)
 
-![alt text]()
+![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/build_settings1.png)
 
-![alt text]()
+![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/build_settings2.png)
 
-![alt text]()
+![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/choosing_repo.png)
 
-![alt text]()
+![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/create_linkage_Github_or_bitbucket.png)
 
-![alt text]()
+![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/select_Public_%26_Private-access.png)
 
-![alt text]()
+![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/setting_at_GitHub_Webhooks_%26_Services.png)
 
 ![alt text]()
 
