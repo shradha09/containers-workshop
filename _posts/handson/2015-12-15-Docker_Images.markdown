@@ -136,15 +136,15 @@ Assuming an image is already been created suitable for development environment. 
 Syntax : $ docker push NAME[:TAG]
 
 
-This command will use the username and registry shown in the *docker info* command to push the images.Here, the username will be "abcd" and registry will be "https://index.docker.io/v1
+This command will use the username and registry shown in the *docker info* command to push the images.Here, the username will be "shradha09" and registry will be "https://index.docker.io/v1
 
 
 For pushing the image we created, use following command:
 
-   `$ docker push abcd/ubuntu:httpd`
+   `$ docker push shradha09/ubuntu:httpd`
 
 ```
-  The push refers to a repository [docker.io/abcd/ubuntu] (len: 1)
+  The push refers to a repository [docker.io/shradha09/ubuntu] (len: 1)
   0dd2462fdefe: Pushed 
   6cc0fc2a5ee3: Pushed 
   f80999a1f330: Pushed 
@@ -166,13 +166,13 @@ For pushing the image we created, use following command:
 Example : Suppose our registry is configured on some website say xyz.something.com, then for image tagging following command is used : 
        
  
-      `$ docker tag abcd/ubuntu:httpd xyz.something.com:5000/abcd/ubuntu:httpd`
+      `$ docker tag shradha09/ubuntu:httpd xyz.something.com:5000/shradha09/ubuntu:httpd`
 
 
 ### Push the image : 
 
 
-      `$ docker push xyz.something.com:5000/abcd/ubuntu:httpd`
+      `$ docker push xyz.something.com:5000/shradha09/ubuntu:httpd`
 
 Listing of all the intermediate layers are done which are required to make the specific image.Searches for the layers present already and copies only those layers which are not present in the registry with the metadata required to build theimage.
 
@@ -189,7 +189,7 @@ Syntax :
 
 
 Example : 
-          `$ docker history abcd/ubuntu:httpd`
+          `$ docker history shradha09/ubuntu:httpd`
 
 
 ```
@@ -222,9 +222,10 @@ To remove the image from the host, *docker rmi* command is used, it will remove 
  
   _Example_ :  
     
-   `$ docker rmi abcd/ubuntu:httpd`
-
-   Untagged : abcd/ubuntu:httpd
+<<<<<<< HEAD
+   `$ docker rmi shradha09/ubuntu:httpd`
+=======
+   Untagged : shradha09/ubuntu:httpd
    
    Deleted  : 6579dfa51537ac7a94f3ab03a76d5c5f06bceb2f2eae3e4e42a621620b91e57f
 
