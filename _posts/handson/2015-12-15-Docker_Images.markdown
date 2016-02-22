@@ -777,11 +777,68 @@ Go to build settings on Home Page :
 
 ![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/build_settings.png)
 
+##### 6.The system displays the home page for AUTOMATED BUILD.
+
+
+When a GitHub repository is added for automated build, GitHub enables the Docker service for that repository.
+
+ For more configurations, view : Settings > Applications
+
+Whenever we make any changes to the GitHub repository,such as commits,an automated build gets trigerred using the Dockerfile that resides in the GitHub repository.
+
+
+ _Details for Automated Build_ :
+
+Select Automated Build Container or Go to Details of the container, following details are found on the new opened web page :
+
+-_Repo Info_: Contains description about the repository, two types of descriptions could be read, short and full description.
+
+
+-_Tags_: Repository tags are similar to docker image tags, generally  we use 'latest' as tag, other used tags are httpd, version number etc.
+
+
+-_Dockerfile_: A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image. Using docker build users can create an automated build that executes several command-line instructions in succession.
+
+
+-_Build Details_: It consists of Status, Tag, Created, Last Updated , such information about the containers.
+
+
+-_Build Settings_: The Build Settings page allows you to manage your existing automated build configurations and add new ones. By default, when new code is merged into your source repository, it triggers a build of your DockerHub image.
+
+
+-_Collaborators_: Users contributing in the repositories.
+
+
+-_Webhooks_: One can use a webhook to cause an action in another application in response to an event in your automated build repository. Currently, the webhook fires when an image is built in or a new image tag is added to the automated build repository.
+           Webhook specifies a target URL and a JSON payload to deliver. The webhook generates an HTTP POST that delivers a JSON payload.
+
+
+-_Settings_: Consists of two sections, changing a Public repository, Private and an option for deleting the existing repository.
+
+  CAUTION: Deleting a repository will *destroy* all images stored in it,this action is not reverible.
+
+
+
+Automated build can  also be customized by using the link provided, which says: *Click here to customize* behaviour.
+
+
+Note: To specify which code branches or tags to build from. You can add new configurations by clicking the + (plus sign) on right hand side .
+
+
+
+Linking a Repository : 
+
+
 ![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/build_settings1.png)
+
+
+Adding Triggers to Automated Builds :
+
 
 ![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/build_settings2.png)
 
-Go to Collaborators on home page   :
+
+On Collaborators section of Home Page, contributors to the repository can be added : 
 
 
 ![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/Contributors.png)
@@ -797,59 +854,8 @@ Settings at Github :
 When we select a GitHub repository for automated build, GiHub enables the Docker service for the selected repository.
 Whenever some changes are made to the Github repository, such as commits, an automated build gets triggered using the Dockerfile inside the repository.
 
-From Seetings > Webhooks & Services section on GitHub you can unregister the Docker Service, this will result in stopping Automated Builds.
-
-
-  The system displays the Create Automated Build dialog.
-    
-
+From Settings > Webhooks & Services section on GitHub you can unregister the Docker Service, this will result in stopping Automated Builds.
 The dialog assumes some defaults which you can customize. By default, Docker builds images for each branch in your repository. It assumes the Dockerfile lives at the root of the source. When it builds an image,Docker tags it with the branch name.
-
-##### 5.Automated build could also be customized by using the link provided, which says: *Click here to customize* behaviour.
-
-
-Note: To specify which code branches or tags to build from. You can add new configurations by clicking the + (plus sign) on right hand side .
-           
-      
-##### 6.The system displays the home page for AUTOMATED BUILD.
-
-
-When a GitHub repository is added for automated build, GitHub enables the Docker service for that repository.
-
- For more configurations, view : Settings > Applications 
-
-Whenever we make any changes to the GitHub repository,such as commits,an automated build gets trigerred using the Dockerfile that resides in the GitHub repository.
-
-
- _Details for Automated Build_ : 
-
-Select Automated Build Container or Go to Details of the container, following details are found on the new opened web page : 
-
--_Repo Info_: Contains description about the repository, two types of descriptions could be read, short and full description.
-
-
--_Tags_: Repository tags are similar to docker image tags, generally  we use 'latest' as tag, other used tags are httpd, version number etc.
-
-
--_Dockerfile_: A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image. Using docker build users can create an automated build that executes several command-line instructions in succession.
-
-
--_Build Details_: It consists of Status, Tag, Created, Last Updated , such information about the containers. 
-
-
--_Build Settings_: The Build Settings page allows you to manage your existing automated build configurations and add new ones. By default, when new code is merged into your source repository, it triggers a build of your DockerHub image.
-
-
--_Collaborators_: Users contributing in the repositories.
- 
-
--_Webhooks_: One can use a webhook to cause an action in another application in response to an event in your automated build repository. Currently, the webhook fires when an image is built in or a new image tag is added to the automated build repository.
-           Webhook specifies a target URL and a JSON payload to deliver. The webhook generates an HTTP POST that delivers a JSON payload.
-
-
--_Settings_: Consists of two sections, changing a Public repository, Private and an option for deleting the existing repository.
-  
-  CAUTION: Deleting a repository will *destroy* all images stored in it,this action is not reverible.
 
 
 
