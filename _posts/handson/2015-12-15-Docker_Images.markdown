@@ -755,9 +755,9 @@ The system prompts you with a list of User/Organizations and code repositories.
 
 ![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/setting_at_GitHub_Webhooks_%26_Services.png)
 
-![alt text]()
+![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/bde87096ffdd137825c886e33459963545dcbd2b/images/profiles_settings_links.png)
 
-![alt text]()
+![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/Contributors.png)
 
 ![alt text]()
 
