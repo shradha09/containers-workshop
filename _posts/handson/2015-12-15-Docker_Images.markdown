@@ -479,10 +479,10 @@ Note: Only one CMD instruction is allowed in a Dockerfile. If more than one is s
 
 f.) ENTRYPOINT- Both ENTRYPOINT and CMD gives a way to identify which executable should be run when a container is started from an image.Also, if you want your image to be runnable (without additional docker run command line arguments) you must specify an ENTRYPOINT or CMD.
  
-```      ENTRYPOINT ["exectable","example1",....,"exampleN"]
+      ```ENTRYPOINT ["exectable","example1",....,"exampleN"]```
     
-         ENTRYPOINT ["example1",....,"exampleN"]
-```
+        ```ENTRYPOINT ["example1",....,"exampleN"]```
+
 
     The ENTRYPOINT or CMD that are specified in the Dockerfile identify the default executable for the image. However, the user has the option to override either of these values at run time.
     Once the parameters are defined with the ENTRYPOINT instruction,they cannot be overwritten at runtime.However, ENTRYPOINT can be used as CMD, if parameters are needed to be changed.
@@ -613,7 +613,7 @@ ADD ./supervisord.conf /etc/supervisord.conf
 CMD [ "supervisord", "-n" ]
 ``` 
 
-_Other supporting files in Repository_ : 
+     _Other supporting files in Repository_ : 
 
 -README.md: This is the README file.
 
