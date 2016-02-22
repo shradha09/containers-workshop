@@ -511,7 +511,7 @@ h.)ENV- The ENV instruction sets the environment variable *<key>* to the value *
 
 The ENV instruction has two forms. The first form, ENV <key> <value>, will set a single variable to a value. The entire string after the first space will be treated as the _<value>_ - including characters such as spaces and quotes.
 
-The second form, _ENV <key>=<value>_ ..., allows for multiple variables to be set at one time. Notice that the second form uses the equals sign (=) in the syntax, while the first form does not. 
+The second form, ENV <key>=<value> ..., allows for multiple variables to be set at one time. Notice that the second form uses the equals sign (=) in the syntax, while the first form does not. 
 
 
 
@@ -526,12 +526,12 @@ ADD has two forms:
 ```
 The ADD instruction copies new files, directories or remote file URLs from _<src>_ and adds them to the filesystem of the container at the path _<dest>_.
 
-Multiple _<src>_ resource may be specified but if they are files or directories then they must be relative to the source directory that is being built (the context of the build).
+Multiple <src> resource may be specified but if they are files or directories then they must be relative to the source directory that is being built (the context of the build).
        
 
-  _<src>_ : This must be the file or directory inside the build directory from which we are building an image, which is also called the comtext of the build.A source can be a remote URL as well.
+  <src> : This must be the file or directory inside the build directory from which we are building an image, which is also called the comtext of the build.A source can be a remote URL as well.
 
-  _<dest>_ : This must be the absolute path inside the container in which the files/directory from the source will be copied.
+  <dest> : This must be the absolute path inside the container in which the files/directory from the source will be copied.
 
 
 j.)COPY- COPY has two forms:
@@ -543,17 +543,17 @@ j.)COPY- COPY has two forms:
 
 The COPY instruction copies new files or directories from <src> and adds them to the filesystem of the container at the path <dest>.
 
-Multiple _<src>_ resource may be specified but they must be relative to the source directory that is being built (the context of the build).
+Multiple <src> resource may be specified but they must be relative to the source directory that is being built (the context of the build).
 
 
 
 k.)VOLUME- This instruction will create a mount point with the given name and flag it as mounting the external volume using the following command : 
 
-   VOLUME ["/data]
+  ``` VOLUME ["/data]
 
  Alternatively used code : 
 
-   VOLUME /data
+   VOLUME /data ```
 
 
 l.)USER- This sets the username for any of the following run instructions using the following syntax :
@@ -624,7 +624,7 @@ CMD [ "supervisord", "-n" ]
  
 For building new Image ,use following *build* command :
 
-     `$ docker build -t fedora/jenkins`
+     ```$ docker build -t fedora/jenkins```
 
 The build process takes the base image of Jenkins, installs given RUN from the Dockerfile.
 
@@ -788,13 +788,14 @@ The system prompts you with a list of User/Organizations and code repositories.
 
 
   The system displays the Create Automated Build dialog.
+    
 
-
-    The dialog assumes some defaults which you can customize. By default, Docker builds images for each branch in your repository. It assumes the Dockerfile lives at the root of the source. When it builds an image,Docker tags it with the branch name.
+The dialog assumes some defaults which you can customize. By default, Docker builds images for each branch in your repository. It assumes the Dockerfile lives at the root of the source. When it builds an image,Docker tags it with the branch name.
 
 ##### 5.Automated build could also be customized by using the link provided, which says: *Click here to customize* behaviour.
 
-        Note: To specify which code branches or tags to build from. You can add new configurations by clicking the + (plus sign) on right hand side .
+
+Note: To specify which code branches or tags to build from. You can add new configurations by clicking the + (plus sign) on right hand side .
            
       
 ##### 6.The system displays the home page for AUTOMATED BUILD.
