@@ -189,7 +189,7 @@ Syntax :
 
 
 Example : 
-          `$ docker history abcd/ubuntu:httpd`
+          `$ docker history shradha09/ubuntu:httpd`
 
 
 ```
@@ -222,8 +222,9 @@ To remove the image from the host, *docker rmi* command is used, it will remove 
  
   _Example_ :  
     
+<<<<<<< HEAD
    `$ docker rmi shradha09/ubuntu:httpd`
-
+=======
    Untagged : shradha09/ubuntu:httpd
    
    Deleted  : 6579dfa51537ac7a94f3ab03a76d5c5f06bceb2f2eae3e4e42a621620b91e57f
