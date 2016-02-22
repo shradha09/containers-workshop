@@ -222,9 +222,9 @@ To remove the image from the host, *docker rmi* command is used, it will remove 
  
   _Example_ :  
     
-<<<<<<< HEAD
+<<<<<< HEAD
    `$ docker rmi shradha09/ubuntu:httpd`
-=======
+
    Untagged : shradha09/ubuntu:httpd
    
    Deleted  : 6579dfa51537ac7a94f3ab03a76d5c5f06bceb2f2eae3e4e42a621620b91e57f
@@ -726,11 +726,14 @@ Automated Builds are supported for both public and private repositories on both 
 Automated build repositories rely entirely on the integration with your code repository. You cannot push to these image repositories using the docker push command. You can only change the image by committing to your code repository. If you want to do both, docker push and an automated build, you would create a regular repository for the docker push and an automated build repository.
 
 #####  Select Create > Create Automated Build from Docker Hub.
-      
+     
+ 
 The system prompts you with a list of User/Organizations and code repositories.
 
 
 ![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/Docker_Hub_Linking_with_GitHub.png)
+
+
 
 Link GitHub or Bitbucket account for creating automated build.(Github in this example ) 
 
