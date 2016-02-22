@@ -15,7 +15,7 @@ ads: false
 ##Creating an account with Docker Hub
 
 
-      Docker Hub is like GitHub for images. It is a public registry on which both public and private images could be hosted, shared and collaborated with others. It has integration with GitHub, Bitbukcket and could trigger automated build.Information about docker system can be gathered by using following command: 
+      Docker Hub is like GitHub for images. It is a public registry on which both public and private images can be hosted, shared and collaborated with others. It has integration with GitHub, Bitbukcket and can trigger automated build.Information about docker system can be gathered by using following command: 
 
      $ docker info
 
@@ -23,7 +23,7 @@ ads: false
 
 
 
-      A repository can hold different versions of an image.Any number of public repositeries could be created for the images.By default, one private repository is provided to the users.One can buy more private repositories.
+      A repository can hold different versions of an image.Any number of public repositeries can be created for the images.By default, one private repository is provided to the users.One can buy more private repositories.
 
  Docker Hub account can be created either by visiting the website or from command line.
 
@@ -232,7 +232,7 @@ To remove the image from the host, *docker rmi* command is used, it will remove 
 
   _Additional Info_
 
-All the containers and images can be removed, but prove to be destructive,keeping this in mind, here are few commands that could remove images and containers:
+All the containers and images can be removed, but prove to be destructive,keeping this in mind, here are few commands that can remove images and containers:
 
 1. To stop all containers :
   
@@ -250,7 +250,7 @@ All the containers and images can be removed, but prove to be destructive,keepin
 
 ## Exporting an Image  
 
-If due to some restrictive policies which do not allow to use images from publicdomain. In such cases, the images could be shared using tarballs, which later can be imported on another system by using *docker save* command.
+If due to some restrictive policies which do not allow to use images from publicdomain. In such cases, the images can be shared using tarballs, which later can be imported on another system by using *docker save* command.
 
 Note: Pull or import one or more Docker images on the docker host. 
 
@@ -305,7 +305,7 @@ These commands will first create an empty filesystem and then import the content
 
 
 Using the *docker commit* command is a pretty simple way of extending an image but, it will be slow and complicated and therefore inefficient also sharing of image for development process among the team will become difficult. 
-   A new command that could overcome the above problem is  *docker build*, for building new images from scratch.
+   A new command that can overcome the above problem is  *docker build*, for building new images from scratch.
 
  To do this you create a *Dockerfile* that contains a set of instructions that tell Docker how to build an image, Docker builder will read instructions from Dockerfile which is a text file and executes them in sequence.
 
@@ -383,7 +383,7 @@ For example, your build can use an ADD instruction to reference a file in the co
 
 This is done by Docker Deamon and the entire context is transferred to it, this is the reason we see *Sending build context to Docker Deamon 2.048KB* message.
 
-We could also include a *.dockerignore* command in the current working directory with the files and directories, then those files will be ignored by the deamon.
+We can also include a *.dockerignore* command in the current working directory with the files and directories, then those files will be ignored by the deamon.
 
    After executing each instruction, Docker commits every intermediate images and run the container with the next instruction and commits, it keeps on removing the intermediate container in the previous step to make space for the new container after reading the instructions.
 
@@ -417,7 +417,7 @@ a.) FROM- This must be the first instruction to any Dockerfile, which sets the b
      
            FROM <image>
 
-Image with tag could also be placed : 
+Image with tag can also be placed : 
 
 
  _FROM <image>:<tag>_
@@ -453,7 +453,7 @@ c.) RUN- We can execute the RUN in following two ways :
 
 As in Docker we create layers over top of other layers to make the resulting image. Through *run* command we are actually committing layer on top of earlier committed layers. A container can be started form any of the committed layers . 
 
-  By default, Docker tries to cache the layers committed by different RUN instructions, so that it can be use in subsequent builds.This behaviour could be turned off by using --no-cache flag while the image is build.
+  By default, Docker tries to cache the layers committed by different RUN instructions, so that it can be use in subsequent builds.This behaviour can be turned off by using --no-cache flag while the image is build.
   Once the parameters are defined with the ENTRYPOINT instruction,they cannot be overwritten at runtime.However, ENTRYPOINT can be used as CMD, if parameters are needed to be changed.
 
 
@@ -791,13 +791,13 @@ Whenever we make any changes to the GitHub repository,such as commits,an automat
 
 Select Automated Build Container or Go to Details of the container, following details are found on the new opened web page :
 
--_Repo Info_: Contains description about the repository, two types of descriptions could be read, short and full description.
+-_Repo Info_: Contains description about the repository, two types of descriptions can be read, short and full description.
 
 
 -_Tags_: Repository tags are similar to docker image tags, generally  we use 'latest' as tag, other used tags are httpd, version number etc.
 
 
--_Dockerfile_: A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image. Using docker build users can create an automated build that executes several command-line instructions in succession.
+-_Dockerfile_: A Dockerfile is a text document that contains all the commands a user can call on the command line to assemble an image. Using docker build users can create an automated build that executes several command-line instructions in succession.
 
 
 -_Build Details_: It consists of Status, Tag, Created, Last Updated , such information about the containers.
