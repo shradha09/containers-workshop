@@ -735,11 +735,59 @@ The system prompts you with a list of User/Organizations and code repositories.
 ##### 4.Pick the project to build.
 
 
+![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/Docker_Hub_Linking_with_GitHub.png)
+
+![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/HOME_PAGE.png)
+
+![alt text]()
+
+![alt text]()
+
+![alt text]()
+
+![alt text]()
+
+![alt text]()
+
+![alt text]()
+
+![alt text]()
+
+![alt text]()
+
+![alt text]()
+
+![alt text]()
+
+![alt text]()
+
+![alt text]()
 
 
 
 
-      The system displays the Create Automated Build dialog.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+  The system displays the Create Automated Build dialog.
 
 
     The dialog assumes some defaults which you can customize. By default, Docker builds images for each branch in your repository. It assumes the Dockerfile lives at the root of the source. When it builds an image,Docker tags it with the branch name.
