@@ -550,7 +550,7 @@ Multiple *<src>* resource may be specified but they must be relative to the sour
 
 
 
-k.)VOLUME- This instruction will create a mount point with the given name and flag it as mounting the external volume using the following command : 
+k.)VOLUME-  This instruction will create a mount point with the given name and flag it as mounting the external volume using the following command : 
 
   ``` VOLUME ["/data]
 
