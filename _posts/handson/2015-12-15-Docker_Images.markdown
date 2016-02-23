@@ -12,12 +12,12 @@ ads: false
 
 
 
-##Creating an account with Docker Hub
+## Creating an account with Docker Hub
 
 
       Docker Hub is like GitHub for images. It is a public registry on which both public and private images can be hosted, shared and collaborated with others. It has integration with GitHub, Bitbukcket and can trigger automated build.Information about docker system can be gathered by using following command: 
 
-     $ docker info
+     '$ docker info'
 
 ![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/docker_info.png)
 
@@ -33,10 +33,10 @@ ads: false
 
 2.For creating an account through command line : 
 
-       $ docker login
+       `$ docker login`
 
 
-##Creating an image from Container
+## Creating an image from Container
 
 
 There are two ways of creating and updating an image : 
@@ -47,37 +47,37 @@ There are two ways of creating and updating an image :
 2.You can use a Dockerfile to specify instructions to create an image.
 
 
-    _Creating image by manually committing layers_
+    *Creating image by manually committing layers*
 
 As soon as a container is started, a read/write layer gets attached to it. This layer will get destroyed if not saved.Following explanation will show how to save that layer and make a new image from running or stopped container by using *docker commit* command.
 
 
 a. For committing following command syntax is used :
     
-        $ docker commit -a ``|``--author[=""] -m``|``--message[=""]   CONTAINER   [REPOSITORY[:TAG]]
+        `$ docker commit -a | --author[=""] -m |--message[=""]   CONTAINER   [REPOSITORY[:TAG]]`
+
 
 b.Now, start a container and create/ modify some files on it by using *install httpd* package : 
 
 
-         $ docker run -i -t ubuntu /bin/bash
+         ```$ docker run -i -t ubuntu /bin/bash
 
          root@4312ee7658e7:/# dnf install -y httpd
-
+        ```
 
 c.On a new terminal, create a new image by giving following command:
 
-         $ docker commit -a "Shradha" -m "Ubuntu with HTTPD package" 3b7d8fcd0a1d shradha09/Ubuntu:httpd
+         `$ docker commit -a "Shradha" -m "Ubuntu with HTTPD package" 3b7d8fcd0a1d shradha09/Ubuntu:httpd`
 
 
 Output : 
 
-  $ docker ps
+  `$ docker ps`
 
 ```
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
 fad6c5680d63        registry:2          "/bin/registry /etc/d"   7 days ago          Up 3 hours          0.0.0.0:5000->5000/tcp   registry
 3b7d8fcd0a1d        6cc0fc2a5ee3        "/bin/bash"              9 days ago          Up 3 hours                                   romantic_jepsen
-
 ```
 
 
@@ -103,7 +103,7 @@ A new image is being committed to the local repository with the name shradha09/u
                 To overcome this loss, commit command is used when a new layer is created with the changes that took place since the container is startedand get saved in the container's backend storage driver.
 
 
-###Important
+### Important
 
 1.To look which files are changed or modified since the container has started use the following command : 
 
@@ -122,7 +122,9 @@ Explanation for prefixes before each generated result :
  
 2.By default a container gets paused during commit, one can change this behavior by passing --pause=false to commit. 
 
-3.For more options use: $ docker commit --help
+3.For more options use: 
+
+    `$ docker commit --help`
 
 
 
@@ -133,10 +135,10 @@ Assuming an image is already been created suitable for development environment. 
 
 ### A local registry has to be set up for pushing the images/repositeries locally.
 
-Syntax : $ docker push NAME[:TAG]
+Syntax : `$ docker push NAME[:TAG]`
 
 
-This command will use the username and registry shown in the *docker info* command to push the images.Here, the username will be "shradha09" and registry will be "https://index.docker.io/v1
+This command will use the username and registry shown in the *docker info* command to push the images.Here, the username will be "shradha09" and registry will be   https://index.docker.io/v1
 
 
 For pushing the image we created, use following command:
@@ -198,16 +200,17 @@ IMAGE            CREATED         CREATED BY                                     
 6cc0fc2a5ee3    3 weeks ago     /bin/sh -c #(nop) CMD ["/bin/bash"]              0 B
 f80999a1f330    3 weeks ago     /bin/sh -c sed -i 's/^#\s*\(deb.*universe\)$/   1.895 KB
 92ec6d044cb3    3 weeks ago     /bin/sh -c #(nop) ADD file:7ce20ce3daa6af21db   187.7 MB
-
 ```
+
+
   _Metadata_ - Through Metadata of an image Docker will come to know about how the image is been created, using *history* command, by looking at the information provided in the metadata recursively, reaching origin.
 
    "By *inspect* command, commit messages for all the layers can be obtained."
 
-Example :` $ docker inspect --format='{{.Comment}}' shradha09/ubuntu:httpd`
+Example : ```$ docker inspect --format='{{.Comment}}' shradha09/ubuntu:httpd
             
           Ubuntu with HTTPD package
-
+          ```
 
 
 ## Deleting an Image 
@@ -215,23 +218,23 @@ Example :` $ docker inspect --format='{{.Comment}}' shradha09/ubuntu:httpd`
 
 To remove the image from the host, *docker rmi* command is used, it will remove the images from host not from the registry.
 
-  _Syntax for Removing Image_ :
+  *Syntax for Removing Image* :
    
   ` $ docker rmi [OPTIONS]  IMAGE  [IMAGE...]`
 
  
-  _Example_ :  
+  *Example* :  
     
-<<<<<< HEAD
-   `$ docker rmi shradha09/ubuntu:httpd`
+```
+   $ docker rmi shradha09/ubuntu:httpd
 
    Untagged : shradha09/ubuntu:httpd
    
    Deleted  : 6579dfa51537ac7a94f3ab03a76d5c5f06bceb2f2eae3e4e42a621620b91e57f
+```
 
 
-
-  _Additional Info_
+  *Additional Info*
 
 All the containers and images can be removed, but prove to be destructive,keeping this in mind, here are few commands that can remove images and containers:
 
@@ -255,20 +258,20 @@ If due to some restrictive policies which do not allow to use images from public
 
 Note: Pull or import one or more Docker images on the docker host. 
 
-  _Syntax to save the image in tar file_ : 
+  *Syntax to save the image in tar file* : 
 
 
   `$ docker save [-o |--output=""] IMAGE  [:TAG]`
 
 
-  _Example, creating a tar file for Ubuntu, run following command_ :
+  *Example, creating a tar file for Ubuntu, run following command* :
 
 
   `$ docker save --output=ubuntu.tar ubuntu`
 
 Note: If the tag name is specified with the image we want to export, such as          unbuntu:latest, then only the layers related to that tag will get exported.
 
-   _Additional Info_
+   *Additional Info*
 
 If --output or -o is not used, then the output will be streamed to STDOUT : 
 
@@ -324,12 +327,12 @@ Using the *docker commit* command is a pretty simple way of extending an image b
 
    `$ cat Dockerfile`
    
-    Pick up the base image
+    ```Pick up the base image
      FROM ubuntu
      Add author name
     MAINTAINER shradha09
     Add the command to run at the start of container CMD date
-    
+    ```
 
 ### Run the following command inside the directory, to build the image : 
 
@@ -375,7 +378,7 @@ Above command will give different output, here we are using cache after each ins
    If we don't want to cache the intermediate images, then add *--no-cache* option with docker build.
 
 
-    _Working of Docker build_ :
+    *Working of Docker build* :
 
 
 Docker build, build images from a Dockerfile and a “context”. A build’s context is the files located in the specified PATH or URL. The build process can refer to any of the files in the context. 
@@ -389,7 +392,7 @@ We can also include a *.dockerignore* command in the current working directory w
    After executing each instruction, Docker commits every intermediate images and run the container with the next instruction and commits, it keeps on removing the intermediate container in the previous step to make space for the new container after reading the instructions.
 
 
-    _Additional Info_
+    *Additional Info*
 
 To look for intermediate layers of an image, specify -a option with docker images : 
 
@@ -407,21 +410,23 @@ docker.io/ubuntu	latest	6cc0fc2a5ee3	3 weeks ago	187.9 MB
 
 The format of Dockerfile is as follows :
  
-   _INSTRUCTION ARGUMENTS_
+   *INSTRUCTION ARGUMENTS*
 
 Instructions are always given in Uppercase but they are not case sensitive.They are evaluated in order. 
 A *#* in the beginning is treated as the comment. 
 
+
 Types of Instructions  : 
+
 
 a.) FROM- This must be the first instruction to any Dockerfile, which sets the base image for other subsequent instructions.
      
-           FROM <image>
+           `FROM <image>`
 
 Image with tag can also be placed : 
 
 
- _FROM <image>:<tag>_
+   `FROM <image>:<tag>`
 
 Multiple FORM instructions are possible in single Dockerfile to create several different images. 
 
@@ -480,9 +485,10 @@ Note: Only one CMD instruction is allowed in a Dockerfile. If more than one is s
 
 f.) ENTRYPOINT- Both ENTRYPOINT and CMD gives a way to identify which executable should be run when a container is started from an image.Also, if you want your image to be runnable (without additional docker run command line arguments) you must specify an ENTRYPOINT or CMD.
  
-      ```ENTRYPOINT ["exectable","example1",....,"exampleN"]```
+      ```ENTRYPOINT ["exectable","example1",....,"exampleN"]
     
-        ```ENTRYPOINT ["example1",....,"exampleN"]```
+        ENTRYPOINT ["example1",....,"exampleN"]
+      ```
 
 
     The ENTRYPOINT or CMD that are specified in the Dockerfile identify the default executable for the image. However, the user has the option to override either of these values at run time.
@@ -545,7 +551,7 @@ j.)COPY- COPY has two forms:
 
 The COPY instruction copies new files or directories from <src> and adds them to the filesystem of the container at the path <dest>.
 
-Multiple <src> resource may be specified but they must be relative to the source directory that is being built (the context of the build).
+Multiple *<src>* resource may be specified but they must be relative to the source directory that is being built (the context of the build).
 
 
 
@@ -555,7 +561,8 @@ k.)VOLUME- This instruction will create a mount point with the given name and fl
 
  Alternatively used code : 
 
-   VOLUME /data ```
+   VOLUME /data 
+  ```
 
 
 l.)USER- This sets the username for any of the following run instructions using the following syntax :
@@ -569,7 +576,7 @@ l.)USER- This sets the username for any of the following run instructions using 
 
 m.)WORKDIR- The WORKDIR instruction sets the working directory for any RUN, CMD, ENTRYPOINT, COPY and ADD instructions that follow it in the Dockerfile.
 
-         ` WORKDIR /path/to/workdir`
+         `WORKDIR /path/to/workdir`
 
 
 It can be used multiple times in the one Dockerfile. If a relative path is provided, it will be relative to the path of the previous WORKDIR instruction. For example:
@@ -615,7 +622,7 @@ ADD ./supervisord.conf /etc/supervisord.conf
 CMD [ "supervisord", "-n" ]
 ``` 
 
-     _Other supporting files in Repository_ : 
+     *Other supporting files in Repository* : 
 
 -README.md: This is the README file.
 
@@ -698,7 +705,7 @@ c.) You repository is kept up-to-date with code changes automatically.
 
 Automated Builds are supported for both public and private repositories on both GitHub and Bitbucket.
 
-  _Use of automated builds requires that you have an account on Docker Hub and on the hosted repository provider (GitHub or Bitbucket)_
+  *Use of automated builds requires that you have an account on Docker Hub and on the hosted repository provider (GitHub or Bitbucket)*
 
 -To view settings for GitHub or BitBucket account linkage, from your Docker Hub account choose :
 
