@@ -5,7 +5,7 @@ description: "Hands-on with container technology"
 logo: 120x120.gif
 teaser: 400x250.gif
 locale: en_US
-url: //containers-workshop.neependra.net
+url: //shradha09.github.io
 #url: //127.0.0.1:4000
 
 # Jekyll configuration
@@ -14,11 +14,11 @@ sass:
   sass_dir: _sass
   style: compressed
 permalink: /:categories/:title/
-kramdown:
+
   toc_levels: 1..2
 highlighter: rouge
 gems:
-  - jekyll-sitemap
+  
 
 
 # Site owner
