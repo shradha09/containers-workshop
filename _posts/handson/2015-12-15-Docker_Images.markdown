@@ -268,7 +268,7 @@ Note: Pull or import one or more Docker images on the docker host.
 
 Note: If the tag name is specified with the image we want to export, such as          unbuntu:latest, then only the layers related to that tag will get exported.
 
-   _Additional Info_
+   *Additional Info*
 
 If --output or -o is not used, then the output will be streamed to STDOUT : 
 
@@ -355,7 +355,7 @@ Note : This build run by the Docker daemon,not by the CLI. The build process wil
 
 #### We can also specify any repository or tag name while building the image with -t option as follows : 
 
-   `$ docker build -t ubuntu/abc`
+   `$ docker build -t ubuntu/skhare`
 
 ```
 OUTPUT : Sending build context to Docker daemon 2.048 kB 
@@ -375,7 +375,7 @@ Above command will give different output, here we are using cache after each ins
    If we don't want to cache the intermediate images, then add *--no-cache* option with docker build.
 
 
-    _Working of Docker build_ :
+    *Working of Docker build* :
 
 
 Docker build, build images from a Dockerfile and a “context”. A build’s context is the files located in the specified PATH or URL. The build process can refer to any of the files in the context. 
@@ -389,7 +389,7 @@ We can also include a *.dockerignore* command in the current working directory w
    After executing each instruction, Docker commits every intermediate images and run the container with the next instruction and commits, it keeps on removing the intermediate container in the previous step to make space for the new container after reading the instructions.
 
 
-    _Additional Info_
+    *Additional Info*
 
 To look for intermediate layers of an image, specify -a option with docker images : 
 
@@ -416,7 +416,7 @@ Types of Instructions  :
 
 a.) FROM- This must be the first instruction to any Dockerfile, which sets the base image for other subsequent instructions.
      
-           FROM <image>
+           `FROM <image>`
 
 Image with tag can also be placed : 
 
@@ -494,14 +494,14 @@ f.) ENTRYPOINT- Both ENTRYPOINT and CMD gives a way to identify which executable
 g.)EXPOSE-  The EXPOSE instruction informs Docker that the container listens on the specified network ports at runtime. EXPOSE does not make the ports of the container accessible to the host. To do that, you must use either the -p flag to publish a range of ports or the -P flag to publish all of the exposed ports. You can expose one port number and publish it externally under another number.
 
  
-
+```
         -P         : Publish all exposed ports to the host interfaces
         
         -p=[]      : Publish a container᾿s port or a range of ports to the host
         
                      format: ip:hostPort:containerPort | ip::containerPort | hostPort:containerPort | containerPort
                      Both hostPort and containerPort can be specified as a range of ports.
-              
+ ```             
     
 Syntax :  `EXPOSE <port> [<port>...]`
 
@@ -526,7 +526,7 @@ ADD has two forms:
 
 ```
 
-The ADD instruction copies new files, directories or remote file URLs from _<src>_ and adds them to the filesystem of the container at the path _<dest>_.
+The ADD instruction copies new files, directories or remote file URLs from *<src>* and adds them to the filesystem of the container at the path *<dest>*.
 
 Multiple *<src>* resource may be specified but if they are files or directories then they must be relative to the source directory that is being built (the context of the build).
        
@@ -539,13 +539,13 @@ Multiple *<src>* resource may be specified but if they are files or directories 
 j.)COPY- COPY has two forms:
 
 ```
-    COPY <src>... <dest>
+ COPY <src>... <dest>
     COPY ["<src>",... "<dest>"] (this form is required for paths containing whitespace)
 ```
 
 The COPY instruction copies new files or directories from <src> and adds them to the filesystem of the container at the path <dest>.
 
-Multiple <src> resource may be specified but they must be relative to the source directory that is being built (the context of the build).
+Multiple *<src>* resource may be specified but they must be relative to the source directory that is being built (the context of the build).
 
 
 
