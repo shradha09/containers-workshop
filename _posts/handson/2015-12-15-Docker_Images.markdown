@@ -511,9 +511,9 @@ h.)ENV- The ENV instruction sets the environment variable *<key>* to the value *
 
         ` ENV <key> <value>`
 
-The ENV instruction has two forms. The first form, ENV <key> <value>, will set a single variable to a value. The entire string after the first space will be treated as the _<value>_ - including characters such as spaces and quotes.
+The ENV instruction has two forms. The first form, ENV <key> <value>, will set a single variable to a value. The entire string after the first space will be treated as the *<value>* - including characters such as spaces and quotes.
 
-The second form, ENV <key>=<value> ..., allows for multiple variables to be set at one time. Notice that the second form uses the equals sign (=) in the syntax, while the first form does not. 
+The second form, ENV <key>=<value> , allows for multiple variables to be set at one time. Notice that the second form uses the equals sign (=) in the syntax, while the first form does not. 
 
 
 
@@ -524,8 +524,8 @@ ADD has two forms:
 ```
     ADD <src>... <dest>
     ADD ["<src>",... "<dest>"] (this form is required for paths containing whitespace)
-
 ```
+
 
 The ADD instruction copies new files, directories or remote file URLs from *<src>* and adds them to the filesystem of the container at the path *<dest>*.
 
@@ -591,7 +591,7 @@ The WORKDIR instruction can resolve environment variables previously set using E
 The output of the final pwd command in this Dockerfile would be /path/$DIRNAME
 
 
-n.)ONBUILD- he ONBUILD instruction adds to the image a trigger instruction to be executed at a later time, when the image is used as the base for another build. The trigger will be executed in the context of the downstream build, as if it had been inserted immediately after the FROM instruction in the downstream Dockerfile.
+n.)ONBUILD- The ONBUILD instruction adds to the image a trigger instruction to be executed at a later time, when the image is used as the base for another build. The trigger will be executed in the context of the downstream build, as if it had been inserted immediately after the FROM instruction in the downstream Dockerfile.
 
 Any build instruction can be registered as a trigger.
 
@@ -601,6 +601,8 @@ This is useful if you are building an image which will be used as a base to buil
 
                      
 ## Building a Jenkins image - Dockerfile example
+
+
 
 Dockerfile contents for Jenkin : 
 
@@ -616,18 +618,18 @@ ADD ./supervisord.conf /etc/supervisord.conf
 CMD [ "supervisord", "-n" ]
 ``` 
 
-     _Other supporting files in Repository_ : 
+     Other supporting files in Repository: 
 
--README.md: This is the README file.
+ *README.md*: This is the README file.
 
--LICENSE: This is GNU Public License.
+ *LICENSE*: This is GNU Public License.
 
--supervisord.conf: This file have  Configuration files.
+ *supervisord.conf*: This file have  Configuration files.
 
  
 For building new Image ,use following *build* command :
 
-     ```$ docker build -t fedora/jenkins```
+     `$ docker build -t fedora/jenkins`
 
 The build process takes the base image of Jenkins, installs given RUN from the Dockerfile.
 
@@ -641,7 +643,7 @@ The public Docker Registry is available at Docker Hub, through which the users c
 
 2. Build an image from Dockerfile and run a registry container. 
 
-3. Configure the distribution-specfic package such as ------ , which provides thedocker-registry package which can be installed and configured.
+3. Configure the distribution-specfic package , which provides the docker-registry package which can be installed and configured.
 
  The easiest way to set it up is through the registry container itself.
 
