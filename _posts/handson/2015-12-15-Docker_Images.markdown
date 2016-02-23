@@ -17,7 +17,7 @@ ads: false
 
       Docker Hub is like GitHub for images. It is a public registry on which both public and private images can be hosted, shared and collaborated with others. It has integration with GitHub, Bitbukcket and can trigger automated build.Information about docker system can be gathered by using following command: 
 
-     '$ docker info'
+     `$ docker info`
 
 ![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/docker_info.png)
 
@@ -28,10 +28,10 @@ ads: false
  Docker Hub account can be created either by visiting the website or from command line.
 
 
-1. Visit following website : https://hub.docker.com
+1.Visit following website : https://hub.docker.com
 
 
-2. For creating an account through command line : 
+2.For creating an account through command line : 
 
        `$ docker login`
 
@@ -122,9 +122,7 @@ Explanation for prefixes before each generated result :
  
 2.By default a container gets paused during commit, one can change this behavior by passing --pause=false to commit. 
 
-3.For more options use: 
-
-    `$ docker commit --help`
+3.For more options use: $ docker commit --help
 
 
 
@@ -138,7 +136,7 @@ Assuming an image is already been created suitable for development environment. 
 Syntax : `$ docker push NAME[:TAG]`
 
 
-This command will use the username and registry shown in the *docker info* command to push the images.Here, the username will be "shradha09" and registry will be   https://index.docker.io/v1
+This command will use the username and registry shown in the *docker info* command to push the images.Here, the username will be "shradha09" and registry will be  https://index.docker.io/v1
 
 
 For pushing the image we created, use following command:
@@ -154,7 +152,6 @@ For pushing the image we created, use following command:
   92ec6d044cb3: Pushed 
   httpd: digest: sha256:794def2e25f46a69c8f9c2c35704566dc573be4857a0f24b4cf02820b|304d0a7 size: 8101 
 ```
- 
    
       Suppose, you want to push the image to the local registry, hosted on host named localhost_registry. For this, the image has to be tagged with registry's host name or IP address with port number on which the registry is running and then the image is pushed.
 
@@ -201,16 +198,16 @@ IMAGE            CREATED         CREATED BY                                     
 f80999a1f330    3 weeks ago     /bin/sh -c sed -i 's/^#\s*\(deb.*universe\)$/   1.895 KB
 92ec6d044cb3    3 weeks ago     /bin/sh -c #(nop) ADD file:7ce20ce3daa6af21db   187.7 MB
 ```
-
-
+  
   _Metadata_ - Through Metadata of an image Docker will come to know about how the image is been created, using *history* command, by looking at the information provided in the metadata recursively, reaching origin.
 
    "By *inspect* command, commit messages for all the layers can be obtained."
 
-Example : ```$ docker inspect --format='{{.Comment}}' shradha09/ubuntu:httpd
+Example :``` $ docker inspect --format='{{.Comment}}' shradha09/ubuntu:httpd
             
           Ubuntu with HTTPD package
-          ```
+         ```
+
 
 
 ## Deleting an Image 
@@ -225,16 +222,16 @@ To remove the image from the host, *docker rmi* command is used, it will remove 
  
   *Example* :  
     
-```
-   $ docker rmi shradha09/ubuntu:httpd
+
+   `$ docker rmi shradha09/ubuntu:httpd`
 
    Untagged : shradha09/ubuntu:httpd
    
    Deleted  : 6579dfa51537ac7a94f3ab03a76d5c5f06bceb2f2eae3e4e42a621620b91e57f
-```
 
 
-  *Additional Info*
+
+  _Additional Info_
 
 All the containers and images can be removed, but prove to be destructive,keeping this in mind, here are few commands that can remove images and containers:
 
@@ -258,20 +255,20 @@ If due to some restrictive policies which do not allow to use images from public
 
 Note: Pull or import one or more Docker images on the docker host. 
 
-  *Syntax to save the image in tar file* : 
+  _Syntax to save the image in tar file_ : 
 
 
   `$ docker save [-o |--output=""] IMAGE  [:TAG]`
 
 
-  *Example, creating a tar file for Ubuntu, run following command* :
+  _Example, creating a tar file for Ubuntu, run following command_ :
 
 
   `$ docker save --output=ubuntu.tar ubuntu`
 
 Note: If the tag name is specified with the image we want to export, such as          unbuntu:latest, then only the layers related to that tag will get exported.
 
-   *Additional Info*
+   _Additional Info_
 
 If --output or -o is not used, then the output will be streamed to STDOUT : 
 
@@ -327,12 +324,12 @@ Using the *docker commit* command is a pretty simple way of extending an image b
 
    `$ cat Dockerfile`
    
-    ```Pick up the base image
+    Pick up the base image
      FROM ubuntu
      Add author name
     MAINTAINER shradha09
     Add the command to run at the start of container CMD date
-    ```
+    
 
 ### Run the following command inside the directory, to build the image : 
 
@@ -378,7 +375,7 @@ Above command will give different output, here we are using cache after each ins
    If we don't want to cache the intermediate images, then add *--no-cache* option with docker build.
 
 
-    *Working of Docker build* :
+    _Working of Docker build_ :
 
 
 Docker build, build images from a Dockerfile and a “context”. A build’s context is the files located in the specified PATH or URL. The build process can refer to any of the files in the context. 
@@ -392,7 +389,7 @@ We can also include a *.dockerignore* command in the current working directory w
    After executing each instruction, Docker commits every intermediate images and run the container with the next instruction and commits, it keeps on removing the intermediate container in the previous step to make space for the new container after reading the instructions.
 
 
-    *Additional Info*
+    _Additional Info_
 
 To look for intermediate layers of an image, specify -a option with docker images : 
 
@@ -415,18 +412,16 @@ The format of Dockerfile is as follows :
 Instructions are always given in Uppercase but they are not case sensitive.They are evaluated in order. 
 A *#* in the beginning is treated as the comment. 
 
-
 Types of Instructions  : 
-
 
 a.) FROM- This must be the first instruction to any Dockerfile, which sets the base image for other subsequent instructions.
      
-           `FROM <image>`
+           FROM <image>
 
 Image with tag can also be placed : 
 
 
-   `FROM <image>:<tag>`
+   *FROM <image>:<tag>*
 
 Multiple FORM instructions are possible in single Dockerfile to create several different images. 
 
@@ -485,10 +480,9 @@ Note: Only one CMD instruction is allowed in a Dockerfile. If more than one is s
 
 f.) ENTRYPOINT- Both ENTRYPOINT and CMD gives a way to identify which executable should be run when a container is started from an image.Also, if you want your image to be runnable (without additional docker run command line arguments) you must specify an ENTRYPOINT or CMD.
  
-      ```ENTRYPOINT ["exectable","example1",....,"exampleN"]
+      ```ENTRYPOINT ["exectable","example1",....,"exampleN"]```
     
-        ENTRYPOINT ["example1",....,"exampleN"]
-      ```
+        ```ENTRYPOINT ["example1",....,"exampleN"]```
 
 
     The ENTRYPOINT or CMD that are specified in the Dockerfile identify the default executable for the image. However, the user has the option to override either of these values at run time.
@@ -500,14 +494,14 @@ f.) ENTRYPOINT- Both ENTRYPOINT and CMD gives a way to identify which executable
 g.)EXPOSE-  The EXPOSE instruction informs Docker that the container listens on the specified network ports at runtime. EXPOSE does not make the ports of the container accessible to the host. To do that, you must use either the -p flag to publish a range of ports or the -P flag to publish all of the exposed ports. You can expose one port number and publish it externally under another number.
 
  
-```
+
         -P         : Publish all exposed ports to the host interfaces
         
         -p=[]      : Publish a container᾿s port or a range of ports to the host
         
                      format: ip:hostPort:containerPort | ip::containerPort | hostPort:containerPort | containerPort
                      Both hostPort and containerPort can be specified as a range of ports.
-```              
+              
     
 Syntax :  `EXPOSE <port> [<port>...]`
 
@@ -549,10 +543,9 @@ j.)COPY- COPY has two forms:
     COPY ["<src>",... "<dest>"] (this form is required for paths containing whitespace)
 ```
 
- 
- The COPY instruction copies new files or directories from <src> and adds them to the filesystem of the container at the path <dest>.
+The COPY instruction copies new files or directories from <src> and adds them to the filesystem of the container at the path <dest>.
 
-Multiple *<src>* resource may be specified but they must be relative to the source directory that is being built (the context of the build).
+Multiple <src> resource may be specified but they must be relative to the source directory that is being built (the context of the build).
 
 
 
@@ -562,8 +555,7 @@ k.)VOLUME- This instruction will create a mount point with the given name and fl
 
  Alternatively used code : 
 
-   VOLUME /data 
-  ```
+   VOLUME /data ```
 
 
 l.)USER- This sets the username for any of the following run instructions using the following syntax :
@@ -577,7 +569,7 @@ l.)USER- This sets the username for any of the following run instructions using 
 
 m.)WORKDIR- The WORKDIR instruction sets the working directory for any RUN, CMD, ENTRYPOINT, COPY and ADD instructions that follow it in the Dockerfile.
 
-         `WORKDIR /path/to/workdir`
+         ` WORKDIR /path/to/workdir`
 
 
 It can be used multiple times in the one Dockerfile. If a relative path is provided, it will be relative to the path of the previous WORKDIR instruction. For example:
@@ -623,7 +615,7 @@ ADD ./supervisord.conf /etc/supervisord.conf
 CMD [ "supervisord", "-n" ]
 ``` 
 
-     *Other supporting files in Repository* : 
+     _Other supporting files in Repository_ : 
 
 -README.md: This is the README file.
 
@@ -706,7 +698,7 @@ c.) You repository is kept up-to-date with code changes automatically.
 
 Automated Builds are supported for both public and private repositories on both GitHub and Bitbucket.
 
-  *Use of automated builds requires that you have an account on Docker Hub and on the hosted repository provider (GitHub or Bitbucket)*
+  _Use of automated builds requires that you have an account on Docker Hub and on the hosted repository provider (GitHub or Bitbucket)_
 
 -To view settings for GitHub or BitBucket account linkage, from your Docker Hub account choose :
 
