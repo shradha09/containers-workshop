@@ -28,10 +28,10 @@ ads: false
  Docker Hub account can be created either by visiting the website or from command line.
 
 
-1.Visit following website : https://hub.docker.com
+1. Visit following website : https://hub.docker.com
 
 
-2.For creating an account through command line : 
+2. For creating an account through command line : 
 
        `$ docker login`
 
@@ -549,7 +549,8 @@ j.)COPY- COPY has two forms:
     COPY ["<src>",... "<dest>"] (this form is required for paths containing whitespace)
 ```
 
-The COPY instruction copies new files or directories from <src> and adds them to the filesystem of the container at the path <dest>.
+ 
+ The COPY instruction copies new files or directories from <src> and adds them to the filesystem of the container at the path <dest>.
 
 Multiple *<src>* resource may be specified but they must be relative to the source directory that is being built (the context of the build).
 
