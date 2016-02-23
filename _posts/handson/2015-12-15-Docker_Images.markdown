@@ -17,7 +17,8 @@ ads: false
 
       Docker Hub is like GitHub for images. It is a public registry on which both public and private images can be hosted, shared and collaborated with others. It has integration with GitHub, Bitbukcket and can trigger automated build.Information about docker system can be gathered by using following command: 
 
-     `$ docker info`
+    
+     ```$ docker info```
 
 ![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/docker_info.png)
 
@@ -956,24 +957,26 @@ Following commands can be used to create the base-image :
 
   `$ debootstrap [OPTION...] SUITE TARGET [MIRROR [SCRIPT]]`
 
-- SUITE: It refers to the release code name.
+- *SUITE*: It refers to the release code name.
 
-- MIRROR: Refers to the respective repository
+- *MIRROR*: Refers to the respective repository
 
 Example : Create a base image of fedora 23, using following steps :
  
- 1. Create a directory, on which the OS is to be installed. Debootstrap creates the chroot environment to install a package : 
+  
+1. Create a directory, on which the OS is to be installed. Debootstrap creates the chroot environment to install a package : 
 
      `$ mkdir deboot_chroot`
 
 
- 2. Use, *debootstrap*, install fedora 23 inside the directory that we created :
+2. Use, *debootstrap*, install fedora 23 inside the directory that we created :
  
-     `$ debootstrap deboot ./deboot_chroot
-     http://in.archive.fedora-23/fedora/`
+     `$ debootstrap deboot ./deboot_chroot`
+
+     http://in.archive.fedora-23/fedora/
 
 
- 3. We will see the directory tree to any linux root filesystem, inside the directory where OS is installed, same as we saw in Supermin.
+3. We will see the directory tree to any linux root filesystem, inside the directory where OS is installed, same as we saw in Supermin.
 
     ` $ ls ./deboot_chroot`
 
