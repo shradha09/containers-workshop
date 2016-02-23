@@ -12,12 +12,13 @@ ads: false
 
 
 
-##Creating an account with Docker Hub
+## Creating an account with Docker Hub
 
 
       Docker Hub is like GitHub for images. It is a public registry on which both public and private images can be hosted, shared and collaborated with others. It has integration with GitHub, Bitbukcket and can trigger automated build.Information about docker system can be gathered by using following command: 
 
-     $ docker info
+    
+     ```$ docker info```
 
 ![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/docker_info.png)
 
@@ -33,10 +34,10 @@ ads: false
 
 2.For creating an account through command line : 
 
-       $ docker login
+       `$ docker login`
 
 
-##Creating an image from Container
+## Creating an image from Container
 
 
 There are two ways of creating and updating an image : 
@@ -47,37 +48,37 @@ There are two ways of creating and updating an image :
 2.You can use a Dockerfile to specify instructions to create an image.
 
 
-    _Creating image by manually committing layers_
+    *Creating image by manually committing layers*
 
 As soon as a container is started, a read/write layer gets attached to it. This layer will get destroyed if not saved.Following explanation will show how to save that layer and make a new image from running or stopped container by using *docker commit* command.
 
 
 a. For committing following command syntax is used :
     
-        $ docker commit -a ``|``--author[=""] -m``|``--message[=""]   CONTAINER   [REPOSITORY[:TAG]]
+        `$ docker commit -a | --author[=""] -m |--message[=""]   CONTAINER   [REPOSITORY[:TAG]]`
+
 
 b.Now, start a container and create/ modify some files on it by using *install httpd* package : 
 
 
-         $ docker run -i -t ubuntu /bin/bash
+         ```$ docker run -i -t ubuntu /bin/bash
 
          root@4312ee7658e7:/# dnf install -y httpd
-
+        ```
 
 c.On a new terminal, create a new image by giving following command:
 
-         $ docker commit -a "Shradha" -m "Ubuntu with HTTPD package" 3b7d8fcd0a1d shradha09/Ubuntu:httpd
+         `$ docker commit -a "Shradha" -m "Ubuntu with HTTPD package" 3b7d8fcd0a1d shradha09/Ubuntu:httpd`
 
 
 Output : 
 
-  $ docker ps
+  `$ docker ps`
 
 ```
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
 fad6c5680d63        registry:2          "/bin/registry /etc/d"   7 days ago          Up 3 hours          0.0.0.0:5000->5000/tcp   registry
 3b7d8fcd0a1d        6cc0fc2a5ee3        "/bin/bash"              9 days ago          Up 3 hours                                   romantic_jepsen
-
 ```
 
 
@@ -103,7 +104,7 @@ A new image is being committed to the local repository with the name shradha09/u
                 To overcome this loss, commit command is used when a new layer is created with the changes that took place since the container is startedand get saved in the container's backend storage driver.
 
 
-###Important
+### Important
 
 1.To look which files are changed or modified since the container has started use the following command : 
 
@@ -133,10 +134,10 @@ Assuming an image is already been created suitable for development environment. 
 
 ### A local registry has to be set up for pushing the images/repositeries locally.
 
-Syntax : $ docker push NAME[:TAG]
+Syntax : `$ docker push NAME[:TAG]`
 
 
-This command will use the username and registry shown in the *docker info* command to push the images.Here, the username will be "shradha09" and registry will be "https://index.docker.io/v1
+This command will use the username and registry shown in the *docker info* command to push the images.Here, the username will be "shradha09" and registry will be  https://index.docker.io/v1
 
 
 For pushing the image we created, use following command:
@@ -152,7 +153,6 @@ For pushing the image we created, use following command:
   92ec6d044cb3: Pushed 
   httpd: digest: sha256:794def2e25f46a69c8f9c2c35704566dc573be4857a0f24b4cf02820b|304d0a7 size: 8101 
 ```
- 
    
       Suppose, you want to push the image to the local registry, hosted on host named localhost_registry. For this, the image has to be tagged with registry's host name or IP address with port number on which the registry is running and then the image is pushed.
 
@@ -198,15 +198,16 @@ IMAGE            CREATED         CREATED BY                                     
 6cc0fc2a5ee3    3 weeks ago     /bin/sh -c #(nop) CMD ["/bin/bash"]              0 B
 f80999a1f330    3 weeks ago     /bin/sh -c sed -i 's/^#\s*\(deb.*universe\)$/   1.895 KB
 92ec6d044cb3    3 weeks ago     /bin/sh -c #(nop) ADD file:7ce20ce3daa6af21db   187.7 MB
-
 ```
-  _Metadata_ - Through Metadata of an image Docker will come to know about how the image is been created, using *history* command, by looking at the information provided in the metadata recursively, reaching origin.
+  
+  *Metadata* - Through Metadata of an image Docker will come to know about how the image is been created, using *history* command, by looking at the information provided in the metadata recursively, reaching origin.
 
    "By *inspect* command, commit messages for all the layers can be obtained."
 
-Example :` $ docker inspect --format='{{.Comment}}' shradha09/ubuntu:httpd`
+Example :``` $ docker inspect --format='{{.Comment}}' shradha09/ubuntu:httpd
             
           Ubuntu with HTTPD package
+         ```
 
 
 
@@ -215,23 +216,23 @@ Example :` $ docker inspect --format='{{.Comment}}' shradha09/ubuntu:httpd`
 
 To remove the image from the host, *docker rmi* command is used, it will remove the images from host not from the registry.
 
-  _Syntax for Removing Image_ :
+  *Syntax for Removing Image* :
    
   ` $ docker rmi [OPTIONS]  IMAGE  [IMAGE...]`
 
  
-  _Example_ :  
+  *Example* :  
     
-<<<<<<< HEAD
+
    `$ docker rmi shradha09/ubuntu:httpd`
-=======
+
    Untagged : shradha09/ubuntu:httpd
    
    Deleted  : 6579dfa51537ac7a94f3ab03a76d5c5f06bceb2f2eae3e4e42a621620b91e57f
 
 
 
-  _Additional Info_
+  *Additional Info*
 
 All the containers and images can be removed, but prove to be destructive,keeping this in mind, here are few commands that can remove images and containers:
 
@@ -255,20 +256,20 @@ If due to some restrictive policies which do not allow to use images from public
 
 Note: Pull or import one or more Docker images on the docker host. 
 
-  _Syntax to save the image in tar file_ : 
+  *Syntax to save the image in tar file* : 
 
 
   `$ docker save [-o |--output=""] IMAGE  [:TAG]`
 
 
-  _Example, creating a tar file for Ubuntu, run following command_ :
+  *Example, creating a tar file for Ubuntu, run following command* :
 
 
   `$ docker save --output=ubuntu.tar ubuntu`
 
 Note: If the tag name is specified with the image we want to export, such as          unbuntu:latest, then only the layers related to that tag will get exported.
 
-   _Additional Info_
+   *Additional Info*
 
 If --output or -o is not used, then the output will be streamed to STDOUT : 
 
@@ -355,7 +356,7 @@ Note : This build run by the Docker daemon,not by the CLI. The build process wil
 
 #### We can also specify any repository or tag name while building the image with -t option as follows : 
 
-   `$ docker build -t ubuntu/abc`
+   `$ docker build -t ubuntu/skhare`
 
 ```
 OUTPUT : Sending build context to Docker daemon 2.048 kB 
@@ -375,7 +376,7 @@ Above command will give different output, here we are using cache after each ins
    If we don't want to cache the intermediate images, then add *--no-cache* option with docker build.
 
 
-    _Working of Docker build_ :
+    *Working of Docker build* :
 
 
 Docker build, build images from a Dockerfile and a “context”. A build’s context is the files located in the specified PATH or URL. The build process can refer to any of the files in the context. 
@@ -389,7 +390,7 @@ We can also include a *.dockerignore* command in the current working directory w
    After executing each instruction, Docker commits every intermediate images and run the container with the next instruction and commits, it keeps on removing the intermediate container in the previous step to make space for the new container after reading the instructions.
 
 
-    _Additional Info_
+    *Additional Info*
 
 To look for intermediate layers of an image, specify -a option with docker images : 
 
@@ -407,7 +408,7 @@ docker.io/ubuntu	latest	6cc0fc2a5ee3	3 weeks ago	187.9 MB
 
 The format of Dockerfile is as follows :
  
-   _INSTRUCTION ARGUMENTS_
+   *INSTRUCTION ARGUMENTS*
 
 Instructions are always given in Uppercase but they are not case sensitive.They are evaluated in order. 
 A *#* in the beginning is treated as the comment. 
@@ -416,12 +417,12 @@ Types of Instructions  :
 
 a.) FROM- This must be the first instruction to any Dockerfile, which sets the base image for other subsequent instructions.
      
-           FROM <image>
+           `FROM <image>`
 
 Image with tag can also be placed : 
 
 
- _FROM <image>:<tag>_
+   *FROM <image>:<tag>*
 
 Multiple FORM instructions are possible in single Dockerfile to create several different images. 
 
@@ -494,14 +495,14 @@ f.) ENTRYPOINT- Both ENTRYPOINT and CMD gives a way to identify which executable
 g.)EXPOSE-  The EXPOSE instruction informs Docker that the container listens on the specified network ports at runtime. EXPOSE does not make the ports of the container accessible to the host. To do that, you must use either the -p flag to publish a range of ports or the -P flag to publish all of the exposed ports. You can expose one port number and publish it externally under another number.
 
  
-
+```
         -P         : Publish all exposed ports to the host interfaces
         
         -p=[]      : Publish a container᾿s port or a range of ports to the host
         
                      format: ip:hostPort:containerPort | ip::containerPort | hostPort:containerPort | containerPort
                      Both hostPort and containerPort can be specified as a range of ports.
-              
+ ```             
     
 Syntax :  `EXPOSE <port> [<port>...]`
 
@@ -510,9 +511,9 @@ h.)ENV- The ENV instruction sets the environment variable *<key>* to the value *
 
         ` ENV <key> <value>`
 
-The ENV instruction has two forms. The first form, ENV <key> <value>, will set a single variable to a value. The entire string after the first space will be treated as the _<value>_ - including characters such as spaces and quotes.
+The ENV instruction has two forms. The first form, ENV <key> <value>, will set a single variable to a value. The entire string after the first space will be treated as the *<value>* - including characters such as spaces and quotes.
 
-The second form, ENV <key>=<value> ..., allows for multiple variables to be set at one time. Notice that the second form uses the equals sign (=) in the syntax, while the first form does not. 
+The second form, ENV <key>=<value> , allows for multiple variables to be set at one time. Notice that the second form uses the equals sign (=) in the syntax, while the first form does not. 
 
 
 
@@ -523,32 +524,33 @@ ADD has two forms:
 ```
     ADD <src>... <dest>
     ADD ["<src>",... "<dest>"] (this form is required for paths containing whitespace)
-
 ```
-The ADD instruction copies new files, directories or remote file URLs from _<src>_ and adds them to the filesystem of the container at the path _<dest>_.
 
-Multiple <src> resource may be specified but if they are files or directories then they must be relative to the source directory that is being built (the context of the build).
+
+The ADD instruction copies new files, directories or remote file URLs from *<src>* and adds them to the filesystem of the container at the path *<dest>*.
+
+Multiple *<src>* resource may be specified but if they are files or directories then they must be relative to the source directory that is being built (the context of the build).
        
 
-  <src> : This must be the file or directory inside the build directory from which we are building an image, which is also called the comtext of the build.A source can be a remote URL as well.
+  *<src>* : This must be the file or directory inside the build directory from which we are building an image, which is also called the comtext of the build.A source can be a remote URL as well.
 
-  <dest> : This must be the absolute path inside the container in which the files/directory from the source will be copied.
+  *<dest>* : This must be the absolute path inside the container in which the files/directory from the source will be copied.
 
 
 j.)COPY- COPY has two forms:
 
 ```
-    COPY <src>... <dest>
+ COPY <src>... <dest>
     COPY ["<src>",... "<dest>"] (this form is required for paths containing whitespace)
 ```
 
 The COPY instruction copies new files or directories from <src> and adds them to the filesystem of the container at the path <dest>.
 
-Multiple <src> resource may be specified but they must be relative to the source directory that is being built (the context of the build).
+Multiple *<src>* resource may be specified but they must be relative to the source directory that is being built (the context of the build).
 
 
 
-k.)VOLUME- This instruction will create a mount point with the given name and flag it as mounting the external volume using the following command : 
+k.)VOLUME-  This instruction will create a mount point with the given name and flag it as mounting the external volume using the following command : 
 
   ``` VOLUME ["/data]
 
@@ -589,7 +591,7 @@ The WORKDIR instruction can resolve environment variables previously set using E
 The output of the final pwd command in this Dockerfile would be /path/$DIRNAME
 
 
-n.)ONBUILD- he ONBUILD instruction adds to the image a trigger instruction to be executed at a later time, when the image is used as the base for another build. The trigger will be executed in the context of the downstream build, as if it had been inserted immediately after the FROM instruction in the downstream Dockerfile.
+n.)ONBUILD- The ONBUILD instruction adds to the image a trigger instruction to be executed at a later time, when the image is used as the base for another build. The trigger will be executed in the context of the downstream build, as if it had been inserted immediately after the FROM instruction in the downstream Dockerfile.
 
 Any build instruction can be registered as a trigger.
 
@@ -599,6 +601,8 @@ This is useful if you are building an image which will be used as a base to buil
 
                      
 ## Building a Jenkins image - Dockerfile example
+
+
 
 Dockerfile contents for Jenkin : 
 
@@ -614,18 +618,18 @@ ADD ./supervisord.conf /etc/supervisord.conf
 CMD [ "supervisord", "-n" ]
 ``` 
 
-     _Other supporting files in Repository_ : 
+     Other supporting files in Repository: 
 
--README.md: This is the README file.
+ *README.md*: This is the README file.
 
--LICENSE: This is GNU Public License.
+ *LICENSE*: This is GNU Public License.
 
--supervisord.conf: This file have  Configuration files.
+ *supervisord.conf*: This file have  Configuration files.
 
  
 For building new Image ,use following *build* command :
 
-     ```$ docker build -t fedora/jenkins```
+     `$ docker build -t fedora/jenkins`
 
 The build process takes the base image of Jenkins, installs given RUN from the Dockerfile.
 
@@ -639,7 +643,7 @@ The public Docker Registry is available at Docker Hub, through which the users c
 
 2. Build an image from Dockerfile and run a registry container. 
 
-3. Configure the distribution-specfic package such as ------ , which provides thedocker-registry package which can be installed and configured.
+3. Configure the distribution-specfic package , which provides the docker-registry package which can be installed and configured.
 
  The easiest way to set it up is through the registry container itself.
 
@@ -697,9 +701,9 @@ c.) You repository is kept up-to-date with code changes automatically.
 
 Automated Builds are supported for both public and private repositories on both GitHub and Bitbucket.
 
-  _Use of automated builds requires that you have an account on Docker Hub and on the hosted repository provider (GitHub or Bitbucket)_
+   Use of automated builds requires that you have an account on Docker Hub and on the hosted repository provider (GitHub or Bitbucket)
 
--To view settings for GitHub or BitBucket account linkage, from your Docker Hub account choose :
+  To view settings for GitHub or BitBucket account linkage, from your Docker Hub account choose :
 
     `Profile > Settings > Linked Accounts & Services`
  
@@ -726,11 +730,14 @@ Automated Builds are supported for both public and private repositories on both 
 Automated build repositories rely entirely on the integration with your code repository. You cannot push to these image repositories using the docker push command. You can only change the image by committing to your code repository. If you want to do both, docker push and an automated build, you would create a regular repository for the docker push and an automated build repository.
 
 #####  Select Create > Create Automated Build from Docker Hub.
-      
+     
+ 
 The system prompts you with a list of User/Organizations and code repositories.
 
 
 ![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/Docker_Hub_Linking_with_GitHub.png)
+
+
 
 Link GitHub or Bitbucket account for creating automated build.(Github in this example ) 
 
@@ -778,7 +785,8 @@ Go to build settings on Home Page :
 
 ![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/build_settings.png)
 
-##### 6.The system displays the home page for AUTOMATED BUILD.
+
+##### The system displays the home page for AUTOMATED BUILD.
 
 
 When a GitHub repository is added for automated build, GitHub enables the Docker service for that repository.
@@ -788,33 +796,33 @@ When a GitHub repository is added for automated build, GitHub enables the Docker
 Whenever we make any changes to the GitHub repository,such as commits,an automated build gets trigerred using the Dockerfile that resides in the GitHub repository.
 
 
- _Details for Automated Build_ :
+  *Details for Automated Build* :
 
 Select Automated Build Container or Go to Details of the container, following details are found on the new opened web page :
 
--_Repo Info_: Contains description about the repository, two types of descriptions can be read, short and full description.
+  *Repo Info*: Contains description about the repository, two types of descriptions can be read, short and full description.
 
 
--_Tags_: Repository tags are similar to docker image tags, generally  we use 'latest' as tag, other used tags are httpd, version number etc.
+  *Tags*: Repository tags are similar to docker image tags, generally  we use 'latest' as tag, other used tags are httpd, version number etc.
 
 
--_Dockerfile_: A Dockerfile is a text document that contains all the commands a user can call on the command line to assemble an image. Using docker build users can create an automated build that executes several command-line instructions in succession.
+  *Dockerfile*: A Dockerfile is a text document that contains all the commands a user can call on the command line to assemble an image. Using docker build users can create an automated build that executes several command-line instructions in succession.
 
 
--_Build Details_: It consists of Status, Tag, Created, Last Updated , such information about the containers.
+  *Build Details*: It consists of Status, Tag, Created, Last Updated , such information about the containers.
 
 
--_Build Settings_: The Build Settings page allows you to manage your existing automated build configurations and add new ones. By default, when new code is merged into your source repository, it triggers a build of your DockerHub image.
+  *Build Settings*: The Build Settings page allows you to manage your existing automated build configurations and add new ones. By default, when new code is merged into your source repository, it triggers a build of your DockerHub image.
 
 
--_Collaborators_: Users contributing in the repositories.
+  *Collaborators*: Users contributing in the repositories.
 
 
--_Webhooks_: One can use a webhook to cause an action in another application in response to an event in your automated build repository. Currently, the webhook fires when an image is built in or a new image tag is added to the automated build repository.
+  *Webhooks*: One can use a webhook to cause an action in another application in response to an event in your automated build repository. Currently, the webhook fires when an image is built in or a new image tag is added to the automated build repository.
            Webhook specifies a target URL and a JSON payload to deliver. The webhook generates an HTTP POST that delivers a JSON payload.
 
 
--_Settings_: Consists of two sections, changing a Public repository, Private and an option for deleting the existing repository.
+  *Settings*: Consists of two sections, changing a Public repository, Private and an option for deleting the existing repository.
 
   CAUTION: Deleting a repository will *destroy* all images stored in it,this action is not reverible.
 
@@ -870,7 +878,7 @@ Supermin and Debootstrap are the tools that can help make the faking of root fil
 
 Supermin- Tool for creating and building supermin appliances.
 
-   _Command Syntax for Prepare_
+   *Command Syntax for Prepare*
 
   `$ supermin --prepare -o OUTPUTDIR PACKAGE [PACKAGE ...]`
 
@@ -886,9 +894,9 @@ Supermin does not need to be run as root, and generally should notbe run as root
 
  Two modes of Supermin:
 
- _PREPARE MODE_
+ *PREPARE MODE*
 
-  *--prepare* creates the tiny supermin appliance in the given output directory. Give the list of packages that are to be installed, and supermin will automatically find all the dependencies. The listof packages has to be installed on the host machine . 
+  *-- prepare* creates the tiny supermin appliance in the given output directory. Give the list of packages that are to be installed, and supermin will automatically find all the dependencies. The list of packages has to be installed on the host machine . 
 
 Example : `$ supermin --prepare bash coreutils -o supermin.d`
 
@@ -896,19 +904,19 @@ The above command creates a supermin appliance containing the packages "bash" an
 
 *prepare* mode puts all the requested packages with their dependencies inside a directory without copying the host OS specific files
 
-  _Command Syntax_
+  *Command Syntax*
 
    ` $ supermin --prepare -o OUTPUTDIR PACKAGE [PACKAGE ...]`
 
   Example : `$ supermin --prepare bash coreutils -o ubuntu`
 
 
- _BUILD MODE_
+ *BUILD MODE*
 
  
-  *--build* was previously a separate program called "supermin-helper" 
+  * -- build* was previously a separate program called "supermin-helper" 
  
-  _Command Syntax_
+  *Command Syntax*
 
     `$ supermin --build -o OUTPUTDIR -f chroot|ext2 INPUT [INPUT ...]`
 
@@ -922,12 +930,16 @@ The above command creates a supermin appliance containing the packages "bash" an
   bin	boot	dev	etc	home	lib	lib64	media	mnt	opt	proc	root	run	
   abin	srv	sys	tmp	usr	var	
 ```
-  _We can export the directory as docker image using following command_:
+  
 
-    `$ tar -C ubuntu_image/ -c . | docker import - skhare/ubuntu`
+  We can export the directory as docker image using following command:
+
+    ```$ tar -C ubuntu_image/ -c . | docker import - skhare/ubuntu
+
+      f6f5f2dd61de2f1cca7475824df9af2ffc3d337ad0660d212c82c94441789426
 ```
-f6f5f2dd61de2f1cca7475824df9af2ffc3d337ad0660d212c82c94441789426
-```
+
+
    Using command *docker images* a new image with skhare/ubuntu as name will be seen
  
 
@@ -936,6 +948,7 @@ In *build* mode, the supermin appliance created from the prepare mode gets conve
 
 
 ## Creating the base image - using Debootstrap
+
 
 Debootstrap is a tool which will install a Debian base system into a subdirectory of another, already installed system. It can also be installed and run from another operating system, so, for instance, you can use debootstrap to install Debian onto an unused partition. 
 
@@ -948,24 +961,28 @@ Following commands can be used to create the base-image :
 
   `$ debootstrap [OPTION...] SUITE TARGET [MIRROR [SCRIPT]]`
 
-- _SUITE_: It refers to the release code name.
 
-- _MIRROR_: Refers to the respective repository
+ *SUITE*: It refers to the release code name.
+
+ *MIRROR*: Refers to the respective repository
 
 Example : Create a base image of fedora 23, using following steps :
  
- 1. Create a directory, on which the OS is to be installed. Debootstrap creates the chroot environment to install a package : 
+  
+1. Create a directory, on which the OS is to be installed. Debootstrap creates the chroot environment to install a package : 
 
      `$ mkdir deboot_chroot`
 
 
- 2. Use, *debootstrap*, install fedora 23 inside the directory that we created :
+2. Use, *debootstrap*, install fedora 23 inside the directory that we created :
  
-     `$ debootstrap deboot ./deboot_chroot
-     http://in.archive.fedora-23/fedora/`
+     ```$ debootstrap deboot ./deboot_chroot```
 
 
- 3. We will see the directory tree to any linux root filesystem, inside the directory where OS is installed, same as we saw in Supermin.
+     http://in.archive.fedora-23/fedora/
+
+
+3. We will see the directory tree to any linux root filesystem, inside the directory where OS is installed, same as we saw in Supermin.
 
     ` $ ls ./deboot_chroot`
 
