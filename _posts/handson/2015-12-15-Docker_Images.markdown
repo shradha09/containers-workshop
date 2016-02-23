@@ -500,14 +500,14 @@ f.) ENTRYPOINT- Both ENTRYPOINT and CMD gives a way to identify which executable
 g.)EXPOSE-  The EXPOSE instruction informs Docker that the container listens on the specified network ports at runtime. EXPOSE does not make the ports of the container accessible to the host. To do that, you must use either the -p flag to publish a range of ports or the -P flag to publish all of the exposed ports. You can expose one port number and publish it externally under another number.
 
  
-
+```
         -P         : Publish all exposed ports to the host interfaces
         
         -p=[]      : Publish a container᾿s port or a range of ports to the host
         
                      format: ip:hostPort:containerPort | ip::containerPort | hostPort:containerPort | containerPort
                      Both hostPort and containerPort can be specified as a range of ports.
-              
+```              
     
 Syntax :  `EXPOSE <port> [<port>...]`
 
