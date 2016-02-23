@@ -891,9 +891,9 @@ Supermin does not need to be run as root, and generally should notbe run as root
 
  Two modes of Supermin:
 
- _PREPARE MODE_
+ *PREPARE MODE*
 
-  *--prepare* creates the tiny supermin appliance in the given output directory. Give the list of packages that are to be installed, and supermin will automatically find all the dependencies. The listof packages has to be installed on the host machine . 
+  *-- prepare* creates the tiny supermin appliance in the given output directory. Give the list of packages that are to be installed, and supermin will automatically find all the dependencies. The list of packages has to be installed on the host machine . 
 
 Example : `$ supermin --prepare bash coreutils -o supermin.d`
 
@@ -901,19 +901,19 @@ The above command creates a supermin appliance containing the packages "bash" an
 
 *prepare* mode puts all the requested packages with their dependencies inside a directory without copying the host OS specific files
 
-  _Command Syntax_
+  *Command Syntax*
 
    ` $ supermin --prepare -o OUTPUTDIR PACKAGE [PACKAGE ...]`
 
   Example : `$ supermin --prepare bash coreutils -o ubuntu`
 
 
- _BUILD MODE_
+ *BUILD MODE*
 
  
-  *--build* was previously a separate program called "supermin-helper" 
+  * -- build* was previously a separate program called "supermin-helper" 
  
-  _Command Syntax_
+  *Command Syntax*
 
     `$ supermin --build -o OUTPUTDIR -f chroot|ext2 INPUT [INPUT ...]`
 
@@ -931,9 +931,10 @@ The above command creates a supermin appliance containing the packages "bash" an
 
   We can export the directory as docker image using following command:
 
-    `$ tar -C ubuntu_image/ -c . | docker import - skhare/ubuntu`
+    ```$ tar -C ubuntu_image/ -c . | docker import - skhare/ubuntu
 
-`f6f5f2dd61de2f1cca7475824df9af2ffc3d337ad0660d212c82c94441789426`
+      f6f5f2dd61de2f1cca7475824df9af2ffc3d337ad0660d212c82c94441789426
+```
 
 
    Using command *docker images* a new image with skhare/ubuntu as name will be seen
@@ -957,9 +958,10 @@ Following commands can be used to create the base-image :
 
   `$ debootstrap [OPTION...] SUITE TARGET [MIRROR [SCRIPT]]`
 
-- *SUITE*: It refers to the release code name.
 
-- *MIRROR*: Refers to the respective repository
+ *SUITE*: It refers to the release code name.
+
+ *MIRROR*: Refers to the respective repository
 
 Example : Create a base image of fedora 23, using following steps :
  
@@ -971,7 +973,8 @@ Example : Create a base image of fedora 23, using following steps :
 
 2. Use, *debootstrap*, install fedora 23 inside the directory that we created :
  
-     `$ debootstrap deboot ./deboot_chroot`
+     ```$ debootstrap deboot ./deboot_chroot```
+
 
      http://in.archive.fedora-23/fedora/
 
