@@ -200,7 +200,7 @@ f80999a1f330    3 weeks ago     /bin/sh -c sed -i 's/^#\s*\(deb.*universe\)$/   
 92ec6d044cb3    3 weeks ago     /bin/sh -c #(nop) ADD file:7ce20ce3daa6af21db   187.7 MB
 ```
   
-  _Metadata_ - Through Metadata of an image Docker will come to know about how the image is been created, using *history* command, by looking at the information provided in the metadata recursively, reaching origin.
+  *Metadata* - Through Metadata of an image Docker will come to know about how the image is been created, using *history* command, by looking at the information provided in the metadata recursively, reaching origin.
 
    "By *inspect* command, commit messages for all the layers can be obtained."
 
@@ -232,7 +232,7 @@ To remove the image from the host, *docker rmi* command is used, it will remove 
 
 
 
-  _Additional Info_
+  *Additional Info*
 
 All the containers and images can be removed, but prove to be destructive,keeping this in mind, here are few commands that can remove images and containers:
 
@@ -256,13 +256,13 @@ If due to some restrictive policies which do not allow to use images from public
 
 Note: Pull or import one or more Docker images on the docker host. 
 
-  _Syntax to save the image in tar file_ : 
+  *Syntax to save the image in tar file* : 
 
 
   `$ docker save [-o |--output=""] IMAGE  [:TAG]`
 
 
-  _Example, creating a tar file for Ubuntu, run following command_ :
+  *Example, creating a tar file for Ubuntu, run following command* :
 
 
   `$ docker save --output=ubuntu.tar ubuntu`
