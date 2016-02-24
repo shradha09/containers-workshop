@@ -414,9 +414,10 @@ The format of Dockerfile is as follows :
 Instructions are always given in Uppercase but they are not case sensitive.They are evaluated in order. 
 A *#* in the beginning is treated as the comment. 
 
-Types of Instructions  : 
 
-a.)### FROM- This must be the first instruction to any Dockerfile, which sets the base image for other subsequent instructions.
+    *Types of Instructions*  : 
+
+### FROM- This must be the first instruction to any Dockerfile, which sets the base image for other subsequent instructions.
      
            `FROM <image>`
 
@@ -438,11 +439,11 @@ Example : `registry_hostname:5000/shradha09/centos7:httpd`
 
 
 
-b.)### MAINTAINER- It sets the author name for the generated image.
+### MAINTAINER- It sets the author name for the generated image.
 
             `MAINTAINER <name>`
 
-c.)### RUN- We can execute the RUN in following two ways : 
+### RUN- We can execute the RUN in following two ways : 
    
     1. Running it in shell (sh -c)
 
@@ -461,11 +462,11 @@ As in Docker we create layers over top of other layers to make the resulting ima
 
 
 
-d.)### LABEL- Docker 1.6 added a new feature to the attached arbitrary key-value pair to Docker images and containers.To give a label to            an image, LABEL instruction is used in the Dockerfile as LABEL distro=ubuntu.
+### LABEL- Docker 1.6 added a new feature to the attached arbitrary key-value pair to Docker images and containers.To give a label to            an image, LABEL instruction is used in the Dockerfile as LABEL distro=ubuntu.
 
 
 
-e.)### CMD- The CMD instruction provides a default executable while starting a container. If the CMD instruction does not have an executable, then it will provide arguments to ENTRYPOINT.
+### CMD- The CMD instruction provides a default executable while starting a container. If the CMD instruction does not have an executable, then it will provide arguments to ENTRYPOINT.
           Given how much easier it is to override the CMD, the recommendation is use CMD in your Dockerfile when you want the user of your image to have the flexibility to run whichever executable they choose when starting the container. 
 
 ```
@@ -480,7 +481,7 @@ Note: Only one CMD instruction is allowed in a Dockerfile. If more than one is s
 
 
 
-f.)### ENTRYPOINT- Both ENTRYPOINT and CMD gives a way to identify which executable should be run when a container is started from an image.Also, if you want your image to be runnable (without additional docker run command line arguments) you must specify an ENTRYPOINT or CMD.
+### ENTRYPOINT- Both ENTRYPOINT and CMD gives a way to identify which executable should be run when a container is started from an image.Also, if you want your image to be runnable (without additional docker run command line arguments) you must specify an ENTRYPOINT or CMD.
  
       ```ENTRYPOINT ["exectable","example1",....,"exampleN"]```
     
@@ -493,7 +494,7 @@ f.)### ENTRYPOINT- Both ENTRYPOINT and CMD gives a way to identify which executa
 
  
  
-g.)### EXPOSE-  The EXPOSE instruction informs Docker that the container listens on the specified network ports at runtime. EXPOSE does not make the ports of the container accessible to the host. To do that, you must use either the -p flag to publish a range of ports or the -P flag to publish all of the exposed ports. You can expose one port number and publish it externally under another number.
+### EXPOSE-  The EXPOSE instruction informs Docker that the container listens on the specified network ports at runtime. EXPOSE does not make the ports of the container accessible to the host. To do that, you must use either the -p flag to publish a range of ports or the -P flag to publish all of the exposed ports. You can expose one port number and publish it externally under another number.
 
  
 ```
@@ -508,7 +509,7 @@ g.)### EXPOSE-  The EXPOSE instruction informs Docker that the container listens
 Syntax :  `EXPOSE <port> [<port>...]`
 
 
-h.)### ENV- The ENV instruction sets the environment variable *<key>* to the value *<value>*. This value will be in the environment of all “descendent” Dockerfile commands and can be replaced inline in many as well. It will be passed all the future instructions and will persist when a container is run from the resulting image : 
+### ENV- The ENV instruction sets the environment variable *<key>* to the value *<value>*. This value will be in the environment of all “descendent” Dockerfile commands and can be replaced inline in many as well. It will be passed all the future instructions and will persist when a container is run from the resulting image : 
 
         ` ENV <key> <value>`
 
@@ -518,7 +519,7 @@ The second form, ENV <key>=<value> , allows for multiple variables to be set at 
 
 
 
-i.)### ADD- This copies files from source to destination
+### ADD- This copies files from source to destination
  
 ADD has two forms:
 
@@ -538,7 +539,7 @@ Multiple *<src>* resource may be specified but if they are files or directories 
   *<dest>* : This must be the absolute path inside the container in which the files/directory from the source will be copied.
 
 
-j.)### COPY- COPY has two forms:
+### COPY- COPY has two forms:
 
 ```
  COPY <src>... <dest>
@@ -551,7 +552,7 @@ Multiple *<src>* resource may be specified but they must be relative to the sour
 
 
 
-k.)### VOLUME-  This instruction will create a mount point with the given name and flag it as mounting the external volume using the following command : 
+### VOLUME-  This instruction will create a mount point with the given name and flag it as mounting the external volume using the following command : 
 
   ``` VOLUME ["/data]
 
@@ -560,7 +561,7 @@ k.)### VOLUME-  This instruction will create a mount point with the given name a
    VOLUME /data ```
 
 
-l.)### USER- This sets the username for any of the following run instructions using the following syntax :
+### USER- This sets the username for any of the following run instructions using the following syntax :
   
         ` USER <username>/<UID>`
          
@@ -569,7 +570,7 @@ l.)### USER- This sets the username for any of the following run instructions us
         `USER daemon`
 
 
-m.) ### WORKDIR- The WORKDIR instruction sets the working directory for any RUN, CMD, ENTRYPOINT, COPY and ADD instructions that follow it in the Dockerfile.
+### WORKDIR- The WORKDIR instruction sets the working directory for any RUN, CMD, ENTRYPOINT, COPY and ADD instructions that follow it in the Dockerfile.
 
          ` WORKDIR /path/to/workdir`
 
@@ -592,7 +593,7 @@ The WORKDIR instruction can resolve environment variables previously set using E
 The output of the final pwd command in this Dockerfile would be /path/$DIRNAME
 
 
-n.) ### ONBUILD- The ONBUILD instruction adds to the image a trigger instruction to be executed at a later time, when the image is used as the base for another build. The trigger will be executed in the context of the downstream build, as if it had been inserted immediately after the FROM instruction in the downstream Dockerfile.
+### ONBUILD- The ONBUILD instruction adds to the image a trigger instruction to be executed at a later time, when the image is used as the base for another build. The trigger will be executed in the context of the downstream build, as if it had been inserted immediately after the FROM instruction in the downstream Dockerfile.
 
 Any build instruction can be registered as a trigger.
 
