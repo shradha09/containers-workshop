@@ -291,12 +291,12 @@ An accessible exported Docker image is needed for that.
 
 Syntax : 1. To import an image :
          
-          ` $ docker import URL ``|`` [REPOSITORY[:TAG]]`
+           ```$ docker import URL | [REPOSITORY[:TAG]]```
 
-Example :  `$ cat ubuntu-latest.tar ``|`` docker import - ubuntu:latest`
+Example :  ```$ cat ubuntu-latest.tar | docker import - ubuntu:latest```
 
 
-Alternatively :  `$ docker import http://xyz.com/xyz.tar xyz/image`
+Alternatively :  ```$ docker import http://xyz.com/xyz.tar xyz/image```
 
 
 These commands will first create an empty filesystem and then import the contents.
@@ -317,24 +317,25 @@ Using the *docker commit* command is a pretty simple way of extending an image b
 
 1. Create a Directory 
   
-  `$ mkdir image_example`
+  ```$ mkdir image_example```
    
-   `$ cd image_example`
+   ```$ cd image_example```
 
 2. Create file named Dockerfile with following contents inside the directory: 
 
-   `$ cat Dockerfile`
+   ```$ cat Dockerfile```
    
-    Pick up the base image
+  ```Pick up the base image
      FROM ubuntu
      Add author name
     MAINTAINER shradha09
     Add the command to run at the start of container CMD date
+  ```
     
 
 ### Run the following command inside the directory, to build the image : 
 
-           `$ docker build .`
+           ```$ docker build . ```
 ```
 OUTPUT : Sending build context to Docker daemon 2.048 kB
          Step 1 : FROM ubuntu
