@@ -979,7 +979,7 @@ Example : Create a base image of fedora 23, using following steps :
      ```$ debootstrap deboot ./deboot_chroot```
 
 
-     http://in.archive.fedora-23/fedora/
+    " http://in.archive.fedora-23/fedora/ "
 
 
 3. We will see the directory tree to any linux root filesystem, inside the directory where OS is installed, same as we saw in Supermin.
