@@ -429,7 +429,7 @@ Syntax:
 
 Example: 
    
-    `$ docker run --cap-add all --cap-drop sys-admin -ti rhel7 /bin/sh`
+    $ docker run --cap-add all --cap-drop sys-admin -ti rhel7 /bin/sh
 
 This command would add all capabilities except sys-admin 
 
