@@ -34,7 +34,7 @@ ads: false
 
 2.For creating an account through command line : 
 
-       `$ docker login`
+       ```$ docker login```
 
 
 ## Creating an image from Container
@@ -55,7 +55,7 @@ As soon as a container is started, a read/write layer gets attached to it. This 
 
 a. For committing following command syntax is used :
     
-        `$ docker commit -a | --author[=""] -m |--message[=""]   CONTAINER   [REPOSITORY[:TAG]]`
+ ```$ docker commit -a | --author[=""] -m |--message[=""]   CONTAINER   [REPOSITORY[:TAG]]```
 
 
 b.Now, start a container and create/ modify some files on it by using *install httpd* package : 
@@ -68,12 +68,12 @@ b.Now, start a container and create/ modify some files on it by using *install h
 
 c.On a new terminal, create a new image by giving following command:
 
-         `$ docker commit -a "Shradha" -m "Ubuntu with HTTPD package" 3b7d8fcd0a1d shradha09/Ubuntu:httpd`
+         ```$ docker commit -a "Shradha" -m "Ubuntu with HTTPD package" 3b7d8fcd0a1d shradha09/Ubuntu:httpd```
 
 
 Output : 
 
-  `$ docker ps`
+  ```$ docker ps```
 
 ```
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
@@ -82,7 +82,7 @@ fad6c5680d63        registry:2          "/bin/registry /etc/d"   7 days ago     
 ```
 
 
-    ` $ docker images `
+    ```$ docker images```
 
 
 ```
@@ -93,14 +93,14 @@ ubuntu/test                           latest              64910446ed6c        6 
 docker.io/fedora                      latest              3fc68076e184        6 weeks ago         206.3 MB
 docker.io/centos                      centos7             c8a648134623        7 weeks ago         196.6 MB
 docker.io/centos                      latest              c8a648134623        7 weeks ago         196.6 MB
-```
+````
 
 
 
 A new image is being committed to the local repository with the name shradha09/ubuntu as a name and *httpd* as a tag.
 
 
-   Explanation :   When a container is started, a read/write filesystem layer will be created on top of existing image layers from where the container has started and when the package is installed some files are created or existing files are modified in that layer. All these changesmade are to be saved explicitly otherwise on deleting or stopping the container all the modifications are lost. 
+  ### Explanation :   When a container is started, a read/write filesystem layer will be created on top of existing image layers from where the container has started and when the package is installed some files are created or existing files are modified in that layer. All these changesmade are to be saved explicitly otherwise on deleting or stopping the container all the modifications are lost. 
                 To overcome this loss, commit command is used when a new layer is created with the changes that took place since the container is startedand get saved in the container's backend storage driver.
 
 
@@ -108,9 +108,9 @@ A new image is being committed to the local repository with the name shradha09/u
 
 1.To look which files are changed or modified since the container has started use the following command : 
 
-  Syntax :  `$ docker diff [CONTAINER_ID]`
+  Syntax :  ```$ docker diff [CONTAINER_ID]```
 
-  Example : `$ docker diff 3b7d8fcd0a1d`
+  Example : ```$ docker diff 3b7d8fcd0a1d```
              
             C /run
             A /run/secrets
@@ -134,7 +134,7 @@ Assuming an image is already been created suitable for development environment. 
 
 ### A local registry has to be set up for pushing the images/repositeries locally.
 
-Syntax : `$ docker push NAME[:TAG]`
+Syntax : ```$ docker push NAME[:TAG]```
 
 
 This command will use the username and registry shown in the *docker info* command to push the images.Here, the username will be "shradha09" and registry will be  https://index.docker.io/v1
@@ -142,7 +142,7 @@ This command will use the username and registry shown in the *docker info* comma
 
 For pushing the image we created, use following command:
 
-   `$ docker push shradha09/ubuntu:httpd`
+   ```$ docker push shradha09/ubuntu:httpd```
 
 ```
   The push refers to a repository [docker.io/shradha09/ubuntu] (len: 1)
@@ -157,22 +157,22 @@ For pushing the image we created, use following command:
       Suppose, you want to push the image to the local registry, hosted on host named localhost_registry. For this, the image has to be tagged with registry's host name or IP address with port number on which the registry is running and then the image is pushed.
 
 
-      `$ docker tag [-f``|``--force[=false]  IMAGE  [REGISTRYHOST/]  [USERNAME/]NAME[:TAG] `
+      ```$ docker tag [-f``|``--force[=false]  IMAGE  [REGISTRYHOST/]  [USERNAME/]NAME[:TAG]```
 
  
-      `$ docker push [REGISTORYHOST/]  [USERNAME/]NAME[:TAG]`
+      ```$ docker push [REGISTORYHOST/]  [USERNAME/]NAME[:TAG]```
 
 
 Example : Suppose our registry is configured on some website say xyz.something.com, then for image tagging following command is used : 
        
  
-      `$ docker tag shradha09/ubuntu:httpd xyz.something.com:5000/shradha09/ubuntu:httpd`
+      ```$ docker tag shradha09/ubuntu:httpd xyz.something.com:5000/shradha09/ubuntu:httpd```
 
 
 ### Push the image : 
 
 
-      `$ docker push xyz.something.com:5000/shradha09/ubuntu:httpd`
+      ```$ docker push xyz.something.com:5000/shradha09/ubuntu:httpd```
 
 Listing of all the intermediate layers are done which are required to make the specific image.Searches for the layers present already and copies only those layers which are not present in the registry with the metadata required to build theimage.
 
@@ -185,11 +185,11 @@ Listing of all the intermediate layers are done which are required to make the s
 
 
 Syntax : 
-         `$ docker history [OPTIONS] IMAGE`
+         ```$ docker history [OPTIONS] IMAGE```
 
 
 Example : 
-          `$ docker history shradha09/ubuntu:httpd`
+          ```$ docker history shradha09/ubuntu:httpd```
 
 
 ```
@@ -218,13 +218,13 @@ To remove the image from the host, *docker rmi* command is used, it will remove 
 
   *Syntax for Removing Image* :
    
-  ` $ docker rmi [OPTIONS]  IMAGE  [IMAGE...]`
+  ```$ docker rmi [OPTIONS]  IMAGE  [IMAGE...]```
 
  
   *Example* :  
     
 
-   `$ docker rmi shradha09/ubuntu:httpd`
+   ```$ docker rmi shradha09/ubuntu:httpd```
 
    Untagged : shradha09/ubuntu:httpd
    
@@ -238,15 +238,15 @@ All the containers and images can be removed, but prove to be destructive,keepin
 
 1. To stop all containers :
   
-   `$ docker stop 'docker ps -q'`
+   ```$ docker stop 'docker ps -q'```
 
 2. To delete all containers : 
  
-   `$ docker rm 'docker ps -a -q'`
+   ```$ docker rm 'docker ps -a -q'```
 
 3. To delete all images : 
    
-   `$ docker rmi 'docker images -q'`
+   ```$ docker rmi 'docker images -q'```
 
 
 
@@ -259,13 +259,13 @@ Note: Pull or import one or more Docker images on the docker host.
   *Syntax to save the image in tar file* : 
 
 
-  `$ docker save [-o |--output=""] IMAGE  [:TAG]`
+  ```$ docker save [-o |--output=""] IMAGE  [:TAG]```
 
 
   *Example, creating a tar file for Ubuntu, run following command* :
 
 
-  `$ docker save --output=ubuntu.tar ubuntu`
+  ```$ docker save --output=ubuntu.tar ubuntu```
 
 Note: If the tag name is specified with the image we want to export, such as          unbuntu:latest, then only the layers related to that tag will get exported.
 
@@ -274,12 +274,12 @@ Note: If the tag name is specified with the image we want to export, such as    
 If --output or -o is not used, then the output will be streamed to STDOUT : 
 
 
-Example : `$ docker save ubuntu:latest > ubuntu-latest.tar`
+Example : ```$ docker save ubuntu:latest > ubuntu-latest.tar```
 
 
 Similarly, the contents of the container's filesystem can be exported using the following command : 
 
-  `$ docker export CONTAINER > conatinerABC.tar`
+  ```$ docker export CONTAINER > conatinerABC.tar```
 
 
 
@@ -415,7 +415,7 @@ A *#* in the beginning is treated as the comment.
 
 Types of Instructions  : 
 
-a.) FROM- This must be the first instruction to any Dockerfile, which sets the base image for other subsequent instructions.
+a.)### FROM- This must be the first instruction to any Dockerfile, which sets the base image for other subsequent instructions.
      
            `FROM <image>`
 
@@ -437,11 +437,11 @@ Example : `registry_hostname:5000/shradha09/centos7:httpd`
 
 
 
-b.) MAINTAINER- It sets the author name for the generated image.
+b.)### MAINTAINER- It sets the author name for the generated image.
 
             `MAINTAINER <name>`
 
-c.) RUN- We can execute the RUN in following two ways : 
+c.)### RUN- We can execute the RUN in following two ways : 
    
     1. Running it in shell (sh -c)
 
@@ -460,11 +460,11 @@ As in Docker we create layers over top of other layers to make the resulting ima
 
 
 
-d.) LABEL- Docker 1.6 added a new feature to the attached arbitrary key-value pair to Docker images and containers.To give a label to            an image, LABEL instruction is used in the Dockerfile as LABEL distro=ubuntu.
+d.)### LABEL- Docker 1.6 added a new feature to the attached arbitrary key-value pair to Docker images and containers.To give a label to            an image, LABEL instruction is used in the Dockerfile as LABEL distro=ubuntu.
 
 
 
-e.) CMD- The CMD instruction provides a default executable while starting a container. If the CMD instruction does not have an executable, then it will provide arguments to ENTRYPOINT.
+e.)### CMD- The CMD instruction provides a default executable while starting a container. If the CMD instruction does not have an executable, then it will provide arguments to ENTRYPOINT.
           Given how much easier it is to override the CMD, the recommendation is use CMD in your Dockerfile when you want the user of your image to have the flexibility to run whichever executable they choose when starting the container. 
 
 ```
@@ -479,7 +479,7 @@ Note: Only one CMD instruction is allowed in a Dockerfile. If more than one is s
 
 
 
-f.) ENTRYPOINT- Both ENTRYPOINT and CMD gives a way to identify which executable should be run when a container is started from an image.Also, if you want your image to be runnable (without additional docker run command line arguments) you must specify an ENTRYPOINT or CMD.
+f.)### ENTRYPOINT- Both ENTRYPOINT and CMD gives a way to identify which executable should be run when a container is started from an image.Also, if you want your image to be runnable (without additional docker run command line arguments) you must specify an ENTRYPOINT or CMD.
  
       ```ENTRYPOINT ["exectable","example1",....,"exampleN"]```
     
@@ -492,7 +492,7 @@ f.) ENTRYPOINT- Both ENTRYPOINT and CMD gives a way to identify which executable
 
  
  
-g.)EXPOSE-  The EXPOSE instruction informs Docker that the container listens on the specified network ports at runtime. EXPOSE does not make the ports of the container accessible to the host. To do that, you must use either the -p flag to publish a range of ports or the -P flag to publish all of the exposed ports. You can expose one port number and publish it externally under another number.
+g.)### EXPOSE-  The EXPOSE instruction informs Docker that the container listens on the specified network ports at runtime. EXPOSE does not make the ports of the container accessible to the host. To do that, you must use either the -p flag to publish a range of ports or the -P flag to publish all of the exposed ports. You can expose one port number and publish it externally under another number.
 
  
 ```
@@ -507,7 +507,7 @@ g.)EXPOSE-  The EXPOSE instruction informs Docker that the container listens on 
 Syntax :  `EXPOSE <port> [<port>...]`
 
 
-h.)ENV- The ENV instruction sets the environment variable *<key>* to the value *<value>*. This value will be in the environment of all “descendent” Dockerfile commands and can be replaced inline in many as well. It will be passed all the future instructions and will persist when a container is run from the resulting image : 
+h.)### ENV- The ENV instruction sets the environment variable *<key>* to the value *<value>*. This value will be in the environment of all “descendent” Dockerfile commands and can be replaced inline in many as well. It will be passed all the future instructions and will persist when a container is run from the resulting image : 
 
         ` ENV <key> <value>`
 
@@ -517,7 +517,7 @@ The second form, ENV <key>=<value> , allows for multiple variables to be set at 
 
 
 
-i.)ADD- This copies files from source to destination
+i.)### ADD- This copies files from source to destination
  
 ADD has two forms:
 
@@ -537,7 +537,7 @@ Multiple *<src>* resource may be specified but if they are files or directories 
   *<dest>* : This must be the absolute path inside the container in which the files/directory from the source will be copied.
 
 
-j.)COPY- COPY has two forms:
+j.)### COPY- COPY has two forms:
 
 ```
  COPY <src>... <dest>
@@ -550,7 +550,7 @@ Multiple *<src>* resource may be specified but they must be relative to the sour
 
 
 
-k.)VOLUME-  This instruction will create a mount point with the given name and flag it as mounting the external volume using the following command : 
+k.)### VOLUME-  This instruction will create a mount point with the given name and flag it as mounting the external volume using the following command : 
 
   ``` VOLUME ["/data]
 
@@ -559,7 +559,7 @@ k.)VOLUME-  This instruction will create a mount point with the given name and f
    VOLUME /data ```
 
 
-l.)USER- This sets the username for any of the following run instructions using the following syntax :
+l.)### USER- This sets the username for any of the following run instructions using the following syntax :
   
         ` USER <username>/<UID>`
          
@@ -568,7 +568,7 @@ l.)USER- This sets the username for any of the following run instructions using 
         `USER daemon`
 
 
-m.)WORKDIR- The WORKDIR instruction sets the working directory for any RUN, CMD, ENTRYPOINT, COPY and ADD instructions that follow it in the Dockerfile.
+m.) ### WORKDIR- The WORKDIR instruction sets the working directory for any RUN, CMD, ENTRYPOINT, COPY and ADD instructions that follow it in the Dockerfile.
 
          ` WORKDIR /path/to/workdir`
 
@@ -585,19 +585,19 @@ The output of the final pwd command in this Dockerfile would be /a/b/c.
 
 The WORKDIR instruction can resolve environment variables previously set using ENV. You can only use environment variables explicitly set in the Dockerfile. For example:
 
-`ENV DIRPATH /path`
-`WORKDIR $DIRPATH/$DIRNAME`
+```ENV DIRPATH /path```
+```WORKDIR $DIRPATH/$DIRNAME```
 
 The output of the final pwd command in this Dockerfile would be /path/$DIRNAME
 
 
-n.)ONBUILD- The ONBUILD instruction adds to the image a trigger instruction to be executed at a later time, when the image is used as the base for another build. The trigger will be executed in the context of the downstream build, as if it had been inserted immediately after the FROM instruction in the downstream Dockerfile.
+n.) ### ONBUILD- The ONBUILD instruction adds to the image a trigger instruction to be executed at a later time, when the image is used as the base for another build. The trigger will be executed in the context of the downstream build, as if it had been inserted immediately after the FROM instruction in the downstream Dockerfile.
 
 Any build instruction can be registered as a trigger.
 
 This is useful if you are building an image which will be used as a base to build other images.
 
-                  `ONBUILD [INSTRUCTION]`
+                  ```ONBUILD [INSTRUCTION]```
 
                      
 ## Building a Jenkins image - Dockerfile example
@@ -629,7 +629,7 @@ CMD [ "supervisord", "-n" ]
  
 For building new Image ,use following *build* command :
 
-     `$ docker build -t fedora/jenkins`
+     ```$ docker build -t fedora/jenkins```
 
 The build process takes the base image of Jenkins, installs given RUN from the Dockerfile.
 
@@ -652,31 +652,31 @@ The public Docker Registry is available at Docker Hub, through which the users c
 
 a. To run the registry on the container :
 
-    `$ docker run -p 5000 samalba/docker-registry`
+    ```$ docker run -p 5000 samalba/docker-registry```
   
 b. To test the newly created registry, perform following steps :
 
    1. Start a container by using the command :
 
 
-           `$ W='docker run -d -i jenkins /bin/bash'`
+           ```$ W='docker run -d -i jenkins /bin/bash'```
 
 
    2. Make some changes if needed and commit those changes to the local repository : 
 
-          `$ docker commit $W jenkins`
+          ```$ docker commit $W jenkins```
 
 
    3. To push the image use following command : 
            
 
-       `$ docker push [REGISTRY_HOST_NAME]:[PORT_NUMBER]/[USERNAME]/[IMAGE_NAME]`
+ ```$ docker push [REGISTRY_HOST_NAME]:[PORT_NUMBER]/[USERNAME]/[IMAGE_NAME]```
 
 
    4. For Pulling image from local registry, use following command : 
 
         
-       `$ docker pull [REGISTRY_HOST_NAME]:[PORT_NUMBER]/[USERNAME]/[IMAGE_NAME]`
+ ```$ docker pull [REGISTRY_HOST_NAME]:[PORT_NUMBER]/[USERNAME]/[IMAGE_NAME]```
  
 
 Note : The registry can be configured on any existing servers, steps to do this       are available in following github link :
@@ -705,7 +705,7 @@ Automated Builds are supported for both public and private repositories on both 
 
   To view settings for GitHub or BitBucket account linkage, from your Docker Hub account choose :
 
-    `Profile > Settings > Linked Accounts & Services`
+    Profile > Settings > Linked Accounts & Services
  
 #### Link to a hosted Repository 
 
@@ -713,7 +713,7 @@ Automated Builds are supported for both public and private repositories on both 
 
 2.Navigate to 
  
-     `Profile > Settings > Linked Accounts & Services`
+     Profile > Settings > Linked Accounts & Services
 
 3. Click the service to be linked ( Either GitHub or BitBucket )
 
@@ -880,9 +880,9 @@ Supermin- Tool for creating and building supermin appliances.
 
    *Command Syntax for Prepare*
 
-  `$ supermin --prepare -o OUTPUTDIR PACKAGE [PACKAGE ...]`
+  ```$ supermin --prepare -o OUTPUTDIR PACKAGE [PACKAGE ...]```
 
-  `$ supermin --build -o OUTPUTDIR -f chroot|ext2 INPUT [INPUT ...]`
+  ```$ supermin --build -o OUTPUTDIR -f chroot|ext2 INPUT [INPUT ...]```
 
 
 Supermin is a tool for building supermin appliances.These are tinyappliances (similar to virtual machines), usually around 100KB in
@@ -898,7 +898,7 @@ Supermin does not need to be run as root, and generally should notbe run as root
 
   *-- prepare* creates the tiny supermin appliance in the given output directory. Give the list of packages that are to be installed, and supermin will automatically find all the dependencies. The list of packages has to be installed on the host machine . 
 
-Example : `$ supermin --prepare bash coreutils -o supermin.d`
+Example : ```$ supermin --prepare bash coreutils -o supermin.d```
 
 The above command creates a supermin appliance containing the packages "bash" and "coreutils". Specifically,it creates files in directory "supermin.d". This directory is known as Supermin Appliance.
 
@@ -906,9 +906,9 @@ The above command creates a supermin appliance containing the packages "bash" an
 
   *Command Syntax*
 
-   ` $ supermin --prepare -o OUTPUTDIR PACKAGE [PACKAGE ...]`
+   ``` $ supermin --prepare -o OUTPUTDIR PACKAGE [PACKAGE ...]```
 
-  Example : `$ supermin --prepare bash coreutils -o ubuntu`
+  Example : ```$ supermin --prepare bash coreutils -o ubuntu```
 
 
  *BUILD MODE*
@@ -918,14 +918,15 @@ The above command creates a supermin appliance containing the packages "bash" an
  
   *Command Syntax*
 
-    `$ supermin --build -o OUTPUTDIR -f chroot|ext2 INPUT [INPUT ...]`
+    ```$ supermin --build -o OUTPUTDIR -f chroot|ext2 INPUT [INPUT ...]```
 
- Example: `$ supermin --build --format chroot ubuntu -o ubuntu_image`
+ Example: ```$ supermin --build --format chroot ubuntu -o ubuntu_image```
 
 
  If we do *ls* on the output directory i.e ubuntu_image, we will find directory tree similar to any linux root filesystem :
 
-  `$ ls ubuntu_image`
+  ```$ ls ubuntu_image```
+
 ```
   bin	boot	dev	etc	home	lib	lib64	media	mnt	opt	proc	root	run	
   abin	srv	sys	tmp	usr	var	
@@ -955,11 +956,11 @@ Debootstrap is a tool which will install a Debian base system into a subdirector
 
 Install Debootstrap on Debian-based system using following command : 
 
-  `$ apt-get install debootstrap`
+  ```$ apt-get install debootstrap```
 
 Following commands can be used to create the base-image :
 
-  `$ debootstrap [OPTION...] SUITE TARGET [MIRROR [SCRIPT]]`
+  ```$ debootstrap [OPTION...] SUITE TARGET [MIRROR [SCRIPT]]```
 
 
  *SUITE*: It refers to the release code name.
@@ -971,7 +972,7 @@ Example : Create a base image of fedora 23, using following steps :
   
 1. Create a directory, on which the OS is to be installed. Debootstrap creates the chroot environment to install a package : 
 
-     `$ mkdir deboot_chroot`
+     ```$ mkdir deboot_chroot```
 
 
 2. Use, *debootstrap*, install fedora 23 inside the directory that we created :
@@ -984,14 +985,14 @@ Example : Create a base image of fedora 23, using following steps :
 
 3. We will see the directory tree to any linux root filesystem, inside the directory where OS is installed, same as we saw in Supermin.
 
-    ` $ ls ./deboot_chroot`
+    ``` $ ls ./deboot_chroot```
 
 `bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr var`
 
 
  4.  Export the directory as a Docker image with following command : 
     
-     `$ tar -C deboot_chroot/-c . | docker import - skhare/fedora`
+    ```$ tar -C deboot_chroot/-c . | docker import - skhare/fedora```
 
 
  5. Look at the *docker images* output, a new image with skhare/fedora as name can be seen.
