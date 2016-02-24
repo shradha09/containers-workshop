@@ -509,13 +509,11 @@ Docker *inspect* command is used for returning low-level information about a con
 
 Syntax : `$ docker inspect [-f|--format="" CONTAINER|IMAGE [CONTAINER|IMAGE...]`
 
-Example : 
- 
-      `$ Z='docker run -dit ubuntu /bin/bash'`
-      `$ docker inspect $Z`
+Example :`$ Z='docker run -dit ubuntu /bin/bash'`
+         `$ docker inspect $Z`
 
-
-```{
+ ```
+{
     "Id": "e90df13f8efb309eadf863933394c1b3d5ff015eb865629a72eed153be1621b6",
     "RepoTags": [
         "docker.io/docker:latest"
@@ -535,8 +533,8 @@ Example :
   
  . . . . . . . .        
  . . . . . . . . 
-}]```
-
+}]
+```
 
 ## Labeling and Filtering Containers 
  
@@ -557,7 +555,8 @@ docker.io/fedora          latest              3fc68076e184        5 weeks ago   
 docker.io/centos          latest              c8a648134623        6 weeks ago         196.6 MB
 ```
 
-     `$ docker images --filter label=distro=ubuntu`
+     
+   ` $ docker images --filter label=distro=ubuntu`
 
 
 ```
@@ -575,9 +574,11 @@ Syntax for starting container with label- --lable/-l option :
 Listing containers with labels specified would return only those containers which comes under that label, without label all the containers would be listed. 
 
 
-    `$ docker ps -a`
- 
-```CONTAINER ID     IMAGE           COMMAND          CREATED           STATUS                      PORTS        NAMES
+    ` $ docker ps -a`
+
+
+``` 
+CONTAINER ID     IMAGE           COMMAND          CREATED           STATUS                      PORTS        NAMES
                  
    24f514c7ff48    ubuntu        "/bin/bash"      25 hours ago      Exited (127) 25 hours ago                kickass_lamarr
    57cda8093f0b    ubuntu       "/bin/bash"       25 hours ago      Exited (0) 25 hours ago                  admiring_kare
@@ -586,7 +587,8 @@ Listing containers with labels specified would return only those containers whic
 ```
 
 
-   `$ docker ps -a --filter label=environment=dev`
+       `$ docker ps -a --filter label=environment=dev`
+
 
 ```
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                  PORTS               NAMES
