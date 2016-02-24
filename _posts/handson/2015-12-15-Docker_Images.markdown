@@ -15,24 +15,26 @@ ads: false
 ## Creating an account with Docker Hub
 
 
-      Docker Hub is like GitHub for images. It is a public registry on which both public and private images can be hosted, shared and collaborated with others. It has integration with GitHub, Bitbukcket and can trigger automated build.Information about docker system can be gathered by using following command: 
+Docker Hub is like GitHub for images. It is a public registry on which both public and private images can be hosted, shared and collaborated with others. It has integration with GitHub, Bitbukcket and can trigger automated build.Information about docker system can be gathered by using following command: 
 
     
-     ```$ docker info```
+```
+$ docker info
+```
 
 ![alt text](https://raw.githubusercontent.com/shradha09/containers-workshop/gh-pages/images/docker_info.png)
 
 
 
-      A repository can hold different versions of an image.Any number of public repositeries can be created for the images.By default, one private repository is provided to the users.One can buy more private repositories.
+A repository can hold different versions of an image.Any number of public repositeries can be created for the images.By default, one private repository is provided to the users.One can buy more private repositories.
 
- Docker Hub account can be created either by visiting the website or from command line.
-
-
-1.Visit following website : https://hub.docker.com
+Docker Hub account can be created either by visiting the website or from command line.
 
 
-2.For creating an account through command line : 
+1. Visit following website : https://hub.docker.com
+
+
+2. For creating an account through command line : 
 
        ```$ docker login```
 
@@ -43,12 +45,12 @@ ads: false
 There are two ways of creating and updating an image : 
 
 
-1.You can update a container created from an image and commit the results to an image.
+1. You can update a container created from an image and commit the results to an image.
 
-2.You can use a Dockerfile to specify instructions to create an image.
+2. You can use a Dockerfile to specify instructions to create an image.
 
 
-    *Creating image by manually committing layers*
+## Creating image by manually committing layers
 
 As soon as a container is started, a read/write layer gets attached to it. This layer will get destroyed if not saved.Following explanation will show how to save that layer and make a new image from running or stopped container by using *docker commit* command.
 
@@ -61,10 +63,10 @@ a. For committing following command syntax is used :
 b.Now, start a container and create/ modify some files on it by using *install httpd* package : 
 
 
-         ```$ docker run -i -t ubuntu /bin/bash
-
-         root@4312ee7658e7:/# dnf install -y httpd
-        ```
+```
+$ docker run -i -t ubuntu /bin/bash
+root@4312ee7658e7:/# dnf install -y httpd
+```
 
 c.On a new terminal, create a new image by giving following command:
 
