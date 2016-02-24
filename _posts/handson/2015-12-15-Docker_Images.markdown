@@ -35,8 +35,9 @@ Docker Hub account can be created either by visiting the website or from command
 
 
 2. For creating an account through command line : 
-
-       ```$ docker login```
+```
+$ docker login
+```
 
 
 ## Creating an image from Container
@@ -101,9 +102,9 @@ docker.io/centos                      latest              c8a648134623        7 
 
 A new image is being committed to the local repository with the name shradha09/ubuntu as a name and *httpd* as a tag.
 
-
-  ### Explanation :   When a container is started, a read/write filesystem layer will be created on top of existing image layers from where the container has started and when the package is installed some files are created or existing files are modified in that layer. All these changesmade are to be saved explicitly otherwise on deleting or stopping the container all the modifications are lost. 
-                To overcome this loss, commit command is used when a new layer is created with the changes that took place since the container is startedand get saved in the container's backend storage driver.
+*Explanation :* When a container is started, a read/write filesystem layer will be created on top of existing image layers from where the container has started and when the package is installed some files are created or existing files are modified in that layer. All these changesmade are to be saved explicitly otherwise on deleting or stopping the container all the modifications are lost. 
+ 
+To overcome this loss, commit command is used when a new layer is created with the changes that took place since the container is startedand get saved in the container's backend storage driver.
 
 
 ### Important
