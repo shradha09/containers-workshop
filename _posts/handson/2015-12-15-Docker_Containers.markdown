@@ -342,16 +342,17 @@ Steps to be followed:
 
 
     ```$ ID1='docker run -di ubuntu /bin/bash'```
-    ```ef24b4805bf43550083184efcf6bfd7fd767cdaa86b0c45c8ed094df528d2c31```
+    `ef24b4805bf43550083184efcf6bfd7fd767cdaa86b0c45c8ed094df528d2c31`
        
 
   ```$ docker stop $ID1```
-  ``` ef24b4805bf43550083184efcf6bfd7fd767cdaa86b0c45c8ed094df528d2c31```
+  `ef24b4805bf43550083184efcf6bfd7fd767cdaa86b0c45c8ed094df528d2c31`
 
 
        `$ docker ps`
 
-```CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+```
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 fac59b475b1b        nginx               "/bin/bash"         About an hour ago   Up About an hour    80/tcp, 443/tcp     nginx
 c18653529e7e        centos              "/bin/bash"         About an hour ago   Up About an hour                        cent
 6986b0367d5f        ubuntu              "/bin/bash"         2 hours ago         Up 2 hours                              nostalgic_jenni
@@ -378,7 +379,7 @@ Note: The Docker daemon will remove the read/write layer, which was created whil
 
 ## Setting restart policy
 
-With the Docker version 1.2.0 the *--restart* flag is added with *docker run* tospecify the restart policy for the container. Three policies are defined with restart flag : 
+With the Docker version 1.2.0 the *--restart*  flag is added with *docker run* tospecify the restart policy for the container. Three policies are defined with restart flag : 
 
  no : Do not restart the container if it dies (default)
 
@@ -406,8 +407,8 @@ Linux divides  the  privileges  traditionally associated  with  superuser into  
 Example :  `$ docker run --privileged=false -i -t ubuntu /bin/bash`
    The above above command will give overhead privileges to the container.Most common of them all are : 
 
-```--cap-add```
-  ```--cap-drop```
+    `--cap-add`
+    `--cap-drop`
 
  Docker run also has a feature where you can adjust the capabilities that your container requires. This means you can remove capabilities your container does not need. For example, if your container does not need setuid and setgid you can remove this access by executing:
 
@@ -438,9 +439,9 @@ To remove chown capability fromt the container ,use following command :
    `$ docker run --cap-drop=CHOWN [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG..]`
 
 
- 
-
 ## Exposing a Port
+
+
 
 Port exposure could be done by many ways, one of them is through *run* command. Other ways are through Docker file and --link command.
 
@@ -568,7 +569,7 @@ centos                   latest              c8a648134623        6 weeks ago    
 
 Syntax for starting container with label- --lable/-l option :
   
-   ` $ docker run --label environment=dev ubuntu date`
+   `$ docker run --label environment=dev ubuntu date`
 
 
 Listing containers with labels specified would return only those containers which comes under that label, without label all the containers would be listed. 
