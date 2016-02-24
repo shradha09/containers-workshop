@@ -153,41 +153,40 @@ Also, with the default Docker configuration , it creates a directory with the co
          
          `$ docker start -a -i $ID`
 
--The container can be started in the background and then we can attach to it whenever needed. We need to use the -d option to start the contianer in the background: 
+The container can be started in the background and then we can attach to it whenever needed. We need to use the -d option to start the contianer in the background: 
  ( -d is used to Enable the debug mode.Default is false) 
 
   `$docker run -d -i -t ubuntu /bin/bash`
-   
-  ```6986b0367d5fd322db5aa90c180d3832be81cf1e294a1b5c222aac8a30691a19```
+   `6986b0367d5fd322db5aa90c180d3832be81cf1e294a1b5c222aac8a30691a19`
+
 
 The preceeding command returns the container ID of the contianer to which we can attach later, as follows:
+
 
     ```$ ID='docker run -d -i -t ubuntu /bin/bash```
     ```$ docker attach $ID```
 
 In the preceding case, we chose /bin/bash to run inside the container.If we attach to the container, we will get an interactive shell.We can run a non-interactive process and run it in the background to make a daemonized container similar to the following:
 
-            `$docker run -d ubuntu /bin/bash -c "while [1]; do echo hello docker; sleep 1; done"`
+`$ docker run -d ubuntu /bin/bash -c "while [1]; do echo hello docker; sleep 1; done"` 
 
--To remove the container after it exits, start the contianer with the --rm option, as follows:
+ To remove the container after it exits, start the contianer with the --rm option, as follows:
 
            `$ docker run -rm ubuntu`
 
 As soon as the command executes, the container will be removed.
 
-- The --read-only option of the run command will mount the root filesystem in the read-onlymode:
+ The --read-only option of the run command will mount the root filesystem in the read-onlymode:
 
            `$docker run --read-only -d -i -t ubuntu /bin/bash`
 
    This option is very useful when we don't want users to accidently write content inside the container, which gets lost if the container is not committed or copied out or non-ephemeral storage such as volumes.
 
--Custom labels could be given to containers, which can be used to group the containers based on labels.
+  Custom labels could be given to containers, which can be used to group the containers based on labels.
 
 ## Listing
 
 We can list both running and stopped containers.
-
-+ Make sure that the Docker daemon is runnig on the host and you can connect through the Docker client.Some running and/or stopped containers are also required.
 
 To list the containers, run the following command:
 
@@ -198,11 +197,11 @@ To list the containers, run the following command:
 
 ###Output : 
 
-```
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
-c18653529e7e        centos              "/bin/bash"         8 seconds ago       Up 3 seconds                            cent
-fac59b475b1b        nginx               "/bin/bash"         About a minute ago  Up About a minute   80/tcp, 443/tcp     nginx
-6986b0367d5f        ubuntu              "/bin/bash"         35 minutes ago      Up 35 minutes                           nostalgic_jennings
+
+```CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+   c18653529e7e        centos              "/bin/bash"         8 seconds ago       Up 3 seconds                            cent
+  fac59b475b1b        nginx               "/bin/bash"         About a minute ago  Up About a minute   80/tcp, 443/tcp     nginx
+   6986b0367d5f        ubuntu              "/bin/bash"         35 minutes ago      Up 35 minutes                           nostalgic_jennings
 ```
 
 
@@ -219,7 +218,7 @@ The Docker daemon can look at the metadata associated with the containers and li
 
 
 
-###  Additional Info 
+###Additional Info 
 
  To list both running and stopped containers, use the -a option as follows:-
 
@@ -229,8 +228,8 @@ The Docker daemon can look at the metadata associated with the containers and li
 
 ###Output : 
 
-```
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                           PORTS               NAMES
+
+```CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                           PORTS               NAMES
 fac59b475b1b        nginx               "/bin/bash"              2 minutes ago       Up 2 minutes                     80/tcp, 443/tcp     nginx
 c18653529e7e        centos              "/bin/bash"              3 minutes ago       Up 3 minutes                                         cent
 8bee71c25e80        ubuntu              "/bin/bash -c 'while "   32 minutes ago      Exited (0) 32 minutes ago                            angry_noy
@@ -247,14 +246,14 @@ f0394077c839        nginx               "nginx -g 'daemon off"   8 days ago     
 
 ###Output :
 
-```fac59b475b1b
+```
+fac59b475b1b
 c18653529e7e
 8bee71c25e80
 0944d42a91f2
 6a92c790a9f4
 aebca9261ce8
 ```
-
 
  To show the last created container, including the non-running container, run the following command :
 
@@ -283,12 +282,13 @@ We can look at the log files of existing containers. To do so, let us first star
   hello docker
   hello docker
   hello docker
-  hello docker
-``` 
+  hello docker``` 
+
 
 Docker does this by looking at the container's specificlog file from /var/lib/docker/containers/<Container ID> and show the result.
 
-###  Additional Info 
+
+###Additional Info 
 
 With the -t option, we can get the timestamp with each log line and with -f we can get tail like behavior.
 
@@ -304,14 +304,16 @@ Note: Make sure that the Docker daemon is running on the host and you can connec
    `$ docker stop [-t|--time[=10]] CONTAINER [CONTAINER...]`
 
 2.If you already have a running container, then you can stop it; if not, first we will create a container and then stop it using followings steps:
-       `$ ID='docker run -d -i ubuntu /bin/bash'`
-       `$ docker stop $ID`
+      
+     `$ ID='docker run -d -i ubuntu /bin/bash'`
+     `$ docker stop $ID`
           OR
-       `$ docker stop CONTAINER_ID`
+      `$ docker stop CONTAINER_ID`
 
 Note : This will save the state of the container and stop it. It can be started again, if needed.
 
-###  Additional Info 
+
+###Additional Info 
 
 1.To stop a container after waiting for some time, use --time/-t option.
 2.To stop all the running containers , run the following command:
@@ -348,8 +350,8 @@ Steps to be followed:
 
 
        `$ docker ps`
-```
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+```CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 fac59b475b1b        nginx               "/bin/bash"         About an hour ago   Up About an hour    80/tcp, 443/tcp     nginx
 c18653529e7e        centos              "/bin/bash"         About an hour ago   Up About an hour                        cent
 6986b0367d5f        ubuntu              "/bin/bash"         2 hours ago         Up 2 hours                              nostalgic_jenni
@@ -357,7 +359,7 @@ c18653529e7e        centos              "/bin/bash"         About an hour ago   
 
    `$ docker rm $ID1`
 
-### Additional Info 
+###Additional Info 
 
  To forcefully delete a container without an intermediate stop,use the -f option.
 
