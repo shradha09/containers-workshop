@@ -13,19 +13,21 @@ ads: false
 # Before we start container Operations..
 
 
-##Listing/ searching an image
+## Listing/ searching an image
 
 As we know, we require images to start containers. These containers are available in docker registries, from where we can get them. But first, we need to know if the image we need is available in the registry.
 
 So lets try searching an image. For the purpose of this tutorial, we will use a small, minimalistic image, but you are welcome to use any image of your choice.
 
-###Command : 
+Command : 
 
+    ```
     $ docker search "IMAGE_NAME"
+    ```
 
 Example : $ docker search ubuntu | head -n4
 
-###Output : 
+Output : 
 
 ```
 INDEX       NAME                                        DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
@@ -36,45 +38,55 @@ docker.io   docker.io/torusware/speedus-ubuntu          Always updated official 
 
 The above description points out whether the image is official or automated. STARS signfies how many people liked that image.
 
- - To list the images that got more than 20 stars and are automated, run the following command :
+  To list the images that got more than 20 stars and are automated, run the following command :
 
-    ```$ docker search -s 20 --automated ubuntu```
+    ```
+    $ docker search -s 20 --automated ubuntu
+    ```
 
- - For help with docker search, use following command:
-   $ docker search --help
-
-## Pulling an image
-
+## Pulling an Image
+ 
 After looking up for the image in the registry,we can pull it to the system from docker registry by running the following command :
 
-###Command : 
+Command : 
 
-    ```$ docker pull "IMAGE_NAME [:Tag]```
+    ```
+    $ docker pull "IMAGE_NAME [:Tag]
+    ```
 
-Example : docker pull ubuntu
+Example : 
+    ```
+    $ docker pull ubuntu
+    ```       
 
   The *pull* command downloads all layers from the Docker registry, which are required to create the image locally.
 
-## More about tags:
+*More about tags:*
 
-- Image tags group images of the same type. For example, Fedora can have images with tags such as feodra21 , fedora22, fedora23 etc. Following is used to pull an image with specific tag: 
+Image tags group images of the same type. For example, Fedora can have images with tags such as feodra21 , fedora22, fedora23 etc. Following is used to pull an image with specific tag: 
 
-     `$ docker pull fedora:fedora22`
+    ```
+    $ docker pull fedora:fedora22
+    ```
 
-- By default,the image with latest tag gets pulled. To pull all images corresponding to all tags,use following command:
+By default,the image with latest tag gets pulled. To pull all images corresponding to all tags,use following command:
   
-       `$ docker pull --all-tags fedora`
+    ```
+    $ docker pull --all-tags fedora
+    ```
 
 
-###Output
+Output:
 
- ```Using default tag: latest
+    ```
+    Using default tag: latest
     Trying to pull repository docker.io/tianon/true ... latest: Pulling from docker.io/library/fedora
     
     3bc7a2e07962: Pull complete
     bc84b1f88237: Pull complete
     Digest: sha256:0c678029118314264306b49c931d6dce678c8c88143252342a8614210bea4129
-    Status: Downloaded newer image for docker.io/fedora:latest```
+    Status: Downloaded newer image for docker.io/fedora:latest
+    ```
 
 ## Listing images
 
@@ -82,11 +94,13 @@ Now before we use any image to create containers, we might want to check which c
 
 Note: Make sure that the docker deamon is already running on the host.
 
-###Command : 
+Command : 
 
-    `$ docker images`
+    ```
+    $ docker images
+    ```
 
-###Output : 
+Output : 
   
  ```
     REPOSITORY              TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
@@ -110,20 +124,25 @@ Now that we know some basics about images that we needed to work with containers
 Once we have images, we can use them to start the containers. 
 Lets attempt to start a  container.In the following commands we will  start a container with the ubuntu:latest image.
 
-###Syntax to run Container :
+*Syntax to run Container :*
 
-        `$ docker run [options] IMAGE[:TAG] [command] [ARG...]`
+   ```
+   $ docker run [options] IMAGE[:TAG] [command] [ARG...]
+   ```
 
-###Command: 
+*Command: *
 
-           `$ docker run -i -t --name=ubuntu ubuntu /bin/bash`
+   ```
+   $ docker run -i -t --name=ubuntu ubuntu /bin/bash
+   ```
 
 *By default docker picks the image with the latest tag* :
 
--The -i option starts the container in "interactive mode".
--The -t option allocates the *psuedo-tty* and attaches it to the standard input
+1. The -i option starts the container in "interactive mode".
 
-Note:Software that emulates Terminal hardware, handling input and output in the same way a physical device would do, so that the software connected is not aware that no real devices are attached.
+2. The -t option allocates the *psuedo-tty* and attaches it to the standard input
+
+Note: Software that emulates Terminal hardware, handling input and output in the same way a physical device would do, so that the software connected is not aware that no real devices are attached.
 
 We started a container from the ubuntu:latest image, attach psuedo-tty, name it ubuntu and ran the /bin/bash command. If the name is not specified,then a randomstring will be assigned as the name.
 
@@ -135,35 +154,46 @@ Also, if the image is not available locally, then it will get downloaded from th
 Under the hood, Docker:
 
 1.It will merge all the layers that make that image using Union fileSystem.
+
 2.Allocates a unique ID to a container, which is referred to as container ID.
+
 3.Allocates a filesystem and mounts a read/write layer for the container. Any changes made to this layer is temporary and will be discarded if not committed.
+
 4.Allocates a network/bridge interface.
+
 5.Assigns an IP address to the container.
+
 6.Executes the process specified by the user.
 
 Also, with the default Docker configuration , it creates a directory with the container's ID inside /var/lib/docker/containers, which has the container's specific information such as hostname, configuration details, logs and /etc/hosts.
 
-###  Additional Info 
+*Additional Info*
 
--To exit from the container use >ctrl+D or type >exit. It is similar to exiting from a shell but this will stop the container.
+1. To exit from the container use >ctrl+D or type >exit. It is similar to exiting from a shell but this will stop the container.
 
--The *run* command creates and start the container. With Docker 1.3 or later, it is possible just to create the container using the *create* command and run it later using the *start* command, shown in following example :
+2. The *run* command creates and start the container. With Docker 1.3 or later, it is possible just to create the container using the *create* command and run it later using the *start* command, shown in following example :
 
-         `$ ID=$ (docker create -i -t ubuntu bash)`
+     ```
+     $ ID=$ (docker create -i -t ubuntu bash)
+     ```
          
-         `$ docker start -a -i $ID`
+     ```
+     $ docker start -a -i $ID
+     ```
 
 The container can be started in the background and then we can attach to it whenever needed. We need to use the -d option to start the contianer in the background: 
- ( -d is used to Enable the debug mode.Default is false) 
+  ( -d is used to Enable the debug mode.Default is false) 
 
-  `$docker run -d -i -t ubuntu /bin/bash`
-   `6986b0367d5fd322db5aa90c180d3832be81cf1e294a1b5c222aac8a30691a19`
-
+  ```$docker run -d -i -t ubuntu /bin/bash
+    6986b0367d5fd322db5aa90c180d3832be81cf1e294a1b5c222aac8a30691a19
+  ```
 
 The preceeding command returns the container ID of the contianer to which we can attach later, as follows:
 
 
-    ```$ ID='docker run -d -i -t ubuntu /bin/bash```
+    ```
+    $ ID='docker run -d -i -t ubuntu /bin/bash
+    ```
     ```$ docker attach $ID```
 
 In the preceding case, we chose /bin/bash to run inside the container.If we attach to the container, we will get an interactive shell.We can run a non-interactive process and run it in the background to make a daemonized container similar to the following:
