@@ -240,18 +240,18 @@ To list the containers, run the following command:
 
 Command 
 
-   ```
-   $ docker ps [OPTIONS]
-   ```
+  ```
+  $ docker ps [OPTIONS]
+  ```
 
 Output : 
 
-   ```
-   CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
-   c18653529e7e        centos              "/bin/bash"         8 seconds ago       Up 3 seconds                            cent
+  ```
+  CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+  c18653529e7e        centos              "/bin/bash"         8 seconds ago       Up 3 seconds                            cent
   fac59b475b1b        nginx               "/bin/bash"         About a minute ago  Up About a minute   80/tcp, 443/tcp     nginx
-   6986b0367d5f        ubuntu              "/bin/bash"         35 minutes ago      Up 35 minutes                           nostalgic_jennings
-   ```
+  6986b0367d5f        ubuntu              "/bin/bash"         35 minutes ago      Up 35 minutes                           nostalgic_jennings
+  ```
 
 
 The Docker daemon can look at the metadata associated with the containers and lists them.Docker does this in following steps:
@@ -277,9 +277,9 @@ The Docker daemon can look at the metadata associated with the containers and li
 
 Command : 
 
-    ```
-    $ docker ps -a
-    ```
+  ```
+  $ docker ps -a
+  ```
 
 
 Output : 
@@ -298,26 +298,26 @@ To return just the container IDs of all the containers, use the -aq option as fo
 
 Command : 
 
-     ```
-     $ docker ps -aq
-     ```
+  ```
+  $ docker ps -aq
+  ```
 
 Output :
 
-    ```
-    fac59b475b1b
-    c18653529e7e
-    8bee71c25e80
-    0944d42a91f2
-    6a92c790a9f4
-    aebca9261ce8
-    ```
+  ```
+  fac59b475b1b
+  c18653529e7e
+  8bee71c25e80
+  0944d42a91f2
+  6a92c790a9f4
+  aebca9261ce8
+  ```
 
 To show the last created container, including the non-running container, run the following command :
 
-   ```
-   $ docker ps -l
-   ```
+  ```
+  $ docker ps -l
+  ```
 
 For filtering the containers on the basis of there use --filter/-f option with 'ps'.
 
@@ -330,28 +330,28 @@ We can look at the log files of existing containers. To do so, let us first star
 
 Command :
 
-    ```
-    $ docker run -d centos /bin/bash -c "while [ 1 ]; do echo hello docker; sleep 1; done"
-    ```
+  ```
+  $ docker run -d centos /bin/bash -c "while [ 1 ]; do echo hello docker; sleep 1; done"
+  ```
 
 Output : 
 
-       ```
-       5317d59aaa505643a94b9d87e963e9090a047530b37e702f87c8d7c99b223905
-       ```
+  ```
+  5317d59aaa505643a94b9d87e963e9090a047530b37e702f87c8d7c99b223905
+  ```
 
-    ```
-    $ docker run 5317d59aaa505643a94b9d87e963e9090a047530b37e702f87c8d7c99b223905
+  ```
+  $ docker run 5317d59aaa505643a94b9d87e963e9090a047530b37e702f87c8d7c99b223905
   
-    hello docker
-    hello docker
-    hello docker
-    hello docker
-    hello docker
-    hello docker
-    hello docker
-    hello docker
-    ``` 
+  hello docker
+  hello docker
+  hello docker
+  hello docker
+  hello docker 
+  hello docker
+  hello docker
+  hello docker
+  ``` 
 
 
 Docker does this by looking at the container's specificlog file from /var/lib/docker/containers/<Container ID> and show the result.
@@ -360,7 +360,6 @@ Docker does this by looking at the container's specificlog file from /var/lib/do
 *Additional Info*
 
 With the -t option, we can get the timestamp with each log line and with -f we can get tail like behavior.
-
 
 
 
@@ -375,21 +374,21 @@ Note: Make sure that the Docker daemon is running on the host and you can connec
 
 1.To stop the container, run the following command: 
       
-   ```
-   $ docker stop [-t|--time[=10]] CONTAINER [CONTAINER...]
-   ```
+  ```
+  $ docker stop [-t|--time[=10]] CONTAINER [CONTAINER...]
+  ```
 
 2.If you already have a running container, then you can stop it; if not, first we will create a container and then stop it using followings steps:
       
-     ```
-     $ ID='docker run -d -i ubuntu /bin/bash'
+  ```
+  $ ID='docker run -d -i ubuntu /bin/bash'
     
-     $ docker stop $ID 
+  $ docker stop $ID 
      
           OR
       
-     $ docker stop CONTAINER_ID
-     ```
+  $ docker stop CONTAINER_ID
+  ```
 
 Note : This will save the state of the container and stop it. It can be started again, if needed.
 
@@ -400,9 +399,9 @@ Note : This will save the state of the container and stop it. It can be started 
 
 2.To stop all the running containers , run the following command:
     
-   ```
-   $ docker stop 'docker ps -q'
-   ```
+  ```
+  $ docker stop 'docker ps -q'
+  ```
 
 ## Deleting a Container
 
@@ -415,36 +414,36 @@ Steps to be followed:
 
 1.To delete the container, run the following commands: 
 
-    ```
-    $ docker rm [OPTIONS]] CONTIANER [CONTAINER..]
-    ```
+  ```
+  $ docker rm [OPTIONS]] CONTIANER [CONTAINER..]
+  ```
 
 2.Let's first start a container, stop it and then delete it using the following commands:
 
-   ```
-   $ ID='docker run -d -i ubuntu /bin/bash'
-   $ docker stop $ID
-   $ docker rm $ID
-   ```
+  ```
+  $ docker stop $ID
+  $ docker rm $ID
+  ```
 
 OUPUT:
 
-    ```
-    $ ID1='docker run -di ubuntu /bin/bash'
+  ```
+  $ ID1='docker run -di ubuntu /bin/bash' 
     
-    ef24b4805bf43550083184efcf6bfd7fd767cdaa86b0c45c8ed094df528d2c31
-    ```
+  ef24b4805bf43550083184efcf6bfd7fd767cdaa86b0c45c8ed094df528d2c31
+  
+  ```
        
 
-   ```
-   $ docker stop $ID1
+  ```
+  $ docker stop $ID1
  
-   ef24b4805bf43550083184efcf6bfd7fd767cdaa86b0c45c8ed094df528d2c31
-   ```
+  ef24b4805bf43550083184efcf6bfd7fd767cdaa86b0c45c8ed094df528d2c31
+  ```
 
-   ```
-   $ docker ps
-   ```
+  ```
+  $ docker ps
+  ```
 
   ```
   CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
@@ -490,18 +489,20 @@ With the Docker version 1.2.0 the *--restart*  flag is added with *docker run* t
 
 
 Syntax: 
-      ```
-      $ docker run --restart=POLICY [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG..]
-      ```
+ 
+  ```
+  $ docker run --restart=POLICY [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG..]
+  ```
 
 Example: 
-      ```
-      $ docker run  --restart=always -d -i -t ubuntu /bin/bash
-      ```
+      
+  ```
+  $ docker run  --restart=always -d -i -t ubuntu /bin/bash
+  ```
           
-      ```
-      $ docker run --restart=on-failure:2 -d -i -t ubuntu /bin/bash
-      ```
+  ```
+  $ docker run --restart=on-failure:2 -d -i -t ubuntu /bin/bash
+  ```
 
 
 ## Getting Privileged Access
@@ -512,23 +513,23 @@ Linux divides  the  privileges  traditionally associated  with  superuser into  
 
 *Syntax for privileged mode*
 
-    ```
-    $ docker run --privileged [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG..]
-    ```
+  ```
+  $ docker run --privileged [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG..]
+  ```
  
-
 Example :  
-        ```
-        $ docker run --privileged=false -i -t ubuntu /bin/bash
-        ```
+      
+  ```
+  $ docker run --privileged=false -i -t ubuntu /bin/bash
+  ```
    
 
 The above above command will give overhead privileges to the container.Most common of them all are : 
 
-    ```
-    --cap-add
-    --cap-drop
-    ```
+  ```
+  --cap-add
+  --cap-drop
+  ```
  
 
 Docker run also has a feature where you can adjust the capabilities that your container requires. This means you can remove capabilities your container does not need. For example, if your container does not need SETUID and SETGID you can remove this access by executing:
@@ -536,38 +537,38 @@ Docker run also has a feature where you can adjust the capabilities that your co
 
 Syntax: 
     
-    ```
-    $ docker run --cap-drop  [OPTIONS] IMAGE[:TAG] [COMMANDS] [ARG..]
-    ```
+  ```
+  $ docker run --cap-drop  [OPTIONS] IMAGE[:TAG] [COMMANDS] [ARG..]
+  ```
 
 Example: 
  
-    ```
-    $ docker run --cap-drop setuid --cap-drop setgid -ti rhel7 /bin/sh
-    ```
+  ```
+  $ docker run --cap-drop setuid --cap-drop setgid -ti rhel7 /bin/sh
+  ```
 
 All capabilities can be added or removed. 
   
 Syntax: 
     
-    ```
-    $ docker run --cap-add [OPTIONS] IMAGE[:TAG] [COMMANDS] [ARG..]
-    ```
+  ```
+  $ docker run --cap-add [OPTIONS] IMAGE[:TAG] [COMMANDS] [ARG..]
+  ```
 
 Example: 
    
-    ```
-    $ docker run --cap-add all --cap-drop sys-admin -ti rhel7 /bin/sh
-    ```
+  ```
+  $ docker run --cap-add all --cap-drop sys-admin -ti rhel7 /bin/sh
+  ```
 
 This command will add all capabilities except sys-admin capability.
 
 
 To remove chown capability fromt the container ,use following command : 
    
-   ```
-   $ docker run --cap-drop=CHOWN [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG..]
-   ```
+  ```
+  $ docker run --cap-drop=CHOWN [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG..]
+  ```
 
 
 ## Exposing a Port
@@ -579,19 +580,18 @@ Port exposed through run command :
 
 Syntax : 
 
-     ```
-     $ docker run --expose=PORT [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG..]
-     ```
+  ```
+  $ docker run --expose=PORT [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG..]
+  ```
 
 Example : 
       
-    ```  
-    $ docker --expose=22 -i -t ubuntu /bin/bash
-    ```
+  ```  
+  $ docker --expose=22 -i -t ubuntu /bin/bash
+  ```
 This command will expose port while starting the container. 
 
  
-
 ## Accessing Host Device Inside the Container
 
 
@@ -601,16 +601,16 @@ Before it has to be done with the --privileged option.
 
 Syntax : 
      
-    ```   
-    $ docker run --device=<Host device>:<Container Device Mapping>:<Permissions> [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG..]
-    ```
+  ```   
+  $ docker run --device=<Host device>:<Container Device Mapping>:<Permissions> [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG..]
+  ```
 
 
 Example : 
        
-    ```
-    $ docker run --device=/dev/bdc:/dev/abdc -i -t ubuntu /bin/bash
-    ```
+  ```
+  $ docker run --device=/dev/bdc:/dev/abdc -i -t ubuntu /bin/bash
+  ```
 
 This command will access the given folder inside the container.
 
@@ -626,23 +626,24 @@ If the container is paused, then the docker exec command will fail with an error
 
 Syntax : 
    
-     ```
-     $ docker exec [-d|--detach[=false]] [--help] [-i|--interactive[=false] [-t|--tty[=false] [CONTAINER] [COMMAND] [ARG..]
-     ```
+  ```
+  $ docker exec [-d|--detach[=false]] [--help] [-i|--interactive[=false] [-t|--tty[=false] [CONTAINER] [COMMAND] [ARG..]
+  ```
 
 
 Example : 
-        1. Run a new command inside the container . 
+        
+1. Run a new command inside the container . 
        
-          ```
-          $ docker run -i -t -d ubuntu /bin/bash
-          ```
+  ```
+  $ docker run -i -t -d ubuntu /bin/bash
+  ```
 
 2. To attach a new command inside a running container,following syntax is used:
 
-      ```
-      $ docker exec -i -t [CONTAINER_ID] /bin/bash
-      ```
+  ```
+  $ docker exec -i -t [CONTAINER_ID] /bin/bash
+  ```
 
 
 ## Inspecting
@@ -651,21 +652,23 @@ Docker *inspect* command is used for returning low-level information about a con
 
 
 Syntax : 
-      ```
-      $ docker inspect [-f|--format="" CONTAINER|IMAGE [CONTAINER|IMAGE...]
-      ```
+      
+  ```
+  $ docker inspect [-f|--format="" CONTAINER|IMAGE [CONTAINER|IMAGE...]
+  ```
 
 Example :
-        ```
-        $ Z='docker run -dit ubuntu /bin/bash'
-        ```
         
-        ```   
-        $ docker inspect $Z
-        ```
+  ```
+  $ Z='docker run -dit ubuntu /bin/bash'
+  ```
+        
+  ```   
+  $ docker inspect $Z
+  ```
 
 
- ```
+  ```
 {
     "Id": "e90df13f8efb309eadf863933394c1b3d5ff015eb865629a72eed153be1621b6",
     "RepoTags": [
@@ -687,73 +690,72 @@ Example :
  . . . . . . . .        
  . . . . . . . . 
 }]
-```
+  ```
 
 ## Labeling and Filtering Containers 
  
 
 Docker 1.6.0 has added a new feature called labeling, through which we can attach arbitrary key-value metadata. They can be treated as environment variable which are not available to running applications inside the container, but are available to programs ( Docker CLI ) that manages containers and images.
- Labels attached to images also gets applied to the containers started via them.
+Labels attached to images also gets applied to the containers started via them.
 
 
-   ``` 
-   $ docker images
-   ```
+  ``` 
+  $ docker images
+  ```
  
-   ```
-   REPOSITORY                TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
-   skhare/fedora             httpd               d33f23884c55        6 days ago          362.2 MB
-   docker.io/docker          latest              e90df13f8efb        2 weeks ago         36.87 MB
-   <none>                    <none>              0d189ff6a3e2        2 weeks ago         6.649 MB
-   docker.io/ubuntu          latest              6cc0fc2a5ee3        2 weeks ago         187.9 MB
-   docker.io/fedora          latest              3fc68076e184        5 weeks ago         206.3 MB
-   docker.io/centos          latest              c8a648134623        6 weeks ago         196.6 MB
-   ```
+  ```
+  REPOSITORY                TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+  skhare/fedora             httpd               d33f23884c55        6 days ago          362.2 MB
+  docker.io/docker          latest              e90df13f8efb        2 weeks ago         36.87 MB
+  <none>                    <none>              0d189ff6a3e2        2 weeks ago         6.649 MB
+  docker.io/ubuntu          latest              6cc0fc2a5ee3        2 weeks ago         187.9 MB
+  docker.io/fedora          latest              3fc68076e184        5 weeks ago         206.3 MB
+  docker.io/centos          latest              c8a648134623        6 weeks ago         196.6 MB
+  ```
 
      
-   ```
-   $ docker images --filter label=distro=ubuntu
-   ```
+  ```
+  $ docker images --filter label=distro=ubuntu
+  ```
 
 
-   ```
-   REPOSITORY                TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+  ```
+  REPOSITORY                TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
 
-   centos                   latest              c8a648134623        6 weeks ago           196.6 MB
-   ```
+  centos                   latest              c8a648134623        6 weeks ago           196.6 MB
+  ```
 
 
 Syntax for starting container with label-  --label/-l option :
   
-   ```
-   $ docker run --label environment=dev ubuntu date
-   ```
+  ```
+  $ docker run --label environment=dev ubuntu date
+  ```
 
 
 Listing containers with labels specified will return only those containers which comes under that label, without label all the containers will be listed. 
 
 
-   ``` 
-   $ docker ps -a
-   ```
+  ``` 
+  $ docker ps -a
+  ```
 
-
-   ``` 
-   CONTAINER ID     IMAGE           COMMAND          CREATED           STATUS                      PORTS        NAMES
+  ``` 
+  CONTAINER ID     IMAGE           COMMAND          CREATED           STATUS                      PORTS        NAMES
                  
-   24f514c7ff48    ubuntu        "/bin/bash"      25 hours ago      Exited (127) 25 hours ago                kickass_lamarr
-   57cda8093f0b    ubuntu       "/bin/bash"       25 hours ago      Exited (0) 25 hours ago                  admiring_kare
-   3b7d8fcd0a1d    ubuntu       "/bin/bash"       30 hours ago      Up 30 hours                              romantic_jepsen
-   0b545af689ce                  "/bin/bash       6 days ago        Exited (137) 3 days ago                  cranky_meninsky
-   ```
+  24f514c7ff48    ubuntu        "/bin/bash"      25 hours ago      Exited (127) 25 hours ago                kickass_lamarr
+  57cda8093f0b    ubuntu       "/bin/bash"       25 hours ago      Exited (0) 25 hours ago                  admiring_kare
+  3b7d8fcd0a1d    ubuntu       "/bin/bash"       30 hours ago      Up 30 hours                              romantic_jepsen
+  0b545af689ce                  "/bin/bash       6 days ago        Exited (137) 3 days ago                  cranky_meninsky
+  ```
 
 
-    ```
-    $ docker ps -a --filter label=environment=dev
-    ```
+  ```
+  $ docker ps -a --filter label=environment=dev
+  ```
 
 
-    ```
-    CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                  PORTS               NAMES
-    b0c4c2b63188        ubuntu              "date"              7 days ago          Exited (0) 7 days ago                       ubt10
-    ```
+  ```
+  CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                  PORTS               NAMES
+  b0c4c2b63188        ubuntu              "date"              7 days ago          Exited (0) 7 days ago                       ubt10
+  ```
